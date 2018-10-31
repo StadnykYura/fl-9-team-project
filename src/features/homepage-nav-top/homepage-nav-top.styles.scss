@@ -50,3 +50,9 @@
 		vertical-align: middle;
 	} 
 }
+.menu__item_icon.menu__link {
+	overflow-y: hidden;
+	&::before {
+		display: block;
+	}
+}
