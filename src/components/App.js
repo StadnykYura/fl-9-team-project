@@ -1,28 +1,32 @@
 import React, { Component } from "react";
-import logo from "../logo.svg";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import * as routes from "../constants/routes";
+
 import "../styles/App.scss";
+
+import LandingPage from "./Landing";
+import HomePage from "./Home";
+import Navigation from "./Navigation";
+
+import SignInPage from "../features/authorization/sign-in.page";
+import withAuthentication from "../features/authorization/with-authentication.hoc";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div>
+          <Navigation />
+          <hr />
+
+          <Route exact path={routes.LANDING} component={LandingPage} />
+          <Route exact path={routes.SIGN_IN} component={SignInPage} />
+          <Route exact path={routes.HOME} component={HomePage} />
+        </div>
+      </Router>
     );
   }
 }
 
-export default App;
+export default withAuthentication(App);
