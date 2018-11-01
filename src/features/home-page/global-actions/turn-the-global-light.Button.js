@@ -115,8 +115,8 @@ class TurnTheGlobalLightButton extends Component {
     return (
       <div>
         <button onClick={this.turnOffOnnLight}>turn</button>
-        <button onClick={this.getRoomsData}>get rooms data</button>
-        <button onClick={this.getDevicesFromRooms}>get room devices</button>
+        {/* <button onClick={this.getRoomsData}>get rooms data</button>
+        <button onClick={this.getDevicesFromRooms}>get room devices</button> */}
       </div>
     );
   }
