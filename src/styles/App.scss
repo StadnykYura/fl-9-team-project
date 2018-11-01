@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
-@import "../../styles/normalize.css";
-@import "../../styles/_reset.scss";
-@import "../../styles/_colors.scss";
+//@import "./normalize.css";
+@import "./reset";
+@import "./colors";
+/*
 @font-face {
   font-family: 'icomoon';
-  src:  url('../../fonts/icomoon.eot?e42c6k');
-  src:  url('../../fonts/icomoon.eot?e42c6k#iefix') format('embedded-opentype'),
-    url('../../fonts/icomoon.ttf?e42c6k') format('truetype'),
-    url('../../fonts/icomoon.woff?e42c6k') format('woff'),
-    url('../../fonts/icomoon.svg?e42c6k#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?e42c6k');
+  src:  url('fonts/icomoon.eot?e42c6k#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?e42c6k') format('truetype'),
+    url('fonts/icomoon.woff?e42c6k') format('woff'),
+    url('fonts/icomoon.svg?e42c6k#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
-}
+}*/
 body{
   font-family: 'Montserrat', sans-serif;
   background: $body;

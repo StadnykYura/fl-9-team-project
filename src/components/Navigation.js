@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 import AuthUserContext from "../features/authorization/auth-user.context";
-import SignOutButton from "../features/authorization/sign-out.button";
+//import SignOutButton from "../features/authorization/sign-out.button";
 import * as routes from "../constants/routes";
 
 const NavigationAuth = () => (
   <ul>
-    <li>
+    {/* <li>
       <Link to={routes.LANDING}>Landing</Link>
     </li>
     <li>
@@ -15,7 +15,7 @@ const NavigationAuth = () => (
     </li>
     <li>
       <SignOutButton />
-    </li>
+    </li> */}
   </ul>
 );
 

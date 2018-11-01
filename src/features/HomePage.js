@@ -4,7 +4,7 @@ import HomepageNav from "./homepage-nav-top/homepage-nav-top";
 // import "../styles/index.scss";
 import HomepageNavBottom from "./homepage-nav-bottom/homepage-nav-bottom";
 
-class App extends Component {
+class HomePage extends Component {
   render() {
     return (
       <div className="App">
@@ -15,4 +15,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default HomePage;

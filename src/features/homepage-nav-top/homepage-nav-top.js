@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 // import "../styles/Homepage-nav-styles.scss";
 
+import { Link } from "react-router-dom";
+import * as routes from "../../constants/routes";
+
 import "./homepage-nav-top.styles.scss";
+import SignOutButton from "../authorization/sign-out.button";
 
 class HomepageNav extends Component {
   render() {
@@ -10,9 +14,13 @@ class HomepageNav extends Component {
         <section className="homepage">
           <ul className="menu">
             <li className="menu__item">
-              <a className="menu__link menu__home menu__item_icon" href="?">
+              {/* <a className="menu__link menu__home menu__item_icon" href="/home"> */}
+              <Link
+                to={routes.HOME}
+                className="menu__link menu__home menu__item_icon"
+              >
                 Home
-              </a>
+              </Link>
             </li>
             <li className="menu__item">
               <a className="menu__link" href="?">
@@ -26,12 +34,13 @@ class HomepageNav extends Component {
               <span className="menu__time">Time</span>
             </li>
             <li className="menu__item">
-              <a
+              {/* <a
                 className=" menu__link menu__settings menu__item_icon"
                 href="?"
               >
                 Settings
-              </a>
+              </a> */}
+              <SignOutButton />
             </li>
           </ul>
         </section>

@@ -2,12 +2,12 @@ import firebase from "firebase/app";
 import "firebase/auth";
 
 const config = {
-  apiKey: "AIzaSyCFdkYn3ePPypFwhuggIZe9lNFCKvUnI-E",
-  authDomain: "test-smart-house-make-sence.firebaseapp.com",
-  databaseURL: "https://test-smart-house-make-sence.firebaseio.com",
-  projectId: "test-smart-house-make-sence",
-  storageBucket: "test-smart-house-make-sence.appspot.com",
-  messagingSenderId: "59683720773"
+  apiKey: "AIzaSyCU0tyznshqEjwVoKYB4RnrFFU6m91sgSE",
+  authDomain: "fl9-team-project.firebaseapp.com",
+  databaseURL: "https://fl9-team-project.firebaseio.com",
+  projectId: "fl9-team-project",
+  storageBucket: "fl9-team-project.appspot.com",
+  messagingSenderId: "68337507824"
 };
 
 if (!firebase.apps.length) {
