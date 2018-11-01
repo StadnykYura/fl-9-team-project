@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import * as d3 from "d3";
 
-//import lightLogo from './light.svg';
-//import noLightLogo from './broken-light.svg';
+import lightLogo from "./light-on.svg";
+import noLightLogo from "./light-off.svg";
 
 //import { firebase } from "../../../firebase";
 
@@ -42,15 +42,15 @@ class FlatView extends Component {
       .attr("stroke-width", 2)
       .attr("stroke", "#000");
 
-    //var g = svg.append("g");
-    /*
-        var img = g.append("svg:image")
-            .attr("xlink:href", lightLogo)
-            .attr("width", 70)
-            .attr("height", 70)
-            .attr("x", 60)
-            .attr("y", 150);
-*/
+    var g = svg.append("g");
+
+    g.append("svg:image")
+      .attr("xlink:href", lightLogo)
+      .attr("width", 70)
+      .attr("height", 70)
+      .attr("x", 60)
+      .attr("y", 200);
+
     //2
     svg
       .append("rect")
@@ -59,24 +59,22 @@ class FlatView extends Component {
       .attr("x", 300)
       .attr("y", 0)
       .attr("fill", "rgba(33,66,255,0.4)")
-      .attr("stroke-width", 2)
+      .attr("stroke-width", 1.5)
       .attr("stroke", "#000");
 
-    //   var g = svg.append("g");
-    /*
-        var img = g.append("svg:image")
-            .attr("xlink:href", lightLogo)
-            .attr("width", 70)
-            .attr("height", 70)
-            .attr("x", 370)
-            .attr("y", 150);
-*/
-    /*   d3.selectAll("image")
-            .on("click", function () {
-                d3.select(this)
-                    .attr("xlink:href", noLightLogo);
-            });
-*/
+    var g2 = svg.append("g");
+
+    g2.append("svg:image")
+      .attr("xlink:href", lightLogo)
+      .attr("width", 70)
+      .attr("height", 70)
+      .attr("x", 370)
+      .attr("y", 150);
+
+    d3.selectAll("image").on("click", function() {
+      d3.select(this).attr("xlink:href", noLightLogo);
+    });
+
     // 3
     svg
       .append("rect")
@@ -85,7 +83,7 @@ class FlatView extends Component {
       .attr("x", 500)
       .attr("y", 0)
       .attr("fill", "rgba(33,66,255,0.4)")
-      .attr("stroke-width", 2)
+      .attr("stroke-width", 1.5)
       .attr("stroke", "#000");
 
     var text = svg
@@ -93,8 +91,8 @@ class FlatView extends Component {
       .attr("x", 100)
       .attr("y", 70)
       .attr("dy", "2em")
-      .attr("fill", "white");
-    // .text(this.room.name);
+      .attr("fill", "white")
+      .text("Room");
 
     text
       .style("font-family", "sans-serif")
@@ -110,18 +108,17 @@ class FlatView extends Component {
       .attr("x", 500)
       .attr("y", 300)
       .attr("fill", "rgba(33,66,255,0.4)")
-      .attr("stroke-width", 2)
+      .attr("stroke-width", 1.5)
       .attr("stroke", "#000");
 
-    // var g = svg.append("g");
-    /*
-        var img = g.append("svg:image")
-            .attr("xlink:href", lightLogo)
-            .attr("width", 70)
-            .attr("height", 70)
-            .attr("x", 60)
-            .attr("y", 150);
-            */
+    var g3 = svg.append("g");
+
+    g3.append("svg:image")
+      .attr("xlink:href", lightLogo)
+      .attr("width", 70)
+      .attr("height", 70)
+      .attr("x", 560)
+      .attr("y", 400);
   }
   render() {
     return (
