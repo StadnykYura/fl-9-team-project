@@ -13,7 +13,7 @@ class FlatView extends Component {
 
     this.room = this.props.room;
   }
-  //react ref
+
   componentDidMount() {
     this.createFlatView();
   }
@@ -27,7 +27,7 @@ class FlatView extends Component {
       .style("width", "100%")
       .style("display", "flex")
       .style("justify-content", "center")
-      .style("height", "600px");
+      .style("height", "850px");
 
     var svg = parent_div
       .append("svg")
@@ -37,16 +37,30 @@ class FlatView extends Component {
 
     svg.style("background-color", "rgba(0,0,0,0.08)");
 
-    svg
+    //1 st room
+    let livingRoom = svg.append("g");
+
+    livingRoom
       .append("rect")
-      .attr("width", 200)
-      .attr("height", 500)
+      .attr("width", 300)
+      .attr("height", 250)
       .attr("x", 0)
       .attr("y", 0)
       .attr("fill", "rgba(33,66,255,0.4)")
-      .attr("stroke-width", 2)
+      .attr("stroke-width", 1)
       .attr("stroke", "#000");
 
+    livingRoom
+      .append("rect")
+      .attr("width", 200)
+      .attr("height", 300)
+      .attr("x", 0)
+      .attr("y", 250)
+      .attr("fill", "rgba(33,66,255,0.4)")
+      .attr("stroke-width", 1)
+      .attr("stroke", "#000");
+
+    //img
     var g = svg.append("g");
 
     g.append("svg:image")
@@ -60,11 +74,11 @@ class FlatView extends Component {
     svg
       .append("rect")
       .attr("width", 200)
-      .attr("height", 250)
+      .attr("height", 150)
       .attr("x", 300)
       .attr("y", 0)
       .attr("fill", "rgba(33,66,255,0.4)")
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 1)
       .attr("stroke", "#000");
 
     var g2 = svg.append("g");
@@ -73,8 +87,8 @@ class FlatView extends Component {
       .attr("xlink:href", lightLogo)
       .attr("width", 70)
       .attr("height", 70)
-      .attr("x", 370)
-      .attr("y", 150);
+      .attr("x", 350)
+      .attr("y", 70);
 
     d3.selectAll("image").on("click", function() {
       d3.select(this).attr("xlink:href", noLightLogo);
@@ -84,11 +98,11 @@ class FlatView extends Component {
     svg
       .append("rect")
       .attr("width", 200)
-      .attr("height", 250)
+      .attr("height", 300)
       .attr("x", 500)
       .attr("y", 0)
       .attr("fill", "rgba(33,66,255,0.4)")
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 1)
       .attr("stroke", "#000");
 
     var text = svg
@@ -108,12 +122,12 @@ class FlatView extends Component {
     //4
     svg
       .append("rect")
-      .attr("width", 200)
-      .attr("height", 200)
-      .attr("x", 500)
+      .attr("width", 300)
+      .attr("height", 250)
+      .attr("x", 400)
       .attr("y", 300)
       .attr("fill", "rgba(33,66,255,0.4)")
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 1)
       .attr("stroke", "#000");
 
     var g3 = svg.append("g");
@@ -124,6 +138,33 @@ class FlatView extends Component {
       .attr("height", 70)
       .attr("x", 560)
       .attr("y", 400);
+
+    //5 hall
+    let hall = svg.append("g");
+
+    hall
+      .append("rect")
+      .attr("width", 200)
+      .attr("height", 100)
+      .attr("x", 300)
+      .attr("y", 150)
+      .attr("fill", "rgb(123,104,238)");
+
+    hall
+      .append("rect")
+      .attr("width", 300)
+      .attr("height", 50)
+      .attr("x", 200)
+      .attr("y", 250)
+      .attr("fill", "rgb(123,104,238)");
+
+    hall
+      .append("rect")
+      .attr("width", 200)
+      .attr("height", 250)
+      .attr("x", 200)
+      .attr("y", 300)
+      .attr("fill", "rgb(123,104,238)");
   }
   render() {
     return <div id="flat-view" />;
