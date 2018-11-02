@@ -27,7 +27,7 @@ class FlatView extends Component {
       .style("width", "100%")
       .style("display", "flex")
       .style("justify-content", "center")
-      .style("height", "550px");
+      .style("height", "500px");
 
     var svg = parent_div
       .append("svg")
