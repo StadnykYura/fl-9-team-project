@@ -20,9 +20,6 @@ class ToggleLight extends Component {
         .collection("rooms")
         .get()
         .then(documents => {
-          this.setState({
-            turnOnOffLight: !this.state.turnOnOffLight
-          });
           documents.docs.forEach(document => {
             const roomDocRef = firebase.db
               .collection("users")
@@ -34,6 +31,9 @@ class ToggleLight extends Component {
             });
           });
           batch.commit();
+          this.setState({
+            turnOnOffLight: !this.state.turnOnOffLight
+          });
         });
     } else {
       console.log("User didn`t sign in");

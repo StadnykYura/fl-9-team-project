@@ -50,25 +50,38 @@ class SignInForm extends Component {
     const isInvalid = email === "" || password === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={email}
-          type="text"
-          placeholder="Email Address"
-          onChange={event => this.handleChange(event, "email")}
-        />
-        <input
-          value={password}
-          type="password"
-          placeholder="Password"
-          onChange={event => this.handleChange(event, "password")}
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
-
-        {error && <p>{error.message}</p>}
-      </form>
+      <div className="main-for-sin-in">
+        <form className="form-main-for-sin-in" onSubmit={this.onSubmit}>
+          <div className="form-greeting">SIGN IN TO YOUR ACCOUNT</div>
+          <div>
+            <input
+              className="main-for-sin-in-email"
+              value={email}
+              type="text"
+              placeholder="Email Address"
+              onChange={event => this.handleChange(event, "email")}
+            />
+          </div>
+          <div className="main-for-sin-in-email">
+            <input
+              value={password}
+              type="password"
+              placeholder="Password"
+              onChange={event => this.handleChange(event, "password")}
+            />
+          </div>
+          <div>
+            <button
+              className=" main-for-sin-in-bottom "
+              disabled={isInvalid}
+              type="submit"
+            >
+              Sign In
+            </button>
+          </div>
+          <div className="error-message">{error && <p>{error.message}</p>}</div>
+        </form>
+      </div>
     );
   }
 }
