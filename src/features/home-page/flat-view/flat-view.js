@@ -13,7 +13,7 @@ class FlatView extends Component {
 
     this.room = this.props.room;
   }
-
+  //react ref
   componentDidMount() {
     this.createFlatView();
   }
@@ -21,8 +21,13 @@ class FlatView extends Component {
     this.createFlatView();
   }
   createFlatView() {
-    var parent_div = d3.select("body").append("div");
-    parent_div.style("width", "80%");
+    var parent_div = d3.select("#flat-view").append("div");
+
+    parent_div
+      .style("width", "100%")
+      .style("display", "flex")
+      .style("justify-content", "center")
+      .style("height", "600px");
 
     var svg = parent_div
       .append("svg")
@@ -121,15 +126,7 @@ class FlatView extends Component {
       .attr("y", 400);
   }
   render() {
-    return (
-      <div>
-        <svg
-          ref={parent_div => (this.parent_div = parent_div)}
-          width={100}
-          height={200}
-        />
-      </div>
-    );
+    return <div id="flat-view" />;
   }
 }
 export default FlatView;
