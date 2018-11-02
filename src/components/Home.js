@@ -1,12 +1,15 @@
 import React from "react";
 
 import withAuthorization from "../features/authorization/with-authorization.hoc";
-
+import HomepageNavTop from "../features/home-page/homepage-nav-top/homepage-nav-top";
+import HomepageNavBottom from "../features/home-page/homepage-nav-bottom/homepage-nav-bottom";
+import FlatView from "../features/home-page/flat-view/flat-view";
 function Home() {
   return (
     <div>
-      <h1>Home</h1>
-      <p>It is only accessible for signed in users</p>
+      <HomepageNavTop />
+      <FlatView />
+      <HomepageNavBottom />
     </div>
   );
 }

@@ -1,0 +1,21 @@
+
+body{
+  font-family: 'Montserrat', sans-serif;
+  background: $body;
+  font-size: 16px;
+  font-weight: 400;
+}
+button {
+  cursor: pointer;
+}
+#Transition {
+  transition: all .15s ease-in 0s;
+}
+a, button {
+  @extend #Transition;
+  text-decoration: none;
+}
+.wrapper{
+  width: 80%;
+  margin: 30px auto;
+}
