@@ -1,5 +1,5 @@
 
-body{
+body {
   font-family: 'Montserrat', sans-serif;
   background: $body;
   font-size: 16px;
@@ -15,7 +15,17 @@ a, button {
   @extend #Transition;
   text-decoration: none;
 }
-.wrapper{
-  width: 80%;
-  margin: 30px auto;
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  background: $zero;
+  padding: 0 15vw;
+}
+.wrapper-margin-bottom {
+  margin-bottom: 20px;
+}
+.wrapper-margin-top {
+  margin-top: 20px; 
 }

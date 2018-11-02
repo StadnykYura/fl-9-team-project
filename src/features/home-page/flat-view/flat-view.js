@@ -31,9 +31,9 @@ class FlatView extends Component {
       .append("svg")
       .attr("viewBox", "0 0 700 500")
       .attr("preserveAspectRatio", "xMidYMid")
-      .style("width", "80%");
+      .style("width", "100%");
 
-    svg.style("background-color", "rgba(0,0,0,0.08)");
+    // svg.style("background-color", "rgba(0,0,0,0.08)");
 
     //1 st room
     let livingRoom = svg.append("g");

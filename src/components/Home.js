@@ -7,9 +7,15 @@ import FlatView from "../features/home-page/flat-view/flat-view";
 function Home() {
   return (
     <div>
-      <HomepageNavTop />
+      <div className="wrapper wrapper-margin-bottom">
+        <HomepageNavTop />
+      </div>
+
       <FlatView />
-      <HomepageNavBottom />
+
+      <div className="wrapper wrapper-margin-top">
+        <HomepageNavBottom />
+      </div>
     </div>
   );
 }
