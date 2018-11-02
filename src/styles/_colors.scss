@@ -1,5 +1,6 @@
 $body:		#f3f4f8;
 $zero:		#fff;
+$black:     #000;
 
 $link:		#455eee;
 $linkBG:	$zero;
@@ -13,3 +14,5 @@ $activeBG:	darken($link,30%);
 $night:		#fc0;
 // $nightBG:	darken(#3646a8,20%);
 $nightBG:	darken($link,40%);
+
+$error-text-color: #ff0000

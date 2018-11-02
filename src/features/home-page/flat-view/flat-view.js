@@ -18,9 +18,7 @@ class FlatView extends Component {
   componentDidMount() {
     this.createFlatView();
   }
-  componentDidUpdate() {
-    this.createFlatView();
-  }
+
   createFlatView() {
     var parent_div = d3.select("#flat-view").append("div");
 

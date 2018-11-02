@@ -13,6 +13,8 @@ class App extends Component {
     return (
       <Router>
         <div>
+          {/* <Redirect to={routes.SIGN_IN} /> */}
+
           <Route exact path={routes.SIGN_IN} component={SignInPage} />
           <Route exact path={routes.HOME} component={HomePage} />
         </div>
