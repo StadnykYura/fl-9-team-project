@@ -1,0 +1,10 @@
+@import "normalize.css";
+@import "reset";
+@import "colors";
+@import "fonts";
+
+@import "./App.scss";
+
+
+@import "../features/home-page/homepage-nav-bottom/homepage-nav-bottom.styles.scss";
+@import "../features/home-page/homepage-nav-top/homepage-nav-top.styles.scss";

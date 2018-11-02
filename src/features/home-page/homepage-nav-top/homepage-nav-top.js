@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-// import "../styles/Homepage-nav-styles.scss";
-
 import { Link } from "react-router-dom";
-import * as routes from "../../constants/routes";
+import * as routes from "../../../constants/routes";
+import SignOutButton from "../../authorization/sign-out.button";
 
-import "./homepage-nav-top.styles.scss";
-import SignOutButton from "../authorization/sign-out.button";
-
-class HomepageNav extends Component {
+class HomepageNavTop extends Component {
   render() {
     return (
       <div className="wrapper">
@@ -49,4 +45,4 @@ class HomepageNav extends Component {
   }
 }
 
-export default HomepageNav;
+export default HomepageNavTop;
