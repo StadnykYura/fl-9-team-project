@@ -27,7 +27,7 @@ class FlatView extends Component {
       .style("width", "100%")
       .style("display", "flex")
       .style("justify-content", "center")
-      .style("height", "850px");
+      .style("height", "550px");
 
     var svg = parent_div
       .append("svg")
@@ -148,7 +148,9 @@ class FlatView extends Component {
       .attr("height", 100)
       .attr("x", 300)
       .attr("y", 150)
-      .attr("fill", "rgb(123,104,238)");
+      .attr("fill", "rgb(123,104,238)")
+      .attr("stroke-width", 1)
+      .attr("stroke", "rgb(123,104,238)");
 
     hall
       .append("rect")
@@ -156,7 +158,9 @@ class FlatView extends Component {
       .attr("height", 50)
       .attr("x", 200)
       .attr("y", 250)
-      .attr("fill", "rgb(123,104,238)");
+      .attr("fill", "rgb(123,104,238)")
+      .attr("stroke-width", 1)
+      .attr("stroke", "rgb(123,104,238)");
 
     hall
       .append("rect")
@@ -164,7 +168,9 @@ class FlatView extends Component {
       .attr("height", 250)
       .attr("x", 200)
       .attr("y", 300)
-      .attr("fill", "rgb(123,104,238)");
+      .attr("fill", "rgb(123,104,238)")
+      .attr("stroke-width", 1)
+      .attr("stroke", "rgb(123,104,238)");
   }
   render() {
     return <div id="flat-view" />;
