@@ -1,4 +1,3 @@
-/*
 import React, { Component } from "react";
 import * as d3 from "d3";
 
@@ -6,13 +5,25 @@ import lightLogo from "./light-on.svg";
 import noLightLogo from "./light-off.svg";
 
 //import { firebase } from "../../../firebase";
-
+/*
+const LIVINGROOM = 1;
+const BEDROOM = 2;
+const KITCHEN = 3;
+const BATHROOM = 4;
+const HALL = 5;
+*/
 class FlatView extends Component {
   constructor(props) {
     super(props);
     this.createFlatView = this.createFlatView.bind(this);
 
-    this.room = this.props.room;
+    // this.room = this.props.room;
+    this.svg = this.parent_div;
+    /*
+        this.state = {
+            svg:this.parent_div
+        }
+        */
   }
 
   componentDidMount() {
@@ -38,7 +49,33 @@ class FlatView extends Component {
 
     svg.style("background-color", "rgba(0,0,0,0.08)");
 
-    //1 st room
+    this.drawLivingRoom(svg);
+    /*
+        this.props.rooms.forEach(room => {
+            switch (room.id) {
+                case 1:
+                    this.drawLivingRoom(svg);
+                    //onclick
+                    break;
+                case 2:
+                    this.drawBedRoom(svg);
+                    break;
+                case 3:
+                    this.drawKitchen(svg);
+                    break;
+                case 4:
+                    this.drawBathroom(svg);
+                    break;
+                case 5:
+                    this.drawHall(svg);
+                    break;
+                default:
+            }     
+        });
+ */
+  }
+
+  drawLivingRoom(svg) {
     let livingRoom = svg.append("g");
 
     livingRoom
@@ -70,8 +107,9 @@ class FlatView extends Component {
       .attr("height", 70)
       .attr("x", 60)
       .attr("y", 200);
+  }
 
-    //2
+  drawBathroom(svg) {
     svg
       .append("rect")
       .attr("width", 200)
@@ -94,8 +132,9 @@ class FlatView extends Component {
     d3.selectAll("image").on("click", function() {
       d3.select(this).attr("xlink:href", noLightLogo);
     });
+  }
 
-    // 3
+  drawKitchen(svg) {
     svg
       .append("rect")
       .attr("width", 200)
@@ -105,22 +144,9 @@ class FlatView extends Component {
       .attr("fill", "rgba(33,66,255,0.4)")
       .attr("stroke-width", 1)
       .attr("stroke", "#000");
+  }
 
-    var text = svg
-      .append("text")
-      .attr("x", 100)
-      .attr("y", 70)
-      .attr("dy", "2em")
-      .attr("fill", "white")
-      .text("Room");
-
-    text
-      .style("font-family", "sans-serif")
-      .style("font-size", "24px")
-      .style("font-weight", 100)
-      .style("text-anchor", "middle");
-
-    //4
+  drawBedRoom(svg) {
     svg
       .append("rect")
       .attr("width", 300)
@@ -139,8 +165,9 @@ class FlatView extends Component {
       .attr("height", 70)
       .attr("x", 560)
       .attr("y", 400);
+  }
 
-    //5 hall
+  drawHall(svg) {
     let hall = svg.append("g");
 
     hall
@@ -173,9 +200,9 @@ class FlatView extends Component {
       .attr("stroke-width", 1)
       .attr("stroke", "rgb(123,104,238)");
   }
+
   render() {
     return <div id="flat-view" />;
   }
 }
 export default FlatView;
-*/
