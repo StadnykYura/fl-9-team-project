@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
 
 import { auth } from "../../firebase";
-import * as routes from "../../constants/routes";
 
 class SignOutButton extends Component {
   constructor(props) {
@@ -11,10 +9,7 @@ class SignOutButton extends Component {
   }
 
   onClickHandler = event => {
-    const { history } = this.props;
-
     auth.doSignOut();
-    history.push(routes.SIGN_IN);
   };
 
   render() {
@@ -26,4 +21,4 @@ class SignOutButton extends Component {
   }
 }
 
-export default withRouter(SignOutButton);
+export default SignOutButton;

@@ -1,5 +1,6 @@
-import firebase from "firebase";
+import firebase from "firebase/app";
 import "firebase/auth";
+require("firebase/firestore");
 
 const config = {
   apiKey: "AIzaSyCU0tyznshqEjwVoKYB4RnrFFU6m91sgSE",
@@ -13,11 +14,11 @@ const config = {
 if (!firebase.apps.length) {
   firebase.initializeApp(config);
 }
-const firestore = firebase.firestore();
-const settings = { timestampsInSnapshots: true };
-firestore.settings(settings);
-
+// const firestore = firebase.firestore();
 const db = firebase.firestore();
+const settings = { timestampsInSnapshots: true };
+db.settings(settings);
+
 const auth = firebase.auth();
 
 export { auth, db };
