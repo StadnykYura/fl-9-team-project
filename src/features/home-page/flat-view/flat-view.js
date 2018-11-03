@@ -10,7 +10,7 @@ class FlatView extends Component {
   constructor(props) {
     super(props);
     this.createFlatView = this.createFlatView.bind(this);
-
+    console.log(this.props.rooms);
     this.room = this.props.room;
   }
 
