@@ -40,13 +40,17 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <HomepageNavTop />
+        <div className="home-nav-wrapper wrapper-margin-bottom">
+          <HomepageNavTop />
+        </div>
         {this.state.rooms.length === 0 ? (
           <FlatViewLoader />
         ) : (
           <FlatView rooms={this.state.rooms} />
         )}
-        <HomepageNavBottom />
+        <div className="home-nav-wrapper wrapper-margin-top">
+          <HomepageNavBottom />
+        </div>
       </div>
     );
   }
