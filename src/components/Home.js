@@ -40,7 +40,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <div className="wrapper wrapper-margin-bottom">
+        <div className="home-nav-wrapper wrapper-margin-bottom">
           <HomepageNavTop />
         </div>
         {this.state.rooms.length === 0 ? (
@@ -48,7 +48,7 @@ class Home extends Component {
         ) : (
           <FlatView rooms={this.state.rooms} />
         )}
-        <div className="wrapper wrapper-margin-top">
+        <div className="home-nav-wrapper wrapper-margin-top">
           <HomepageNavBottom />
         </div>
       </div>
