@@ -45,7 +45,7 @@
   "lint-staged": {
     "src/**/*.{js, jsx}": [
       "node_modules/.bin/eslint --fix --max-warnings=0",
-      "prettier --write",
+      "prettier --config ./.prettierrc --write",
       "git add"
     ]
   }
