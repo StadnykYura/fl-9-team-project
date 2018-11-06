@@ -6,12 +6,16 @@ class ToggleConditioner extends Component {
     super(props);
     this.state = {
       turnOnOffConditioner: true,
+      isLoading: false,
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = () => {
     const user = firebase.auth.currentUser;
+    this.setState({
+      isLoading: true,
+    });
     if (user) {
       firebase.db
         .collection('users')
@@ -41,6 +45,9 @@ class ToggleConditioner extends Component {
                 });
             }
           });
+          this.setState({
+            isLoading: false,
+          });
           this.setState(prevstate => ({
             turnOnOffConditioner: !prevstate.turnOnOffConditioner,
           }));
@@ -49,9 +56,10 @@ class ToggleConditioner extends Component {
   };
 
   render() {
-    const { turnOnOffConditioner } = this.state;
+    const { turnOnOffConditioner, isLoading } = this.state;
     return (
       <button
+        disabled={isLoading}
         onClick={this.handleClick}
         className={
           turnOnOffConditioner
