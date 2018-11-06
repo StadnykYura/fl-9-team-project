@@ -51,7 +51,7 @@ class ToggleLight extends Component {
         }
       >
         <span>{this.state.turnOnOffLight ? "on" : "off"}</span>
-        <i class="switcher" />
+        <i className="switcher" />
       </button>
     );
   }

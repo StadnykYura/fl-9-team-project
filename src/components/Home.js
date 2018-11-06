@@ -39,19 +39,23 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <div className="home-nav-wrapper wrapper-margin-bottom">
-          <HomepageNavTop />
+      <React.Fragment>
+        <div className="page">
+          <div className="home-nav-wrapper">
+            <HomepageNavTop />
+          </div>
+          <div className="flat-container">
+            {this.state.rooms.length === 0 ? (
+              <FlatViewLoader />
+            ) : (
+              <FlatView rooms={this.state.rooms} />
+            )}
+          </div>
+          <div className="home-nav-wrapper">
+            <HomepageNavBottom />
+          </div>
         </div>
-        {this.state.rooms.length === 0 ? (
-          <FlatViewLoader />
-        ) : (
-          <FlatView rooms={this.state.rooms} />
-        )}
-        <div className="home-nav-wrapper wrapper-margin-top">
-          <HomepageNavBottom />
-        </div>
-      </div>
+      </React.Fragment>
     );
   }
 }

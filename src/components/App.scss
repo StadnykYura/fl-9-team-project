@@ -1,17 +1,29 @@
-
+html {
+  height: 100%;
+}
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background: $body;
   font-size: 16px;
   font-weight: 400;
+  height: 100%;
+  overflow: hidden;
 }
+#root,
+.page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 button {
   cursor: pointer;
 }
 #Transition {
-  transition: all .15s ease-in 0s;
+  transition: all 0.15s ease-in 0s;
 }
-a, button {
+a,
+button {
   @extend #Transition;
   text-decoration: none;
 }
@@ -22,10 +34,23 @@ a, button {
   margin: 0 auto;
   background: $zero;
   padding: 0 15vw;
+  flex: 0 0 auto;
 }
-.wrapper-margin-bottom {
-  margin-bottom: 20px;
+// .wrapper-margin-bottom {
+//   // margin-bottom: 20px;
+// }
+// .wrapper-margin-top {
+//   // margin-top: 20px;
+// }
+.flat-container {
+  display: flex;
+  flex: 1 1 auto;
+  position: relative;
+  overflow-y: auto;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
 }
-.wrapper-margin-top {
-  margin-top: 20px; 
+#flat-view {
+  width: 100%;
 }

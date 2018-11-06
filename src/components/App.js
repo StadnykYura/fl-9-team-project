@@ -12,12 +12,12 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <React.Fragment>
           {/* <Redirect to={routes.SIGN_IN} /> */}
 
           <Route exact path={routes.SIGN_IN} component={SignInPage} />
           <Route exact path={routes.HOME} component={HomePage} />
-        </div>
+        </React.Fragment>
       </Router>
     );
   }

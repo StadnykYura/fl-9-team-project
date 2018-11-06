@@ -24,7 +24,7 @@ class ToggleConditioner extends Component {
         }
       >
         <span>{this.state.isToggleOn ? "on" : "off"}</span>
-        <i class="switcher" />
+        <i className="switcher" />
       </button>
     );
   }
