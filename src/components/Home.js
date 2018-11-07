@@ -6,10 +6,10 @@ import HomepageNavBottom from '../features/home-page/homepage-nav-bottom/homepag
 import FlatView from '../features/home-page/flat-view/flat-view';
 import FlatViewLoader from '../features/home-page/flat-view/FlatViewLoader/FlatViewLoader';
 import { firebase } from '../firebase';
+
 class Home extends Component {
   constructor() {
     super();
-
     this.state = {
       rooms: [],
     };
