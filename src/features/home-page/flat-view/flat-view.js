@@ -145,7 +145,6 @@ class FlatView extends Component {
     });
 
     d3.selectAll("g").on("click", function() {
-      console.log("clicked");
       window.location.assign("/signin");
     });
   }
@@ -172,7 +171,6 @@ class FlatView extends Component {
 
     //click elements
     d3.selectAll("g").on("click", function() {
-      console.log("clicked");
       window.location.assign("/signin");
     });
 
@@ -202,7 +200,6 @@ class FlatView extends Component {
       .attr("y", 320);
 
     d3.selectAll("g").on("click", function() {
-      console.log("clicked");
       window.location.assign("/signin");
     });
   }
@@ -273,7 +270,6 @@ class FlatView extends Component {
       .attr("y", 170);
 
     d3.selectAll("g").on("click", function() {
-      console.log("clicked");
       window.location.assign("/signin");
     });
   }
