@@ -13,14 +13,14 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <React.Fragment>
           <Switch>
             <Route exact path={routes.LANDING} component={HomePage} />
             <Route exact path={routes.SIGN_IN} component={SignInPage} />
             <Route exact path={routes.HOME} component={HomePage} />
             <Route component={NotFound} />
           </Switch>
-        </div>
+        </React.Fragment>
       </Router>
     );
   }
