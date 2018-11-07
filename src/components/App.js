@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import * as routes from "../constants/routes";
+import * as routes from '../constants/routes';
 
-import HomePage from "./Home";
-import NotFound from "./not-found.page";
+import HomePage from './Home';
+import NotFound from './not-found.page';
 
-import SignInPage from "../features/authorization/sign-in.page";
-import withAuthentication from "../features/authorization/with-authentication.hoc";
+import SignInPage from '../features/authorization/sign-in.page';
+import withAuthentication from '../features/authorization/with-authentication.hoc';
 
 class App extends Component {
   render() {
