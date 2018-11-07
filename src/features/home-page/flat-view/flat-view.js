@@ -72,7 +72,7 @@ class FlatView extends Component {
   }
 
   drawLivingRoom(svg) {
-    let livingRoom = svg.append("g");
+    let livingRoom = svg.append("g").attr("class", "bar");
 
     livingRoom
       .append("rect")
@@ -100,20 +100,30 @@ class FlatView extends Component {
       .attr("y", 250)
       .attr("fill", "rgba(33,66,255,0.4)");
 
-    //img
-    var g = svg.append("g");
+    livingRoom
+      .append("path")
+      .attr("d", "M 0 500 L 200 500")
+      .attr("stroke", "black")
+      .attr("stroke-width", 2);
 
-    g.append("svg:image")
+    //img
+    svg
+      .append("image")
       .attr("xlink:href", lightLogo)
       .attr("width", 60)
       .attr("height", 60)
       .attr("x", 230)
       .attr("y", 20);
+
+    d3.selectAll("g").on("click", function() {
+      window.location.assign("/signin");
+    });
   }
 
   drawBathroom(svg) {
-    svg
-      .append("rect")
+    let BathRoom = svg.append("g").attr("class", "bar");
+
+    BathRoom.append("rect")
       .attr("width", 200)
       .attr("height", 150)
       .attr("x", 300)
@@ -122,9 +132,8 @@ class FlatView extends Component {
       .attr("stroke-width", 1)
       .attr("stroke", "#000");
 
-    var g2 = svg.append("g");
-
-    g2.append("svg:image")
+    svg
+      .append("image")
       .attr("xlink:href", lightLogo)
       .attr("width", 60)
       .attr("height", 60)
@@ -134,11 +143,17 @@ class FlatView extends Component {
     d3.selectAll("image").on("click", function() {
       d3.select(this).attr("xlink:href", noLightLogo);
     });
+
+    d3.selectAll("g").on("click", function() {
+      console.log("clicked");
+      window.location.assign("/signin");
+    });
   }
 
   drawKitchen(svg) {
-    svg
-      .append("rect")
+    let Kitchen = svg.append("g").attr("class", "bar");
+
+    Kitchen.append("rect")
       .attr("width", 200)
       .attr("height", 300)
       .attr("x", 500)
@@ -147,19 +162,29 @@ class FlatView extends Component {
       .attr("stroke-width", 1)
       .attr("stroke", "#000");
 
-    let g = svg.append("g");
-
-    g.append("svg:image")
+    svg
+      .append("image")
       .attr("xlink:href", lightLogo)
       .attr("width", 60)
       .attr("height", 60)
       .attr("x", 620)
       .attr("y", 20);
+
+    //click elements
+    d3.selectAll("g").on("click", function() {
+      console.log("clicked");
+      window.location.assign("/signin");
+    });
+
+    d3.selectAll("image").on("click", function() {
+      d3.select(this).attr("xlink:href", noLightLogo);
+    });
   }
 
   drawBedRoom(svg) {
-    svg
-      .append("rect")
+    let BedRoom = svg.append("g").attr("class", "bar");
+
+    BedRoom.append("rect")
       .attr("width", 300)
       .attr("height", 200)
       .attr("x", 400)
@@ -168,19 +193,22 @@ class FlatView extends Component {
       .attr("stroke-width", 1)
       .attr("stroke", "#000");
 
-    let lamp = svg.append("g");
-
-    lamp
-      .append("svg:image")
+    svg
+      .append("image")
       .attr("xlink:href", lightLogo)
       .attr("width", 60)
       .attr("height", 60)
       .attr("x", 620)
       .attr("y", 320);
+
+    d3.selectAll("g").on("click", function() {
+      console.log("clicked");
+      window.location.assign("/signin");
+    });
   }
 
   drawHall(svg) {
-    let hall = svg.append("g");
+    let hall = svg.append("g").attr("class", "bar");
 
     hall
       .append("rect")
@@ -193,24 +221,32 @@ class FlatView extends Component {
     hall
       .append("path")
       .attr("d", "M 300 150 L 500 150")
-      .attr("stroke", "black");
+      .attr("stroke", "black")
+      .attr("stroke-width", 1.3);
 
     hall
       .append("path")
       .attr("d", "M 300 150 L 300 250")
-      .attr("stroke", "black");
+      .attr("stroke", "black")
+      .attr("stroke-width", 1.3);
 
     hall
       .append("path")
       .attr("d", "M 300 250 L 200 250")
       .attr("stroke", "black")
-      .attr("stroke-width", 1);
+      .attr("stroke-width", 1.3);
 
     hall
       .append("path")
       .attr("d", "M 200 250 L 200 500")
       .attr("stroke", "black")
-      .attr("stroke-width", 1);
+      .attr("stroke-width", 1.3);
+
+    hall
+      .append("path")
+      .attr("d", "M 200 500 L 400 500")
+      .attr("stroke", "black")
+      .attr("stroke-width", 1.3);
 
     hall
       .append("rect")
@@ -228,15 +264,18 @@ class FlatView extends Component {
       .attr("y", 300)
       .attr("fill", "rgba(33,66,255,0.4)");
 
-    let lamp = svg.append("g");
-
-    lamp
-      .append("svg:image")
+    svg
+      .append("image")
       .attr("xlink:href", lightLogo)
       .attr("width", 60)
       .attr("height", 60)
       .attr("x", 420)
       .attr("y", 170);
+
+    d3.selectAll("g").on("click", function() {
+      console.log("clicked");
+      window.location.assign("/signin");
+    });
   }
 
   render() {
