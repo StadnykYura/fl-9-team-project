@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import * as routes from "../../../constants/routes";
-import SignOutButton from "../../authorization/sign-out.button";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import * as routes from '../../../constants/routes';
+import SignOutButton from '../../authorization/sign-out.button';
 
 class HomepageNavTop extends Component {
   render() {
@@ -18,9 +18,9 @@ class HomepageNavTop extends Component {
             </Link>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="?">
+            <Link to={routes.HOME + routes.KITCHEN} className="menu__link">
               Flat manager
-            </a>
+            </Link>
           </li>
           <li className="menu__item menu__item-nobg">
             <span className="menu__weather">Weather</span>
