@@ -1,15 +1,17 @@
-import React from "react";
+import React, { Component } from 'react';
 
-import withAuthorization from "../features/authorization/with-authorization.hoc";
-import HomepageNavTop from "../features/home-page/homepage-nav-top/homepage-nav-top";
-import HomepageNavBottom from "../features/home-page/homepage-nav-bottom/homepage-nav-bottom";
-import FlatView from "../features/home-page/flat-view/flat-view";
+import withAuthorization from '../features/authorization/with-authorization.hoc';
+import HomepageNavTop from '../features/home-page/homepage-nav-top/homepage-nav-top';
+import HomepageNavBottom from '../features/home-page/homepage-nav-bottom/homepage-nav-bottom';
+import FlatView from '../features/home-page/flat-view/flat-view';
+import FlatViewLoader from '../features/home-page/flat-view/FlatViewLoader/FlatViewLoader';
 
+import { firebase } from '../firebase';
 class Home extends Component {
   constructor() {
     super();
     this.state = {
-      rooms: []
+      rooms: [],
     };
   }
 
@@ -18,20 +20,20 @@ class Home extends Component {
     let roomsData = [];
     if (user) {
       firebase.db
-        .collection("users")
+        .collection('users')
         .doc(user.uid)
-        .collection("rooms")
+        .collection('rooms')
         .get()
         .then(documents => {
           documents.docs.forEach(document => {
             roomsData.push(document.data());
           });
           this.setState({
-            rooms: roomsData
+            rooms: roomsData,
           });
         });
     } else {
-      console.log("User didn`t sign in");
+      console.log('User didn`t sign in');
     }
   }
 
@@ -56,7 +58,6 @@ class Home extends Component {
       </React.Fragment>
     );
   }
-
 }
 
 const authCondition = authUser => !!authUser;
