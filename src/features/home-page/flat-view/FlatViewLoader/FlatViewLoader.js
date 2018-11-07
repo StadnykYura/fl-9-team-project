@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import BgImage from "../../../../assets/img/blur-flat.jpg";
+import BgImage from '../../../../assets/img/blur-flat.jpg';
 
 class FlatWievLoader extends Component {
   render() {
