@@ -22,8 +22,8 @@ class ToggleConditioner extends Component {
         .doc(user.uid)
         .collection('rooms')
         .get()
-        .then(documents => {
-          documents.docs.forEach(document => {
+        .then(snapshot => {
+          snapshot.docs.forEach(document => {
             const roomDocRef = firebase.db
               .collection('users')
               .doc(user.uid)
@@ -33,20 +33,22 @@ class ToggleConditioner extends Component {
               roomDocRef
                 .collection('devices')
                 .get()
-                .then(documents => {
-                  documents.docs.forEach(document => {
-                    const deviceDocRef = roomDocRef
+                .then(snapshot => {
+                  snapshot.docs.forEach(document => {
+                    roomDocRef
                       .collection('devices')
-                      .doc(document.id);
-                    deviceDocRef.update({
-                      isOn: this.state.turnOnOffConditioner,
-                    });
+                      .doc(document.id)
+                      .update({
+                        isOn: this.state.turnOnOffConditioner,
+                      })
+                      .then(() => {
+                        this.setState({
+                          isLoading: false,
+                        });
+                      });
                   });
                 });
             }
-          });
-          this.setState({
-            isLoading: false,
           });
           this.setState(prevstate => ({
             turnOnOffConditioner: !prevstate.turnOnOffConditioner,

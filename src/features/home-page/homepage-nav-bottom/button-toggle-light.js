@@ -23,8 +23,8 @@ class ToggleLight extends Component {
         .doc(user.uid)
         .collection('rooms')
         .get()
-        .then(documents => {
-          documents.docs.forEach(document => {
+        .then(snapshot => {
+          snapshot.docs.forEach(document => {
             const roomDocRef = firebase.db
               .collection('users')
               .doc(user.uid)
@@ -34,13 +34,14 @@ class ToggleLight extends Component {
               turnOnOffLight: !this.state.turnOnOffLight,
             });
           });
-          batch.commit();
-          this.setState({
-            isLoading: false,
+          batch.commit().then(() => {
+            this.setState({
+              isLoading: false,
+            });
+            this.setState(prevstate => ({
+              turnOnOffLight: !prevstate.turnOnOffLight,
+            }));
           });
-          this.setState(prevstate => ({
-            turnOnOffLight: !prevstate.turnOnOffLight,
-          }));
         });
     }
   };
