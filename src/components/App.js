@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <React.Fragment>
           <Switch>
             <Route exact path={routes.LANDING} component={HomePage} />
             <Route exact path={routes.SIGN_IN} component={SignInPage} />
@@ -26,7 +26,7 @@ class App extends Component {
             />
             <Route component={NotFound} />
           </Switch>
-        </div>
+        </React.Fragment>
       </Router>
     );
   }

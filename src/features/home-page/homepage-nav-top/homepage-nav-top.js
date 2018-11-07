@@ -22,12 +22,6 @@ class HomepageNavTop extends Component {
               Flat manager
             </Link>
           </li>
-          <li className="menu__item menu__item-nobg">
-            <span className="menu__weather">Weather</span>
-          </li>
-          <li className="menu__item menu__item-nobg">
-            <span className="menu__time">Time</span>
-          </li>
           <li className="menu__item">
             {/* <a
                 className=" menu__link menu__settings menu__item_icon"

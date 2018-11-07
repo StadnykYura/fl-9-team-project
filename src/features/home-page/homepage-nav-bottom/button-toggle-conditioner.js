@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class ToggleConditioner extends Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class ToggleConditioner extends Component {
 
   handleClick() {
     this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn
+      isToggleOn: !prevState.isToggleOn,
     }));
   }
 
@@ -19,12 +19,12 @@ class ToggleConditioner extends Component {
         onClick={this.handleClick}
         className={
           this.state.isToggleOn
-            ? "menu__item_icon menu__conditioner turn_off"
-            : "menu__item_icon menu__conditioner turn_on"
+            ? 'menu__item_icon menu__conditioner turn_off'
+            : 'menu__item_icon menu__conditioner turn_on'
         }
       >
-        <span>{this.state.isToggleOn ? "on" : "off"}</span>
-        <i class="switcher" />
+        <span>{this.state.isToggleOn ? 'on' : 'off'}</span>
+        <i className="switcher" />
       </button>
     );
   }
