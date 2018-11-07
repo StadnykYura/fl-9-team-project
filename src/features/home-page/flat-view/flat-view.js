@@ -17,7 +17,7 @@ class FlatView extends Component {
     super(props);
     this.createFlatView = this.createFlatView.bind(this);
 
-    // this.room = this.props.room;
+    //this.room = this.props.room;
     this.svg = this.parent_div;
   }
 
