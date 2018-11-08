@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ToggleLight from './button-toggle-light';
 import ToggleConditioner from './button-toggle-conditioner';
 import ToggleDay from './button-toggle-day';
+import ShowTime from '../DateTime/show-time';
+//import ShowDate from '../DateTime/show-date';
 class HomepageNavBottom extends Component {
   render() {
     return (
@@ -20,7 +22,9 @@ class HomepageNavBottom extends Component {
             <span className="menu__weather">Weather</span>
           </li>
           <li className="menu__item menu__item-nobg">
-            <span className="menu__time">Time</span>
+            <span className="menu__time">
+              <ShowTime />
+            </span>
           </li>
           <li className="menu__item">
             <a className="menu__link" href="?">
