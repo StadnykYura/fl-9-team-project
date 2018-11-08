@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import ToggleLight from './button-toggle-light';
 import ToggleConditioner from './button-toggle-conditioner';
 import ToggleDay from './button-toggle-day';
-import ShowTime from '../DateTime/show-time';
-//import ShowDate from '../DateTime/show-date';
+import ShowTime from '../date-time/show-time';
+
 class HomepageNavBottom extends Component {
   render() {
     return (
