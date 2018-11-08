@@ -8,8 +8,8 @@ import FlatViewLoader from '../features/home-page/flat-view/FlatViewLoader/FlatV
 
 import { firebase } from '../firebase';
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       roomsData: null,
       isLoading: false,
