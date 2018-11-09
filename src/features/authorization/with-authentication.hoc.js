@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import AuthUserContext from "./auth-user.context";
-import { firebase } from "../../firebase";
+import AuthUserContext from './auth-user.context';
+import { firebase } from '../../firebase';
 
 const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
@@ -9,7 +9,7 @@ const withAuthentication = Component => {
       super(props);
 
       this.state = {
-        authUser: null
+        authUser: null,
       };
     }
 
@@ -23,7 +23,6 @@ const withAuthentication = Component => {
 
     render() {
       const { authUser } = this.state;
-
       return (
         <AuthUserContext.Provider value={authUser}>
           <Component {...this.props} />
