@@ -35,17 +35,19 @@ class ToggleConditioner extends Component {
                 .get()
                 .then(snapshot => {
                   snapshot.docs.forEach(document => {
-                    roomDocRef
-                      .collection('devices')
-                      .doc(document.id)
-                      .update({
-                        isOn: this.state.turnOnOffConditioner,
-                      })
-                      .then(() => {
-                        this.setState({
-                          isLoading: false,
+                    if (document.data().name === 'conditioner') {
+                      roomDocRef
+                        .collection('devices')
+                        .doc(document.id)
+                        .update({
+                          isOn: this.state.turnOnOffConditioner,
+                        })
+                        .then(() => {
+                          this.setState({
+                            isLoading: false,
+                          });
                         });
-                      });
+                    }
                   });
                 });
             }
