@@ -63,10 +63,6 @@ export default class RoomView extends Component {
                 key={index}
               />
             ))}
-            {/* <button className="device" onClick={this.handlerSettingsOpen}>
-              <img src="https://image.flaticon.com/icons/svg/125/125689.svg" />
-              Microvave
-            </button> */}
           </div>
           {isSettingsOpen ? (
             <div className="room-view-device-settings active">

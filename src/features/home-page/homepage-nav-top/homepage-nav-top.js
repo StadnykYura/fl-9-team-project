@@ -9,7 +9,6 @@ class HomepageNavTop extends Component {
       <section className="homepage">
         <ul className="menu">
           <li className="menu__item">
-            {/* <a className="menu__link menu__home menu__item_icon" href="/home"> */}
             <Link
               to={routes.HOME}
               className="menu__item_icon menu__home menu__link"
@@ -18,7 +17,7 @@ class HomepageNavTop extends Component {
             </Link>
           </li>
           <li className="menu__item">
-            <Link to={routes.HOME + routes.KITCHEN} className="menu__link">
+            <Link to={routes.HOME} className="menu__link">
               Flat manager
             </Link>
           </li>
