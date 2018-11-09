@@ -24,7 +24,7 @@ class HomepageNavBottom extends Component {
               Global action
             </a>
           </li>
-          <li className="menu__item">
+          <li className="menu__item menu__item-nobg">
             <ToggleDay />
           </li>
         </ul>
