@@ -9,7 +9,6 @@ class HomepageNavTop extends Component {
       <section className="homepage">
         <ul className="menu">
           <li className="menu__item">
-            {/* <a className="menu__link menu__home menu__item_icon" href="/home"> */}
             <Link
               to={routes.HOME}
               className="menu__item_icon menu__home menu__link"

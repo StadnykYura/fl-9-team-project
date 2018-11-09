@@ -8,18 +8,22 @@ import FlatViewLoader from '../features/home-page/flat-view/FlatViewLoader/FlatV
 import AuthService from '../features/authorization/auth-service';
 
 import { firebase } from '../firebase';
+
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      rooms: [],
+      roomsData: null,
+      isLoading: false,
     };
     this.Auth = new AuthService();
   }
 
   componentDidMount() {
-    // const user = firebase.auth.currentUser;
     const uid = this.Auth.getToken();
+    this.setState({
+      isLoading: true,
+    });
     let roomsData = [];
     if (uid) {
       firebase.db
@@ -29,18 +33,21 @@ class Home extends Component {
         .get()
         .then(documents => {
           documents.docs.forEach(document => {
-            roomsData.push(document.data());
+            roomsData.push({
+              roomID: document.id,
+              roomInfo: document.data(),
+            });
           });
           this.setState({
-            rooms: roomsData,
+            roomsData: roomsData,
+            isLoading: false,
           });
         });
-    } else {
-      console.log('User didn`t sign in');
     }
   }
 
   render() {
+    const { roomsData, isLoading } = this.state;
     return (
       <React.Fragment>
         <div className="page">
@@ -48,10 +55,10 @@ class Home extends Component {
             <HomepageNavTop />
           </div>
           <div className="flat-container">
-            {this.state.rooms.length === 0 ? (
+            {isLoading ? (
               <FlatViewLoader />
             ) : (
-              <FlatView rooms={this.state.rooms} />
+              <FlatView roomsData={roomsData} />
             )}
           </div>
           <div className="home-nav-wrapper">
