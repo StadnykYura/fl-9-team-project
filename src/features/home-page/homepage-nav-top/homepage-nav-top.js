@@ -23,6 +23,11 @@ class HomepageNavTop extends Component {
             </a>
           </li>
           <li className="menu__item">
+            <a className="menu__link" href="?">
+              Statistic
+            </a>
+          </li>
+          <li className="menu__item">
             {/* <a
                 className=" menu__link menu__settings menu__item_icon"
                 href="?"
