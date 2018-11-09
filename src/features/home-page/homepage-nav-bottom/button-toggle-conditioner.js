@@ -41,13 +41,11 @@ class ToggleConditioner extends Component {
                         .doc(document.id)
                         .update({
                           isOn: this.state.turnOnOffConditioner,
-                        })
-                        .then(() => {
-                          this.setState({
-                            isLoading: false,
-                          });
                         });
                     }
+                  });
+                  this.setState({
+                    isLoading: false,
                   });
                 });
             }
