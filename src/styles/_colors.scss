@@ -1,18 +1,19 @@
-$body:		#f3f4f8;
-$zero:		#fff;
-$black:     #000;
+$body: #f3f4f8;
+$zero: #fff;
+$black: #000;
 
-$link:		#455eee;
-$linkBG:	$zero;
+$link: #455eee;
+$linkBG: $zero;
 $menu-border: #e9eaee;
 $menu-color: #797a8c;
 // $hover:	#666;
-$hoverBG:	darken($link,20%);
-$active:	$zero;
-$activeBG:	darken($link,30%);
+$hoverBG: darken($link, 20%);
+$active: $zero;
+$activeBG: darken($link, 30%);
 
-$night:		#fc0;
-// $nightBG:	darken(#3646a8,20%);
-$nightBG:	darken($link,40%);
+$night: #fc0;
 
-$error-text-color: #ff0000
+$nightBG: darken($body, 30%);
+$night-zero: darken($body, 40%);
+
+$error-text-color: #ff0000;
