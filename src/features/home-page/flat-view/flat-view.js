@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
-import { withRouter } from 'react-router-dom';
-
 
 import lightLogo from './light-on.svg';
 import noLightLogo from './light-off.svg';
+import { withRouter } from 'react-router-dom';
 
 import * as roomsID from '../../../constants/roomsID';
 
 class FlatView extends Component {
-  constructor(props) {
-    super(props);
-    
-  }
-
   componentDidMount() {
     this.createFlatView();
   }
@@ -31,10 +25,10 @@ class FlatView extends Component {
 
     var svg = parent_div
 
-      .append("svg")
-      .attr("viewBox", "0 0 700 500")
-      .attr("preserveAspectRatio", "xMidYMid")
-      .style("width", "80%");
+      .append('svg')
+      .attr('viewBox', '0 0 700 500')
+      .attr('preserveAspectRatio', 'xMidYMid')
+      .style('width', '80%');
 
     if (roomsData) {
       // if not null
@@ -100,7 +94,6 @@ class FlatView extends Component {
       .attr('dx', '-400')
       .attr('transform', 'translate(480,250)');
 
-
     livingRoom
       .append('rect')
       .attr('width', 300)
@@ -108,7 +101,6 @@ class FlatView extends Component {
       .attr('x', 0)
       .attr('y', 0)
       .attr('fill', 'rgba(130,150,255,0.4)');
-
 
     livingRoom
       .append('path')
@@ -127,7 +119,6 @@ class FlatView extends Component {
       .attr('x', 0)
       .attr('y', 250)
       .attr('fill', 'rgba(130,150,255,0.4)');
-
 
     livingRoom
       .append('path')
@@ -162,7 +153,6 @@ class FlatView extends Component {
       .attr('dy', '-140')
       .attr('dx', '-160')
       .attr('transform', 'translate(480,250)');
-
 
     BathRoom.append('rect')
       .attr('width', 200)
@@ -205,7 +195,6 @@ class FlatView extends Component {
       .attr('dx', '80')
       .attr('transform', 'translate(480,250)');
 
-
     Kitchen.append('rect')
       .attr('width', 200)
       .attr('height', 300)
@@ -246,7 +235,6 @@ class FlatView extends Component {
       .attr('dy', '150')
       .attr('dx', '0')
       .attr('transform', 'translate(480,250)');
-
 
     BedRoom.append('rect')
       .attr('width', 300)
@@ -350,7 +338,6 @@ class FlatView extends Component {
 
     d3.selectAll('#Hall').on('click', () => {
       this.props.history.push(`room/id:${roomID}`);
-
     });
   }
 
