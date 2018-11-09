@@ -9,6 +9,11 @@ import noLightLogo from './light-off.svg';
 import * as roomsID from '../../../constants/roomsID';
 
 class FlatView extends Component {
+  constructor(props) {
+    super(props);
+    
+  }
+
   componentDidMount() {
     this.createFlatView();
   }
@@ -25,10 +30,11 @@ class FlatView extends Component {
       .style('height', '500px');
 
     var svg = parent_div
-      .append('svg')
-      .attr('viewBox', '0 0 700 500')
-      .attr('preserveAspectRatio', 'xMidYMid')
-      .style('width', '80%');
+
+      .append("svg")
+      .attr("viewBox", "0 0 700 500")
+      .attr("preserveAspectRatio", "xMidYMid")
+      .style("width", "80%");
 
     if (roomsData) {
       // if not null
