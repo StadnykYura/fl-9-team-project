@@ -1,0 +1,19 @@
+.darktheme {
+  background: $nightBG;
+  .home-nav-wrapper {
+    background: $night-zero;
+    .menu__item {
+      span,
+      button,
+      a {
+        background: $night-zero;
+        color: $zero;
+      }
+      button {
+        span {
+          background: none;
+        }
+      }
+    }
+  }
+}
