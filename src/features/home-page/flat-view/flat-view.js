@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as d3 from 'd3';
 import { withRouter } from 'react-router-dom';
 
+
 import lightLogo from './light-on.svg';
 import noLightLogo from './light-off.svg';
 
@@ -14,6 +15,7 @@ class FlatView extends Component {
 
   createFlatView() {
     const { roomsData } = this.props;
+
     var parent_div = d3.select('#flat-view').append('div');
 
     parent_div
@@ -92,6 +94,7 @@ class FlatView extends Component {
       .attr('dx', '-400')
       .attr('transform', 'translate(480,250)');
 
+
     livingRoom
       .append('rect')
       .attr('width', 300)
@@ -99,6 +102,7 @@ class FlatView extends Component {
       .attr('x', 0)
       .attr('y', 0)
       .attr('fill', 'rgba(130,150,255,0.4)');
+
 
     livingRoom
       .append('path')
@@ -118,6 +122,7 @@ class FlatView extends Component {
       .attr('y', 250)
       .attr('fill', 'rgba(130,150,255,0.4)');
 
+
     livingRoom
       .append('path')
       .attr('d', 'M 0 500 L 200 500')
@@ -128,6 +133,7 @@ class FlatView extends Component {
     svg
       .append('image')
       .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
+
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 230)
@@ -151,18 +157,21 @@ class FlatView extends Component {
       .attr('dx', '-160')
       .attr('transform', 'translate(480,250)');
 
+
     BathRoom.append('rect')
       .attr('width', 200)
       .attr('height', 150)
       .attr('x', 300)
       .attr('y', 0)
       .attr('fill', 'rgba(130,150,255,0.4)')
+
       .attr('stroke-width', 1)
       .attr('stroke', '#000');
 
     svg
       .append('image')
       .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
+
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 420)
@@ -190,18 +199,21 @@ class FlatView extends Component {
       .attr('dx', '80')
       .attr('transform', 'translate(480,250)');
 
+
     Kitchen.append('rect')
       .attr('width', 200)
       .attr('height', 300)
       .attr('x', 500)
       .attr('y', 0)
       .attr('fill', 'rgba(130,150,255,0.4)')
+
       .attr('stroke-width', 1)
       .attr('stroke', '#000');
 
     svg
       .append('image')
       .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
+
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 620)
@@ -229,18 +241,21 @@ class FlatView extends Component {
       .attr('dx', '0')
       .attr('transform', 'translate(480,250)');
 
+
     BedRoom.append('rect')
       .attr('width', 300)
       .attr('height', 200)
       .attr('x', 400)
       .attr('y', 300)
       .attr('fill', 'rgba(130,150,255,0.4)')
+
       .attr('stroke-width', 1)
       .attr('stroke', '#000');
 
     svg
       .append('image')
       .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
+
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 620)
@@ -265,6 +280,7 @@ class FlatView extends Component {
       .attr('transform', 'translate(480,250)');
 
     Hall.append('rect')
+
       .attr('width', 200)
       .attr('height', 100)
       .attr('x', 300)
@@ -272,31 +288,37 @@ class FlatView extends Component {
       .attr('fill', 'rgba(130,150,255,0.4)');
 
     Hall.append('path')
+
       .attr('d', 'M 300 150 L 500 150')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.3);
 
     Hall.append('path')
+
       .attr('d', 'M 300 150 L 300 250')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.3);
 
     Hall.append('path')
+
       .attr('d', 'M 300 250 L 200 250')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.3);
 
     Hall.append('path')
+
       .attr('d', 'M 200 250 L 200 500')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.3);
 
     Hall.append('path')
+
       .attr('d', 'M 200 500 L 400 500')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.3);
 
     Hall.append('rect')
+
       .attr('width', 300)
       .attr('height', 50)
       .attr('x', 200)
@@ -304,6 +326,7 @@ class FlatView extends Component {
       .attr('fill', 'rgba(130,150,255,0.4)');
 
     Hall.append('rect')
+
       .attr('width', 200)
       .attr('height', 200)
       .attr('x', 200)
@@ -313,6 +336,7 @@ class FlatView extends Component {
     svg
       .append('image')
       .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
+
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 420)
@@ -320,6 +344,7 @@ class FlatView extends Component {
 
     d3.selectAll('#Hall').on('click', () => {
       this.props.history.push(`room/id:${roomID}`);
+
     });
   }
 
