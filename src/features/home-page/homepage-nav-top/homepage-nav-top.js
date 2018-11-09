@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import * as routes from "../../../constants/routes";
-import SignOutButton from "../../authorization/sign-out.button";
-
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import * as routes from '../../../constants/routes';
+import SignOutButton from '../../authorization/sign-out.button';
+import FlatManager from './flat-manger';
 class HomepageNavTop extends Component {
   render() {
     return (
@@ -20,6 +20,7 @@ class HomepageNavTop extends Component {
           <li className="menu__item">
             <a className="menu__link" href="?">
               Flat manager
+              <FlatManager />
             </a>
           </li>
           <li className="menu__item menu__item-nobg">
