@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 
-// import withAuthorization from '../features/authorization/with-authorization.hoc';
 import HomepageNavTop from '../features/home-page/homepage-nav-top/homepage-nav-top';
 import HomepageNavBottom from '../features/home-page/homepage-nav-bottom/homepage-nav-bottom';
 import FlatView from '../features/home-page/flat-view/flat-view';
 import FlatViewLoader from '../features/home-page/flat-view/FlatViewLoader/FlatViewLoader';
-import AuthService from '../features/authorization/auth-service';
 
 import { firebase } from '../firebase';
 
@@ -16,11 +14,10 @@ class Home extends Component {
       roomsData: null,
       isLoading: false,
     };
-    this.Auth = new AuthService();
   }
 
   componentDidMount() {
-    const uid = this.Auth.getToken();
+    const uid = this.props.auth.userUID;
     this.setState({
       isLoading: true,
     });
@@ -69,8 +66,5 @@ class Home extends Component {
     );
   }
 }
-
-// const authCondition = authUser => !!authUser;
-// export default withAuthorization(authCondition)(Home);
 
 export default Home;

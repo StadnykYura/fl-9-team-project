@@ -17,9 +17,9 @@ class HomepageNavTop extends Component {
             </Link>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="?">
+            <Link to={routes.HOME} className="menu__link">
               Flat manager
-            </a>
+            </Link>
           </li>
           <li className="menu__item">
             {/* <a

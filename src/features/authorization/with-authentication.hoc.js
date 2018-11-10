@@ -1,30 +1,23 @@
 import React from 'react';
 
 import AuthUserContext from './auth-user.context';
-import { firebase } from '../../firebase';
+import AuthService from './auth-service';
 
 const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
     constructor(props) {
       super(props);
 
+      this.Auth = new AuthService();
+
       this.state = {
-        authUser: null,
+        userUID: this.Auth.getToken(),
       };
     }
 
-    componentDidMount() {
-      firebase.auth.onAuthStateChanged(authUser => {
-        authUser
-          ? this.setState({ authUser })
-          : this.setState({ authUser: null });
-      });
-    }
-
     render() {
-      const { authUser } = this.state;
       return (
-        <AuthUserContext.Provider value={authUser}>
+        <AuthUserContext.Provider value={this.state}>
           <Component {...this.props} />
         </AuthUserContext.Provider>
       );
