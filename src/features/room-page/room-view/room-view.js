@@ -17,7 +17,7 @@ export default class RoomView extends Component {
     this.handlerSettingsOpen = this.handlerSettingsOpen.bind(this);
   }
   componentDidMount() {
-    const uid = this.Auth.getToken();
+    const uid = this.props.userUID;
     const devicesData = [];
     if (uid) {
       firebase.db

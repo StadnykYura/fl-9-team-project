@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-
 import { auth } from '../../firebase';
-import * as routes from '../../constants/routes';
 import AuthService from './auth-service';
 
 const stateSetter = (propName, value) => ({
@@ -26,15 +23,11 @@ class SignInForm extends Component {
   onSubmit = event => {
     const { email, password } = this.state;
 
-    const { history } = this.props;
-
     auth
       .doSignInWithEmailAndPassword(email, password)
       .then(authUser => {
-        console.log(authUser);
         this.setState({ ...initial_state });
-        this.Auth.setToken(authUser.user.uid);
-        history.push(routes.HOME);
+        this.props.auth.authorize(authUser.user.uid);
       })
       .catch(error => {
         this.setState(stateSetter('error', error));
@@ -89,4 +82,4 @@ class SignInForm extends Component {
   }
 }
 
-export default withRouter(SignInForm);
+export default SignInForm;

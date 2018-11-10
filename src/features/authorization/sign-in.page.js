@@ -1,12 +1,12 @@
-import React from "react";
-import SignInForm from "./sign-in.form";
+import React from 'react';
+import SignInForm from './sign-in.form';
 
-function SignInPage() {
+const SignInPage = props => {
   return (
     <div>
-      <SignInForm />
+      <SignInForm auth={props.auth} />
     </div>
   );
-}
+};
 
 export default SignInPage;
