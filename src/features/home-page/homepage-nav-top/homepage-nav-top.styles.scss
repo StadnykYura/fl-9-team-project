@@ -41,6 +41,7 @@
 }
 .menu__item-nobg {
   > * {
+    @extend #Transition;
     &:hover {
       color: $link;
       background: none;
