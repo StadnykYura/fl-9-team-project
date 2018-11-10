@@ -20,9 +20,6 @@ class HomepageNavBottom extends Component {
             <span className="menu__time">Time</span>
           </li>
           <li className="menu__item">
-            <ToggleDay />
-          </li>
-          <li className="menu__item">
             <a className="menu__link" href="?">
               Global action
             </a>
