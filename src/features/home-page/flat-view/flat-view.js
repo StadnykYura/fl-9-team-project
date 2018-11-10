@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import { withRouter } from 'react-router-dom';
 
 import lightLogo from './light-on.svg';
 import noLightLogo from './light-off.svg';
-import { withRouter } from 'react-router-dom';
 
 import * as roomsID from '../../../constants/roomsID';
 
@@ -137,7 +137,7 @@ class FlatView extends Component {
       .attr('y', 20);
 
     d3.selectAll('#livingRoom').on('click', () => {
-      this.props.history.push(`room/id:${roomID}`);
+      this.props.history.push(`room/${roomID}`);
     });
   }
 
@@ -178,7 +178,7 @@ class FlatView extends Component {
     // });
 
     d3.selectAll('#BathRoom').on('click', () => {
-      this.props.history.push(`room/id:${roomID}`);
+      this.props.history.push(`room/${roomID}`);
     });
   }
 
@@ -215,7 +215,7 @@ class FlatView extends Component {
       .attr('y', 20);
 
     d3.selectAll('#Kitchen').on('click', () => {
-      this.props.history.push(`room/id:${roomID}`);
+      this.props.history.push(`room/${roomID}`);
     });
 
     // d3.selectAll('#Kitchen').on('click', function() {
@@ -256,7 +256,7 @@ class FlatView extends Component {
       .attr('y', 320);
 
     d3.selectAll('#BedRoom').on('click', () => {
-      this.props.history.push(`room/id:${roomID}`);
+      this.props.history.push(`room/${roomID}`);
     });
   }
 
@@ -337,7 +337,7 @@ class FlatView extends Component {
       .attr('y', 170);
 
     d3.selectAll('#Hall').on('click', () => {
-      this.props.history.push(`room/id:${roomID}`);
+      this.props.history.push(`room/${roomID}`);
     });
   }
 

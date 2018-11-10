@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-import withAuthorization from '../features/authorization/with-authorization.hoc';
 import HomepageNavTop from '../features/home-page/homepage-nav-top/homepage-nav-top';
 import HomepageNavBottom from '../features/home-page/homepage-nav-bottom/homepage-nav-bottom';
 import FlatView from '../features/home-page/flat-view/flat-view';
 import FlatViewLoader from '../features/home-page/flat-view/FlatViewLoader/FlatViewLoader';
+
 import { firebase } from '../firebase';
 
 class Home extends Component {
@@ -17,15 +17,15 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    const uid = this.props.auth.userUID;
     this.setState({
       isLoading: true,
     });
-    const user = firebase.auth.currentUser;
     let roomsData = [];
-    if (user) {
+    if (uid) {
       firebase.db
         .collection('users')
-        .doc(user.uid)
+        .doc(uid)
         .collection('rooms')
         .get()
         .then(documents => {
@@ -67,6 +67,4 @@ class Home extends Component {
   }
 }
 
-const authCondition = authUser => !!authUser;
-
-export default withAuthorization(authCondition)(Home);
+export default Home;

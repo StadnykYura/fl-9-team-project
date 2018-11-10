@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
-import * as roomsID from '../../../constants/roomsID';
 import Device from './device/device';
-
+import AuthService from '../../authorization/auth-service';
 import { firebase } from '../../../firebase';
 
 export default class RoomView extends Component {
@@ -13,17 +12,19 @@ export default class RoomView extends Component {
       devicesData: [],
       currentDeviceData: {},
     };
+
+    this.Auth = new AuthService();
     this.handlerSettingsOpen = this.handlerSettingsOpen.bind(this);
   }
   componentDidMount() {
-    const user = firebase.auth.currentUser;
+    const uid = this.Auth.getToken();
     const devicesData = [];
-    if (user) {
+    if (uid) {
       firebase.db
         .collection('users')
-        .doc(user.uid)
+        .doc(uid)
         .collection('rooms')
-        .doc(roomsID.KITCHEN_ID)
+        .doc(this.props.room.id)
         .collection('devices')
         .get()
         .then(documents => {
@@ -50,9 +51,9 @@ export default class RoomView extends Component {
   render() {
     const { isSettingsOpen, devicesData, currentDeviceData } = this.state;
     return (
-      <section className="room-view-wrapper">
+      <div className="room-view-wrapper">
         <div className="room-title">
-          <h2>Kitchen</h2>
+          <h2>{this.props.room.name}</h2>
         </div>
         <div className="room-view">
           <div className="room-view-devices">
@@ -78,7 +79,7 @@ export default class RoomView extends Component {
             </div>
           )}
         </div>
-      </section>
+      </div>
     );
   }
 }

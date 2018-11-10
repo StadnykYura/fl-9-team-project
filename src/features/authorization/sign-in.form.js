@@ -1,23 +1,25 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 
-import { auth } from "../../firebase";
-import * as routes from "../../constants/routes";
+import { auth } from '../../firebase';
+import * as routes from '../../constants/routes';
+import AuthService from './auth-service';
 
 const stateSetter = (propName, value) => ({
-  [propName]: value
+  [propName]: value,
 });
 
 const initial_state = {
-  email: "",
-  password: "",
-  error: null
+  email: '',
+  password: '',
+  error: null,
 };
 
 class SignInForm extends Component {
   constructor(props) {
     super(props);
     this.state = { ...initial_state };
+    this.Auth = new AuthService();
   }
 
   // arrow function remembers the context
@@ -31,10 +33,11 @@ class SignInForm extends Component {
       .then(authUser => {
         console.log(authUser);
         this.setState({ ...initial_state });
+        this.Auth.setToken(authUser.user.uid);
         history.push(routes.HOME);
       })
       .catch(error => {
-        this.setState(stateSetter("error", error));
+        this.setState(stateSetter('error', error));
       });
 
     event.preventDefault();
@@ -47,7 +50,7 @@ class SignInForm extends Component {
   render() {
     const { email, password, error } = this.state;
 
-    const isInvalid = email === "" || password === "";
+    const isInvalid = email === '' || password === '';
 
     return (
       <div className="main-for-sin-in">
@@ -59,7 +62,7 @@ class SignInForm extends Component {
               value={email}
               type="text"
               placeholder="Email Address"
-              onChange={event => this.handleChange(event, "email")}
+              onChange={event => this.handleChange(event, 'email')}
             />
           </div>
           <div className="main-for-sin-in-email">
@@ -67,7 +70,7 @@ class SignInForm extends Component {
               value={password}
               type="password"
               placeholder="Password"
-              onChange={event => this.handleChange(event, "password")}
+              onChange={event => this.handleChange(event, 'password')}
             />
           </div>
           <div>

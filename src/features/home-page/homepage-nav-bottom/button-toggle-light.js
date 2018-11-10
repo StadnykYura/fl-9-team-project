@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { firebase } from '../../../firebase';
+import AuthService from '../../authorization/auth-service';
 
 class ToggleLight extends Component {
   constructor(props) {
@@ -8,26 +9,28 @@ class ToggleLight extends Component {
       turnOnOffLight: true,
       isLoading: false,
     };
+
+    this.Auth = new AuthService();
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick = () => {
     const batch = firebase.db.batch();
-    const user = firebase.auth.currentUser;
+    const uid = this.Auth.getToken();
     this.setState({
       isLoading: true,
     });
-    if (user) {
+    if (uid) {
       firebase.db
         .collection('users')
-        .doc(user.uid)
+        .doc(uid)
         .collection('rooms')
         .get()
         .then(snapshot => {
           snapshot.docs.forEach(document => {
             const roomDocRef = firebase.db
               .collection('users')
-              .doc(user.uid)
+              .doc(uid)
               .collection('rooms')
               .doc(document.id);
             batch.update(roomDocRef, {
