@@ -5,14 +5,11 @@ import HomepageNavTop from '../home-page/homepage-nav-top/homepage-nav-top';
 import HomepageNavBottom from '../home-page/homepage-nav-bottom/homepage-nav-bottom';
 
 import RoomView from './room-view/room-view';
-import AuthService from '../authorization/auth-service';
 import { firebase } from '../../firebase';
 
 class RoomPage extends Component {
   constructor(props) {
     super(props);
-
-    this.Auth = new AuthService();
 
     this.state = {
       room: null,
@@ -20,7 +17,7 @@ class RoomPage extends Component {
   }
 
   componentDidMount() {
-    const uid = this.Auth.getToken();
+    const uid = this.props.auth.userUID;
     let roomData = {};
     if (uid) {
       firebase.db
@@ -58,7 +55,10 @@ class RoomPage extends Component {
           {room == null ? (
             <div>Room Loading</div>
           ) : (
-            <RoomView room={this.state.room} />
+            <RoomView
+              userUID={this.props.auth.userUID}
+              room={this.state.room}
+            />
           )}
         </div>
         <div className="home-nav-wrapper wrapper-margin-bottom">

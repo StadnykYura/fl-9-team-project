@@ -13,11 +13,36 @@ const withAuthentication = Component => {
       this.state = {
         userUID: this.Auth.getToken(),
       };
+
+      this.authorize = this.authorize.bind(this);
+      this.logout = this.logout.bind(this);
+    }
+
+    authorize(UID) {
+      this.Auth.setToken(UID);
+
+      this.setState({
+        userUID: UID,
+      });
+    }
+
+    logout() {
+      this.Auth.logout();
+
+      this.setState({
+        userUID: null,
+      });
     }
 
     render() {
+      const auth = {
+        userUID: this.state.userUID,
+        authorize: this.authorize,
+        logout: this.logout,
+      };
+
       return (
-        <AuthUserContext.Provider value={this.state}>
+        <AuthUserContext.Provider value={auth}>
           <Component {...this.props} />
         </AuthUserContext.Provider>
       );
