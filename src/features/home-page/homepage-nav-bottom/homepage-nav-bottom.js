@@ -15,9 +15,6 @@ class HomepageNavBottom extends Component {
           <li className="menu__item menu__item-nobg">
             <ToggleConditioner />
           </li>
-          <li className="menu__item">
-            <ToggleDay />
-          </li>
           <li className="menu__item menu__item-nobg">
             <span className="menu__weather">
               <Weather />
@@ -30,6 +27,9 @@ class HomepageNavBottom extends Component {
             <a className="menu__link" href="?">
               Global action
             </a>
+          </li>
+          <li className="menu__item menu__item-nobg">
+            <ToggleDay />
           </li>
         </ul>
       </section>
