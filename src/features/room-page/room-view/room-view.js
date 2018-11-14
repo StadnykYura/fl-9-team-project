@@ -11,10 +11,12 @@ export default class RoomView extends Component {
       isSettingsOpen: false,
       devicesData: [],
       currentDeviceData: {},
+      isOn: null,
     };
-
     this.Auth = new AuthService();
     this.handlerSettingsOpen = this.handlerSettingsOpen.bind(this);
+    this.handlerSettingsClose = this.handlerSettingsClose.bind(this);
+    this.handlerOnOffDevice = this.handlerOnOffDevice.bind(this);
   }
   componentDidMount() {
     const uid = this.props.userUID;
@@ -29,27 +31,55 @@ export default class RoomView extends Component {
         .get()
         .then(documents => {
           documents.forEach(document => {
-            devicesData.push(document.data());
+            devicesData.push({
+              id: document.id,
+              isOn: document.data().isOn,
+              name: document.data().name,
+            });
           });
           this.setState({
             devicesData: devicesData,
           });
         });
-    } else {
-      console.log('user didn`t logged');
     }
   }
   handlerSettingsOpen(dataAboutDevice) {
-    this.setState(prevState => ({
-      isSettingsOpen: !prevState.isSettingsOpen,
-    }));
     this.setState({
+      isSettingsOpen: true,
       currentDeviceData: dataAboutDevice,
+      isOn: dataAboutDevice.isOn,
     });
   }
 
+  handlerSettingsClose() {
+    this.setState({
+      isSettingsOpen: false,
+    });
+  }
+  handlerOnOffDevice() {
+    const uid = this.props.userUID;
+    if (uid) {
+      firebase.db
+        .collection('users')
+        .doc(uid)
+        .collection('rooms')
+        .doc(this.props.room.id)
+        .collection('devices')
+        .doc(this.state.currentDeviceData.id)
+        .update({
+          isOn: !this.state.isOn,
+        })
+        .then(() => {
+          this.setState(prevState => ({
+            isOn: !prevState.isOn,
+          }));
+        });
+    }
+  }
+
   render() {
-    const { isSettingsOpen, devicesData, currentDeviceData } = this.state;
+    const { isSettingsOpen, devicesData, currentDeviceData, isOn } = this.state;
+
     return (
       <div className="room-view-wrapper">
         <div className="room-title">
@@ -65,19 +95,31 @@ export default class RoomView extends Component {
               />
             ))}
           </div>
-          {isSettingsOpen ? (
-            <div className="room-view-device-settings active">
-              <div className="settings-info">
-                device settings <hr />
-                name: {currentDeviceData.name} <hr />
-                isOn: {currentDeviceData.isOn ? 'yes' : 'no'}
-              </div>
+          <div
+            className={
+              isSettingsOpen
+                ? 'room-view-device-settings active'
+                : 'room-view-device-settings'
+            }
+          >
+            <div className="settings-close">
+              <button
+                className="close-button"
+                onClick={this.handlerSettingsClose}
+              />
             </div>
-          ) : (
-            <div className="room-view-device-settings not-active">
-              device settings
+            <div className="settings-info">
+              device settings <hr />
+              name: {currentDeviceData.name} <hr />
+              <button
+                onClick={this.handlerOnOffDevice}
+                className={isOn ? 'turn_on' : 'turn_off'}
+              >
+                <span>{isOn ? 'on' : 'off'}</span>
+                <i className="switcher" />
+              </button>
             </div>
-          )}
+          </div>
         </div>
       </div>
     );
