@@ -8,7 +8,7 @@ class HomepageNavBottom extends Component {
       <section className="homepage">
         <ul className="menu">
           <li className="menu__item menu__item-nobg">
-            <ToggleLight />
+            <ToggleLight globalLightChange={this.props.globalLightChange} />
           </li>
           <li className="menu__item menu__item-nobg">
             <ToggleConditioner />
