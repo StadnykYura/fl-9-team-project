@@ -35,7 +35,10 @@ export default class RoomView extends Component {
               id: document.id,
               isOn: document.data().isOn,
               name: document.data().name,
+              url: document.data().url,
+              temperature: document.data().temperature,
             });
+            console.log(document.data());
           });
           this.setState({
             devicesData: devicesData,
@@ -118,6 +121,17 @@ export default class RoomView extends Component {
                 <span>{isOn ? 'on' : 'off'}</span>
                 <i className="switcher" />
               </button>
+            </div>
+            <div className="setting-range">
+              <input
+                id="typeinp"
+                type="range"
+                min="0"
+                max="100"
+                // value={this.state.value}
+                // onChange={this.handleChange}
+                step="1"
+              />
             </div>
           </div>
         </div>

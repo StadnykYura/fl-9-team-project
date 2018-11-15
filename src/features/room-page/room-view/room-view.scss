@@ -17,16 +17,15 @@
     align-items: center;
     justify-content: center;
     .room-view-devices {
+      border: 1px solid;
       height: 100%;
       width: 66.6%;
       padding: 15px;
       display: flex;
       align-items: center;
-      justify-content: center;
       flex-flow: row wrap;
       .device {
-        padding: 20px;
-        margin: 20px;
+        margin: 0 30px;
       }
     }
     .room-view-device-settings {
@@ -35,11 +34,18 @@
       width: 0;
       transition: all 0.4s;
       // border: 5px solid;
+      .setting-range {
+        text-align: center;
+      }
       .settings-close {
         text-align: right;
         padding: 15px 30px;
-        .close-button::before {
-          content: 'X';
+        .close-button {
+          font-family: 'icomoon';
+          font-size: 24px;
+          &:before {
+            content: '\e900';
+          }
         }
       }
       .settings-info {
