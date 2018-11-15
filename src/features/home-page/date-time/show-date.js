@@ -4,9 +4,14 @@ class ShowDate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date().toDateString(),
+      date: new Date().toLocaleString('en-En', {
+        day: 'numeric',
+        month: 'short',
+        weekday: 'short',
+      }),
     };
   }
+
   render() {
     return <div className="Data">{this.state.date}</div>;
   }

@@ -3,6 +3,7 @@ import ToggleLight from './button-toggle-light';
 import ToggleConditioner from './button-toggle-conditioner';
 import ToggleDay from './button-toggle-day';
 import ShowTime from '../date-time/show-time';
+import ShowDate from '../date-time/show-date';
 
 class HomepageNavBottom extends Component {
   render() {
@@ -23,12 +24,14 @@ class HomepageNavBottom extends Component {
           </li>
           <li className="menu__item menu__item-nobg">
             <span className="menu__time">
-              <ShowTime />
+              <div>
+                <ShowTime />
+              </div>
             </span>
           </li>
           <li className="menu__item">
             <a className="menu__link" href="?">
-              Global action
+              <ShowDate />
             </a>
           </li>
         </ul>
