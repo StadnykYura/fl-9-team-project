@@ -42,7 +42,9 @@ class ToggleLight extends Component {
               isLoading: false,
               turnOnOffLight: !prevstate.turnOnOffLight,
             }));
-            this.props.globalLightChange();
+            if (this.props.globalLightChange) {
+              this.props.globalLightChange();
+            }
           });
         });
     }
