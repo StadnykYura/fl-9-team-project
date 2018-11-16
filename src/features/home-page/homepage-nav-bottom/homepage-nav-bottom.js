@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ToggleLight from './button-toggle-light';
 import ToggleConditioner from './button-toggle-conditioner';
-import ToggleDay from './button-toggle-day';
+import ThemeToggler from '../../theme-toggler/theme-toggler';
 class HomepageNavBottom extends Component {
   render() {
     return (
@@ -25,7 +25,7 @@ class HomepageNavBottom extends Component {
             </a>
           </li>
           <li className="menu__item menu__item-nobg">
-            <ToggleDay />
+            <ThemeToggler />
           </li>
         </ul>
       </section>
