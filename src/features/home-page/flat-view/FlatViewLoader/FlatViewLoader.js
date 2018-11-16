@@ -4,8 +4,8 @@ class FlatWievLoader extends Component {
   render() {
     return (
       <div className="flat-view-loader">
-        <section class="talign-center">
-          <div class="spinner icon-spinner-5" aria-hidden="true" />
+        <section className="talign-center">
+          <div className="spinner icon-spinner-5" aria-hidden="true" />
         </section>
       </div>
     );
