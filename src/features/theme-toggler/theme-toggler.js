@@ -1,26 +1,45 @@
 import React, { Component } from 'react';
 import themes from '../../constants/colors.themes.constants';
+import { firebase } from '../../firebase';
+import AuthService from '../authorization/auth-service';
 
 class ThemeToggler extends Component {
-  componentDidMount() {
-    this.setTheme();
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.currentTheme !== prevState.currentTheme) {
-      this.setTheme();
-    }
-  }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.Auth = new AuthService();
     this.state = {
-      currentTheme: 'LIGHT',
-      isToggleOn: true,
+      nightMode: localStorage.getItem('nightMode') === 'true' ? true : false,
+      isLoading: false,
     };
   }
 
+  componentDidMount() {
+    if (this.state.nightMode !== null) {
+      this.setTheme();
+    } else {
+      const uid = this.Auth.getToken();
+      if (uid) {
+        firebase.db
+          .collection('users')
+          .doc(uid)
+          .get()
+          .then(doc => {
+            this.setState({
+              nightMode: doc.data().nightMode,
+            });
+          });
+      }
+    }
+  }
+
+  componentDidUpdate(prevState) {
+    if (this.state.nightMode !== prevState.nightMode) {
+      this.setTheme();
+    }
+  }
+
   setTheme = () => {
-    const theme = themes[this.state.currentTheme];
+    const theme = themes[this.state.nightMode ? 'DARK' : 'LIGHT'];
     Object.keys(theme).forEach(key => {
       const cssKey = `--${key}`;
       const cssValue = theme[key];
@@ -29,27 +48,40 @@ class ThemeToggler extends Component {
   };
 
   toggleTheme = () => {
-    this.state.currentTheme === 'LIGHT'
-      ? this.setState({ currentTheme: 'DARK' })
-      : this.setState({ currentTheme: 'LIGHT' });
-
-    this.setState(prevState => ({
-      isToggleOn: !prevState.isToggleOn,
-    }));
+    this.setState({
+      isLoading: true,
+    });
+    localStorage.setItem('nightMode', `${!this.state.nightMode}`);
+    const uid = this.Auth.getToken();
+    if (uid) {
+      firebase.db
+        .collection('users')
+        .doc(uid)
+        .update({
+          nightMode: !this.state.nightMode,
+        })
+        .then(() => {
+          this.setState(prevState => ({
+            nightMode: !prevState.nightMode,
+            isLoading: false,
+          }));
+        });
+    }
   };
 
   render() {
     return (
       <React.Fragment>
         <button
+          disabled={this.state.isLoading}
           onClick={this.toggleTheme}
           className={
-            this.state.isToggleOn
-              ? 'menu__item_icon menu__daytime_day'
-              : 'menu__item_icon menu__daytime_night'
+            this.state.nightMode
+              ? 'menu__item_icon menu__daytime_night'
+              : 'menu__item_icon menu__daytime_day'
           }
         >
-          <span>{this.state.isToggleOn ? 'day' : 'night'}</span>
+          <span>{this.state.nightMode ? 'night' : 'day'}</span>
         </button>
       </React.Fragment>
     );
