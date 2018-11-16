@@ -21,8 +21,9 @@ const themes = {
     linkBG: '#727ead',
     hoverBG: 'transparent',
     active: '#fff',
-    error: '#ff0000',
+    error: '#bf352b',
     'hover-link': '#fff',
+    'menu-color': '#fff',
   },
 };
 
