@@ -87,7 +87,6 @@ class FlatView extends Component {
       .append('g')
       .attr('class', 'bar')
       .attr('id', 'livingRoom');
-    console.log(roomID);
     livingRoom
       .append('text')
       .text(`${name}`)
