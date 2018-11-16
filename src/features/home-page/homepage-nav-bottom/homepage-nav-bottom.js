@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import ToggleLight from './button-toggle-light';
 import ToggleConditioner from './button-toggle-conditioner';
+
+import ShowTime from '../date-time/show-time';
+import ShowDate from '../date-time/show-date';
+
 import ThemeToggler from '../../theme-toggler/theme-toggler';
+
 class HomepageNavBottom extends Component {
   render() {
     return (
@@ -17,11 +22,15 @@ class HomepageNavBottom extends Component {
             <span className="menu__weather">Weather</span>
           </li>
           <li className="menu__item menu__item-nobg">
-            <span className="menu__time">Time</span>
+            <span className="menu__time">
+              <div>
+                <ShowTime />
+              </div>
+            </span>
           </li>
           <li className="menu__item">
             <a className="menu__link" href="?">
-              Global action
+              <ShowDate />
             </a>
           </li>
           <li className="menu__item menu__item-nobg">
