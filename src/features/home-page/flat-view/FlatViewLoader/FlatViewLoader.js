@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import BgImage from '../../../../assets/img/blur-flat.jpg';
-
 class FlatWievLoader extends Component {
   render() {
     return (
       <div className="flat-view-loader">
-        <img src={BgImage} alt="loader" />
+        <section class="talign-center">
+          <div class="spinner icon-spinner-5" aria-hidden="true" />
+        </section>
       </div>
     );
   }
