@@ -48,7 +48,7 @@ class SignInForm extends Component {
     return (
       <div className="main-for-sin-in">
         <form className="form-main-for-sin-in" onSubmit={this.onSubmit}>
-          <div className="form-greeting">SIGN IN TO YOUR ACCOUNT</div>
+          <div className="form-greeting">Sign In to your account</div>
           <div>
             <input
               className="main-for-sin-in-email"

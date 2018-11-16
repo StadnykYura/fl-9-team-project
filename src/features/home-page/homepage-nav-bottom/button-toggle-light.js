@@ -38,12 +38,13 @@ class ToggleLight extends Component {
             });
           });
           batch.commit().then(() => {
-            this.setState({
-              isLoading: false,
-            });
             this.setState(prevstate => ({
+              isLoading: false,
               turnOnOffLight: !prevstate.turnOnOffLight,
             }));
+            if (this.props.globalLightChange) {
+              this.props.globalLightChange();
+            }
           });
         });
     }
@@ -57,8 +58,8 @@ class ToggleLight extends Component {
         onClick={this.handleClick}
         className={
           turnOnOffLight
-            ? 'menu__item_icon menu__conditioner turn_on'
-            : 'menu__item_icon menu__conditioner turn_off'
+            ? 'menu__item_icon menu__light turn_on'
+            : 'menu__item_icon menu__light turn_off'
         }
       >
         <span>{turnOnOffLight ? 'on' : 'off'}</span>

@@ -14,13 +14,26 @@ class Home extends Component {
       roomsData: null,
       isLoading: false,
     };
+
+    this.handleGlobalLightChange = this.handleGlobalLightChange.bind(this);
   }
 
-  componentDidMount() {
-    const uid = this.props.auth.userUID;
+  handleGlobalLightChange() {
     this.setState({
       isLoading: true,
     });
+    this.firebaseApiGetRoomsWithStateChange();
+  }
+
+  componentDidMount() {
+    this.setState({
+      isLoading: true,
+    });
+    this.firebaseApiGetRoomsWithStateChange();
+  }
+
+  firebaseApiGetRoomsWithStateChange() {
+    const uid = this.props.auth.userUID;
     let roomsData = [];
     if (uid) {
       firebase.db
@@ -55,11 +68,16 @@ class Home extends Component {
             {isLoading ? (
               <FlatViewLoader />
             ) : (
-              <FlatView roomsData={roomsData} />
+              <FlatView
+                roomsData={roomsData}
+                userUID={this.props.auth.userUID}
+              />
             )}
           </div>
           <div className="home-nav-wrapper">
-            <HomepageNavBottom />
+            <HomepageNavBottom
+              globalLightChange={this.handleGlobalLightChange}
+            />
           </div>
         </div>
       </React.Fragment>

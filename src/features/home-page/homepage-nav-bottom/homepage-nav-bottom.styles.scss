@@ -28,8 +28,7 @@
   }
 }
 .menu__daytime_night {
-  color: $night;
-  background: $nightBG;
+  background: var(--primaryBG);
   &:before {
     content: '\e908';
   }
@@ -48,7 +47,7 @@
 .turn_off {
   i.switcher {
     display: inline-block;
-    background: rgba($zero, 0.4);
+    background: rgba(var(--zero-rgb), 0.4);
     border: 2px solid;
     border-radius: 16px;
     vertical-align: middle;
