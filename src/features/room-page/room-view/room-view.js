@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Device from './device/device';
+import RangeInput from './range-input/range-input';
 import AuthService from '../../authorization/auth-service';
 import { firebase } from '../../../firebase';
 
@@ -36,9 +37,8 @@ export default class RoomView extends Component {
               isOn: document.data().isOn,
               name: document.data().name,
               url: document.data().url,
-              temperature: document.data().temperature,
+              isMutable: document.data().isMutable,
             });
-            console.log(document.data());
           });
           this.setState({
             devicesData: devicesData,
@@ -82,7 +82,6 @@ export default class RoomView extends Component {
 
   render() {
     const { isSettingsOpen, devicesData, currentDeviceData, isOn } = this.state;
-
     return (
       <div className="room-view-wrapper">
         <div className="room-title">
@@ -122,17 +121,16 @@ export default class RoomView extends Component {
                 <i className="switcher" />
               </button>
             </div>
-            <div className="setting-range">
-              <input
-                id="typeinp"
-                type="range"
-                min="0"
-                max="100"
-                // value={this.state.value}
-                // onChange={this.handleChange}
-                step="1"
-              />
-            </div>
+            {currentDeviceData.isMutable ? (
+              <div className="setting-range">
+                <RangeInput
+                  roomID={this.props.room.id}
+                  deviceID={currentDeviceData.id}
+                />
+              </div>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>

@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 export default class Device extends Component {
   render() {
     const { deviceData, handlerSettingsOpen } = this.props;
-    console.log(deviceData);
     return (
       <button
         className="device"
