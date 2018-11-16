@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?e42c6k');
-  src:  url('fonts/icomoon.eot?e42c6k#iefix') format('embedded-opentype'),
+  src: url('fonts/icomoon.eot?e42c6k');
+  src: url('fonts/icomoon.eot?e42c6k#iefix') format('embedded-opentype'),
     url('fonts/icomoon.ttf?e42c6k') format('truetype'),
     url('fonts/icomoon.woff?e42c6k') format('woff'),
     url('fonts/icomoon.svg?e42c6k#icomoon') format('svg');
@@ -9,7 +9,8 @@
   font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
+[class^='icon-'],
+[class*=' icon-'] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
   speak: none;
@@ -25,26 +26,26 @@
 }
 
 .icon-air-conditioner:before {
-  content: "\e900";
+  content: '\e900';
   color: #797a8c;
 }
 .icon-cloudy-day:before {
-  content: "\e901";
+  content: '\e901';
   color: #797a8c;
 }
 .icon-light-bulb:before {
-  content: "\e902";
+  content: '\e902';
   color: #797a8c;
 }
 .icon-moon:before {
-  content: "\e903";
+  content: '\e903';
   color: #797a8c;
 }
 .icon-settings:before {
-  content: "\e904";
+  content: '\e904';
   color: #797a8c;
 }
 .icon-web-home:before {
-  content: "\e905";
+  content: '\e905';
   color: #797a8c;
 }

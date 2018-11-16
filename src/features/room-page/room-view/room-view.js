@@ -39,14 +39,17 @@ export default class RoomView extends Component {
               url: document.data().url,
               isMutable: document.data().isMutable,
             });
-          });
-          this.setState({
-            devicesData: devicesData,
+
+            this.setState({
+              devicesData: devicesData,
+            });
           });
         });
     }
   }
+
   handlerSettingsOpen(dataAboutDevice) {
+    debugger;
     this.setState({
       isSettingsOpen: true,
       currentDeviceData: dataAboutDevice,
@@ -124,6 +127,7 @@ export default class RoomView extends Component {
             {currentDeviceData.isMutable ? (
               <div className="setting-range">
                 <RangeInput
+                  userUID={this.props.userUID}
                   roomID={this.props.room.id}
                   deviceID={currentDeviceData.id}
                 />
