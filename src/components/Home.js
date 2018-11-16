@@ -1,43 +1,63 @@
 import React, { Component } from 'react';
 
-import withAuthorization from '../features/authorization/with-authorization.hoc';
 import HomepageNavTop from '../features/home-page/homepage-nav-top/homepage-nav-top';
 import HomepageNavBottom from '../features/home-page/homepage-nav-bottom/homepage-nav-bottom';
 import FlatView from '../features/home-page/flat-view/flat-view';
 import FlatViewLoader from '../features/home-page/flat-view/FlatViewLoader/FlatViewLoader';
 
 import { firebase } from '../firebase';
+
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      rooms: [],
+      roomsData: null,
+      isLoading: false,
     };
+
+    this.handleGlobalLightChange = this.handleGlobalLightChange.bind(this);
+  }
+
+  handleGlobalLightChange() {
+    this.setState({
+      isLoading: true,
+    });
+    this.firebaseApiGetRoomsWithStateChange();
   }
 
   componentDidMount() {
-    const user = firebase.auth.currentUser;
+    this.setState({
+      isLoading: true,
+    });
+    this.firebaseApiGetRoomsWithStateChange();
+  }
+
+  firebaseApiGetRoomsWithStateChange() {
+    const uid = this.props.auth.userUID;
     let roomsData = [];
-    if (user) {
+    if (uid) {
       firebase.db
         .collection('users')
-        .doc(user.uid)
+        .doc(uid)
         .collection('rooms')
         .get()
         .then(documents => {
           documents.docs.forEach(document => {
-            roomsData.push(document.data());
+            roomsData.push({
+              roomID: document.id,
+              roomInfo: document.data(),
+            });
           });
           this.setState({
-            rooms: roomsData,
+            roomsData: roomsData,
+            isLoading: false,
           });
         });
-    } else {
-      console.log('User didn`t sign in');
     }
   }
 
   render() {
+    const { roomsData, isLoading } = this.state;
     return (
       <React.Fragment>
         <div className="page">
@@ -45,14 +65,19 @@ class Home extends Component {
             <HomepageNavTop />
           </div>
           <div className="flat-container">
-            {this.state.rooms.length === 0 ? (
+            {isLoading ? (
               <FlatViewLoader />
             ) : (
-              <FlatView rooms={this.state.rooms} />
+              <FlatView
+                roomsData={roomsData}
+                userUID={this.props.auth.userUID}
+              />
             )}
           </div>
           <div className="home-nav-wrapper">
-            <HomepageNavBottom />
+            <HomepageNavBottom
+              globalLightChange={this.handleGlobalLightChange}
+            />
           </div>
         </div>
       </React.Fragment>
@@ -60,6 +85,4 @@ class Home extends Component {
   }
 }
 
-const authCondition = authUser => !!authUser;
-
-export default withAuthorization(authCondition)(Home);
+export default Home;

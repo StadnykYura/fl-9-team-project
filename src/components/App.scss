@@ -1,17 +1,17 @@
 html {
-  height: 100%;
+  height: 100vh;
 }
 body {
-  font-family: "Montserrat", sans-serif;
-  background: $body;
+  font-family: 'Montserrat', sans-serif;
+  background: var(--primaryBG);
   font-size: 16px;
   font-weight: 400;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
 }
 #root,
 .page {
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -24,24 +24,16 @@ button {
 }
 a,
 button {
-  @extend #Transition;
   text-decoration: none;
 }
 .home-nav-wrapper {
-  width: 100%;
-  display: flex;
+  width: 100vw;
   justify-content: center;
   margin: 0 auto;
-  background: $zero;
+  background: var(--zero);
   padding: 0 15vw;
   flex: 0 0 auto;
 }
-// .wrapper-margin-bottom {
-//   // margin-bottom: 20px;
-// }
-// .wrapper-margin-top {
-//   // margin-top: 20px;
-// }
 .flat-container {
   display: flex;
   flex: 1 1 auto;
@@ -52,5 +44,5 @@ button {
   padding: 0 10px;
 }
 #flat-view {
-  width: 100%;
+  width: 100vw;
 }
