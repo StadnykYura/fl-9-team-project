@@ -8,9 +8,9 @@ class Weather extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {},
       temperature: undefined,
       weatherIcon: undefined,
+      loading: true,
     };
   }
 
@@ -22,23 +22,35 @@ class Weather extends React.Component {
         this.setState({
           temperature: parsedData.main.temp,
           weatherIcon: parsedData.weather[0].icon,
+          loading: false,
         })
-      );
+      )
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
-    return (
-      <div class="weather-widget">
-        <img
-          src={`http://openweathermap.org/img/w/${this.state.weatherIcon}.png`}
-          alt="weather icon"
-        />
-        <div class="temperature">
-          {this.state.temperature}
-          ºC
+    let content;
+    if (this.state.loading) {
+      content = <div>Loading...</div>;
+    } else {
+      content = (
+        <div class="weather-widget">
+          <img
+            src={`http://openweathermap.org/img/w/${
+              this.state.weatherIcon
+            }.png`}
+            alt="weather icon"
+          />
+          <div class="temperature">
+            {this.state.temperature}
+            ºC
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
+    return <div>{content}</div>;
   }
 }
 

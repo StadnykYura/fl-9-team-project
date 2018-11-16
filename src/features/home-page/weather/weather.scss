@@ -1,13 +1,13 @@
-.temperature {
-    display: inline-block;
-    position: relative;
-    top: -20px;
-}
-
-img {
-    display: inline-block;
-}
-
 .weather-widget {
-    display: block;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    .temperature {
+        align-self: center;
+    }
+    img {
+        align-self: center;
+        margin-right: 5px;
+    }
 }
