@@ -7,7 +7,7 @@ class ShowDate extends Component {
       date: new Date().toLocaleString('en-En', {
         day: 'numeric',
         month: 'short',
-        weekday: 'short',
+        weekday: 'long',
       }),
     };
   }
