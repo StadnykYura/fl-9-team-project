@@ -1,79 +1,71 @@
-
 .menu__item_icon span {
-	display: inline-block;
-	text-align: center;
-	width: 1.5em;
+  display: inline-block;
+  text-align: center;
+  width: 1.5em;
 }
 .menu__home {
-	&:before {
-		// content: "\e905";
-		content: "\e90a";
-		padding-right: 0;
-	}
+  &:before {
+    content: '\e90a';
+    padding-right: 0;
+  }
 }
 .menu__light {
-	&:before {
-		// content: "\e902";
-		content: "\e907";
-	}
+  &:before {
+    content: '\e907';
+  }
 }
 .menu__conditioner {
-	&:before {
-		// content: "\e900";
-		content: "\e90c";
-	}
+  &:before {
+    content: '\e90c';
+  }
 }
 .menu__daytime_day {
-	&:before {
-		// content: "\e901";
-		content: "\e909";
-	}
-	span {
-		width: 2.8em;
-	}       
+  &:before {
+    content: '\e909';
+  }
+  span {
+    width: 2.8em;
+  }
 }
-.menu__daytime_night{
-	color: $night;
-	background: $nightBG;
-	&:before {
-		// content: "\e903";
-		content: "\e908";
-	}
-	span {
-		width: 2.8em;
-	}
+.menu__daytime_night {
+  background: var(--primaryBG);
+  &:before {
+    content: '\e908';
+  }
+  span {
+    width: 2.8em;
+  }
 }
 .menu__settings {
-	&:before{
-		// content: "\e904";
-		content: "\e906";
-		padding-right: 0;
-	}
-} 
+  &:before {
+    content: '\e906';
+    padding-right: 0;
+  }
+}
 
 .turn_on,
 .turn_off {
-	i.switcher {
-		display: inline-block;
-		background: rgba($zero,.4);
-		border: 2px solid;
-		border-radius: 16px;
-		vertical-align: middle;
-		margin-left: 4px;
-		&::after {
-			content: '';
-			display: block;
-			border: 6px solid;
-			border-radius: 100%;
-			margin: 2px 16px 2px 2px;
-			@extend #Transition;
-		}
-	}
+  i.switcher {
+    display: inline-block;
+    background: rgba(var(--zero-rgb), 0.4);
+    border: 2px solid;
+    border-radius: 16px;
+    vertical-align: middle;
+    margin-left: 4px;
+    &::after {
+      content: '';
+      display: block;
+      border: 6px solid;
+      border-radius: 100%;
+      margin: 2px 16px 2px 2px;
+      @extend #Transition;
+    }
+  }
 }
 .turn_off {
-	i.switcher {
-		&::after {
-			margin: 2px 2px 2px 16px;
-		}
-	}
+  i.switcher {
+    &::after {
+      margin: 2px 2px 2px 16px;
+    }
+  }
 }

@@ -3,7 +3,7 @@ html {
 }
 body {
   font-family: 'Montserrat', sans-serif;
-  background: $body;
+  background: var(--primaryBG);
   font-size: 16px;
   font-weight: 400;
   height: 100vh;
@@ -15,6 +15,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 button {
   cursor: pointer;
 }
@@ -23,15 +24,13 @@ button {
 }
 a,
 button {
-  @extend #Transition;
   text-decoration: none;
 }
 .home-nav-wrapper {
   width: 100vw;
-  display: flex;
   justify-content: center;
   margin: 0 auto;
-  background: $zero;
+  background: var(--zero);
   padding: 0 15vw;
   flex: 0 0 auto;
 }

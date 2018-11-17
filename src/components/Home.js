@@ -1,25 +1,43 @@
 import React, { Component } from 'react';
 
-import withAuthorization from '../features/authorization/with-authorization.hoc';
 import HomepageNavTop from '../features/home-page/homepage-nav-top/homepage-nav-top';
 import HomepageNavBottom from '../features/home-page/homepage-nav-bottom/homepage-nav-bottom';
+import FlatView from '../features/home-page/flat-view/flat-view';
+import FlatViewLoader from '../features/home-page/flat-view/FlatViewLoader/FlatViewLoader';
+
 import { firebase } from '../firebase';
-/////////////////////////////////
-import FlatManager from '../features/flat-manager-page/flat-manager';
+
 class Home extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       roomsData: null,
+      isLoading: false,
     };
+
+    this.handleGlobalLightChange = this.handleGlobalLightChange.bind(this);
+  }
+
+  handleGlobalLightChange() {
+    this.setState({
+      isLoading: true,
+    });
+    this.firebaseApiGetRoomsWithStateChange();
   }
   componentDidMount() {
-    const user = firebase.auth.currentUser;
+    this.setState({
+      isLoading: true,
+    });
+    this.firebaseApiGetRoomsWithStateChange();
+  }
+
+  firebaseApiGetRoomsWithStateChange() {
+    const uid = this.props.auth.userUID;
     let roomsData = [];
-    if (user) {
+    if (uid) {
       firebase.db
         .collection('users')
-        .doc(user.uid)
+        .doc(uid)
         .collection('rooms')
         .get()
         .then(documents => {
@@ -31,24 +49,34 @@ class Home extends Component {
           });
           this.setState({
             roomsData: roomsData,
+            isLoading: false,
           });
         });
     }
   }
 
   render() {
-    // console.log(this.props.roomsData);
+    const { roomsData, isLoading } = this.state;
     return (
       <React.Fragment>
         <div className="page">
           <div className="home-nav-wrapper">
             <HomepageNavTop />
           </div>
-          <div>
-            <FlatManager roomsData={this.state.roomsData} />
+          <div className="flat-container">
+            {isLoading ? (
+              <FlatViewLoader />
+            ) : (
+              <FlatView
+                roomsData={roomsData}
+                userUID={this.props.auth.userUID}
+              />
+            )}
           </div>
           <div className="home-nav-wrapper">
-            <HomepageNavBottom />
+            <HomepageNavBottom
+              globalLightChange={this.handleGlobalLightChange}
+            />
           </div>
         </div>
       </React.Fragment>
@@ -56,6 +84,4 @@ class Home extends Component {
   }
 }
 
-const authCondition = authUser => !!authUser;
-
-export default withAuthorization(authCondition)(Home);
+export default Home;

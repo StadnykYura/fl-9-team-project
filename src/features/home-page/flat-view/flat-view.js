@@ -1,31 +1,22 @@
 import React, { Component } from 'react';
 import * as d3 from 'd3';
+import { withRouter } from 'react-router-dom';
 
-import lightLogo from './light-on.svg';
-import noLightLogo from './light-off.svg';
+import { firebase } from '../../../firebase';
 
-/*
-const LIVINGROOM = 1;
-const BEDROOM = 2;
-const KITCHEN = 3;
-const BATHROOM = 4;
-const HALL = 5;
-*/
+import lightLogo from '../../../assets/icons/light-bulb-on.svg';
+import noLightLogo from '../../../assets/icons/light-bulb-off.svg';
+
+import * as roomsID from '../../../constants/roomsID';
 
 class FlatView extends Component {
-  constructor(props) {
-    super(props);
-    this.createFlatView = this.createFlatView.bind(this);
-
-    //this.room = this.props.room;
-    this.svg = this.parent_div;
-  }
-
   componentDidMount() {
     this.createFlatView();
   }
 
   createFlatView() {
+    const { roomsData } = this.props;
+
     var parent_div = d3.select('#flat-view').append('div');
 
     parent_div
@@ -35,44 +26,75 @@ class FlatView extends Component {
       .style('height', '500px');
 
     var svg = parent_div
+
       .append('svg')
       .attr('viewBox', '0 0 700 500')
       .attr('preserveAspectRatio', 'xMidYMid')
       .style('width', '80%');
 
-    this.drawLivingRoom(svg);
-    this.drawHall(svg);
-    this.drawBedRoom(svg);
-    this.drawKitchen(svg);
-    this.drawBathroom(svg);
-
-    /*
-        this.props.rooms.forEach(room => {
-            switch (room.id) {
-                case 1:
-                    this.drawLivingRoom(svg);
-                    //onclick
-                    break;
-                case 2:
-                    this.drawBedRoom(svg);
-                    break;
-                case 3:
-                    this.drawKitchen(svg);
-                    break;
-                case 4:
-                    this.drawBathroom(svg);
-                    break;
-                case 5:
-                    this.drawHall(svg);
-                    break;
-                default:
-            }
-        });
- */
+    if (roomsData) {
+      // if not null
+      roomsData.forEach(room => {
+        console.log(room.roomID);
+        switch (room.roomID) {
+          case roomsID.LIVINGROOM:
+            this.drawLivingRoom(
+              svg,
+              roomsID.LIVINGROOM,
+              room.roomInfo.name,
+              room.roomInfo.turnOnOffLight
+            );
+            break;
+          case roomsID.BEDROOM:
+            this.drawBedRoom(
+              svg,
+              roomsID.BEDROOM,
+              room.roomInfo.name,
+              room.roomInfo.turnOnOffLight
+            );
+            break;
+          case roomsID.KITCHEN:
+            this.drawKitchen(
+              svg,
+              roomsID.KITCHEN,
+              room.roomInfo.name,
+              room.roomInfo.turnOnOffLight
+            );
+            break;
+          case roomsID.BATHROOM:
+            this.drawBathroom(
+              svg,
+              roomsID.BATHROOM,
+              room.roomInfo.name,
+              room.roomInfo.turnOnOffLight
+            );
+            break;
+          case roomsID.HALL:
+            this.drawHall(
+              svg,
+              roomsID.HALL,
+              room.roomInfo.name,
+              room.roomInfo.turnOnOffLight
+            );
+            break;
+          default:
+        }
+      });
+    }
   }
 
-  drawLivingRoom(svg) {
-    let livingRoom = svg.append('g').attr('class', 'bar');
+  drawLivingRoom(svg, roomID, name, isLightOn) {
+    let livingRoom = svg
+      .append('g')
+      .attr('class', 'bar')
+      .attr('id', 'livingRoom');
+    livingRoom
+      .append('text')
+      .text(`${name}`)
+      .attr('class', 'room-title')
+      .attr('dy', '-40')
+      .attr('dx', '-380')
+      .attr('transform', 'translate(480,250)');
 
     livingRoom
       .append('rect')
@@ -80,7 +102,7 @@ class FlatView extends Component {
       .attr('height', 250)
       .attr('x', 0)
       .attr('y', 0)
-      .attr('fill', 'rgba(33,66,255,0.4)');
+      .attr('fill', 'rgba(130,150,255,0.4)');
 
     livingRoom
       .append('path')
@@ -98,7 +120,7 @@ class FlatView extends Component {
       .attr('height', 250)
       .attr('x', 0)
       .attr('y', 250)
-      .attr('fill', 'rgba(33,66,255,0.4)');
+      .attr('fill', 'rgba(130,150,255,0.4)');
 
     livingRoom
       .append('path')
@@ -109,173 +131,273 @@ class FlatView extends Component {
     //img
     svg
       .append('image')
-      .attr('xlink:href', lightLogo)
+      .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
+      .attr('id', `light-${roomID}`)
       .attr('width', 60)
       .attr('height', 60)
-      .attr('x', 230)
+      .attr('x', 220)
       .attr('y', 20);
 
-    d3.selectAll('g').on('click', function() {
-      window.location.assign('/signin');
+    d3.selectAll('#livingRoom').on('click', () => {
+      this.props.history.push(`room/${roomID}`);
+    });
+
+    d3.select(`#light-${roomID}`).on('click', () => {
+      debugger;
+      const target = d3.event.target;
+      this.turnOnOffLightInRoom(target, roomID);
     });
   }
 
-  drawBathroom(svg) {
-    let BathRoom = svg.append('g').attr('class', 'bar');
+  drawBathroom(svg, roomID, name, isLightOn) {
+    let BathRoom = svg
+      .append('g')
+      .attr('class', 'bar')
+      .attr('id', 'BathRoom');
+
+    BathRoom.append('text')
+      .text(`${name}`)
+      .attr('class', 'room-title')
+      .attr('dy', '-140')
+      .attr('dx', '-120')
+      .attr('transform', 'translate(480,250)');
 
     BathRoom.append('rect')
       .attr('width', 200)
       .attr('height', 150)
       .attr('x', 300)
       .attr('y', 0)
-      .attr('fill', 'rgba(33,66,255,0.4)')
+      .attr('fill', 'rgba(130,150,255,0.4)')
+
       .attr('stroke-width', 1)
       .attr('stroke', '#000');
 
     svg
       .append('image')
-      .attr('xlink:href', lightLogo)
+      .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
+      .attr('id', `light-${roomID}`)
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 420)
       .attr('y', 20);
 
-    d3.selectAll('image').on('click', function() {
-      d3.select(this).attr('xlink:href', noLightLogo);
+    d3.selectAll('#BathRoom').on('click', () => {
+      this.props.history.push(`room/${roomID}`);
     });
 
-    d3.selectAll('g').on('click', function() {
-      window.location.assign('/signin');
+    d3.select(`#light-${roomID}`).on('click', () => {
+      const target = d3.event.target;
+      this.turnOnOffLightInRoom(target, roomID);
     });
   }
 
-  drawKitchen(svg) {
-    let Kitchen = svg.append('g').attr('class', 'bar');
+  drawKitchen(svg, roomID, name, isLightOn) {
+    let Kitchen = svg
+      .append('g')
+      .attr('class', 'bar')
+      .attr('id', 'Kitchen');
+
+    Kitchen.append('text')
+      .text(`${name}`)
+      .attr('class', 'room-title')
+      .attr('dy', '-100')
+      .attr('dx', '90')
+      .attr('transform', 'translate(480,250)');
 
     Kitchen.append('rect')
       .attr('width', 200)
       .attr('height', 300)
       .attr('x', 500)
       .attr('y', 0)
-      .attr('fill', 'rgba(33,66,255,0.4)')
+      .attr('fill', 'rgba(130,150,255,0.4)')
+
       .attr('stroke-width', 1)
       .attr('stroke', '#000');
 
     svg
       .append('image')
-      .attr('xlink:href', lightLogo)
+      .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
+      .attr('id', `light-${roomID}`)
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 620)
       .attr('y', 20);
 
-    //click elements
-    d3.selectAll('g').on('click', function() {
-      window.location.assign('/signin');
+    d3.selectAll('#Kitchen').on('click', () => {
+      this.props.history.push(`room/${roomID}`);
     });
 
-    d3.selectAll('image').on('click', function() {
-      d3.select(this).attr('xlink:href', noLightLogo);
+    d3.select(`#light-${roomID}`).on('click', () => {
+      const target = d3.event.target;
+      this.turnOnOffLightInRoom(target, roomID);
     });
+
+    // d3.selectAll('#Kitchen').on('click', function() {
+    //   d3.select(this).attr('xlink:href', noLightLogo);
+    // });
   }
 
-  drawBedRoom(svg) {
-    let BedRoom = svg.append('g').attr('class', 'bar');
+  drawBedRoom(svg, roomID, name, isLightOn) {
+    let BedRoom = svg
+      .append('g')
+      .attr('class', 'bar')
+      .attr('id', 'BedRoom');
+
+    BedRoom.append('text')
+      .text(`${name}`)
+      .attr('class', 'room-title')
+      .attr('dy', '150')
+      .attr('dx', '10')
+      .attr('transform', 'translate(480,250)');
 
     BedRoom.append('rect')
       .attr('width', 300)
       .attr('height', 200)
       .attr('x', 400)
       .attr('y', 300)
-      .attr('fill', 'rgba(33,66,255,0.4)')
+      .attr('fill', 'rgba(130,150,255,0.4)')
+
       .attr('stroke-width', 1)
       .attr('stroke', '#000');
 
     svg
       .append('image')
-      .attr('xlink:href', lightLogo)
+      .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
+      .attr('id', `light-${roomID}`)
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 620)
       .attr('y', 320);
 
-    d3.selectAll('g').on('click', function() {
-      window.location.assign('/signin');
+    d3.selectAll('#BedRoom').on('click', () => {
+      this.props.history.push(`room/${roomID}`);
+    });
+
+    d3.select(`#light-${roomID}`).on('click', () => {
+      const target = d3.event.target;
+      this.turnOnOffLightInRoom(target, roomID);
     });
   }
 
-  drawHall(svg) {
-    let hall = svg.append('g').attr('class', 'bar');
+  drawHall(svg, roomID, name, isLightOn) {
+    let Hall = svg
+      .append('g')
+      .attr('class', 'bar')
+      .attr('id', 'Hall');
 
-    hall
-      .append('rect')
+    Hall.append('text')
+      .text(`${name}`)
+      .attr('class', 'room-title')
+      .attr('dy', '120')
+      .attr('dx', '-210')
+      .attr('transform', 'translate(480,250)');
+
+    Hall.append('rect')
+
       .attr('width', 200)
       .attr('height', 100)
       .attr('x', 300)
       .attr('y', 150)
-      .attr('fill', 'rgba(33,66,255,0.4)');
+      .attr('fill', 'rgba(130,150,255,0.4)');
 
-    hall
-      .append('path')
+    Hall.append('path')
+
       .attr('d', 'M 300 150 L 500 150')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.3);
 
-    hall
-      .append('path')
+    Hall.append('path')
+
       .attr('d', 'M 300 150 L 300 250')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.3);
 
-    hall
-      .append('path')
+    Hall.append('path')
+
       .attr('d', 'M 300 250 L 200 250')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.3);
 
-    hall
-      .append('path')
+    Hall.append('path')
+
       .attr('d', 'M 200 250 L 200 500')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.3);
 
-    hall
-      .append('path')
+    Hall.append('path')
+
       .attr('d', 'M 200 500 L 400 500')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.3);
 
-    hall
-      .append('rect')
+    Hall.append('rect')
+
       .attr('width', 300)
       .attr('height', 50)
       .attr('x', 200)
       .attr('y', 250)
-      .attr('fill', 'rgba(33,66,255,0.4)');
+      .attr('fill', 'rgba(130,150,255,0.4)');
 
-    hall
-      .append('rect')
+    Hall.append('rect')
+
       .attr('width', 200)
       .attr('height', 200)
       .attr('x', 200)
       .attr('y', 300)
-      .attr('fill', 'rgba(33,66,255,0.4)');
+      .attr('fill', 'rgba(130,150,255,0.4)');
 
     svg
       .append('image')
-      .attr('xlink:href', lightLogo)
+      .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
+      .attr('id', `light-${roomID}`)
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 420)
       .attr('y', 170);
 
-    d3.selectAll('g').on('click', function() {
-      window.location.assign('/signin');
+    d3.selectAll('#Hall').on('click', () => {
+      this.props.history.push(`room/${roomID}`);
+    });
+
+    d3.select(`#light-${roomID}`).on('click', () => {
+      const target = d3.event.target;
+      this.turnOnOffLightInRoom(target, roomID);
     });
   }
+
+  turnOnOffLightInRoom = (target, roomId) => {
+    const uid = this.props.userUID;
+    if (uid) {
+      let roomRef = firebase.db
+        .collection('users')
+        .doc(uid)
+        .collection('rooms')
+        .doc(roomId);
+
+      roomRef
+        .get()
+        .then(function(doc) {
+          let currentLightState = doc.data().turnOnOffLight;
+          roomRef
+            .update({
+              turnOnOffLight: !currentLightState,
+            })
+            .then(function() {
+              target.setAttributeNS(
+                'http://www.w3.org/1999/xlink',
+                'href',
+                !currentLightState ? lightLogo : noLightLogo
+              );
+            });
+        })
+        .catch(function(error) {
+          console.error('Error getting documents: ', error);
+        });
+    }
+  };
 
   render() {
     return <div id="flat-view" />;
   }
 }
-export default FlatView;
+export default withRouter(FlatView);
