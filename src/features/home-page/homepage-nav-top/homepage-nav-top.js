@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import * as routes from '../../../constants/routes';
 import SignOutButton from '../../authorization/sign-out.button';
 
-import FlatManager from './flat-manger';
-
 class HomepageNavTop extends Component {
   render() {
     return (
@@ -21,9 +19,9 @@ class HomepageNavTop extends Component {
             </Link>{' '}
           </li>{' '}
           <li className="menu__item">
-            <a className="menu__link" href="?">
-              Flat manager <FlatManager />
-            </a>{' '}
+            <Link to="/flat-manager" className="menu__link">
+              Flat Manager
+            </Link>
           </li>{' '}
           <li className="menu__item">
             {' '}

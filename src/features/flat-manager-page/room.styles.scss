@@ -1,0 +1,16 @@
+.room {
+  display: flex;
+  flex-flow: column;
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid black;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .devices {
+    display: flex;
+    flex-flow: column;
+  }
+}
