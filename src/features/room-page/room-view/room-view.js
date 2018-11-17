@@ -18,7 +18,9 @@ export default class RoomView extends Component {
     this.handlerSettingsOpen = this.handlerSettingsOpen.bind(this);
     this.handlerSettingsClose = this.handlerSettingsClose.bind(this);
     this.handlerOnOffDevice = this.handlerOnOffDevice.bind(this);
+    this.changeMutableData = this.changeMutableData.bind(this);
   }
+
   componentDidMount() {
     const uid = this.props.userUID;
     const devicesData = [];
@@ -49,11 +51,43 @@ export default class RoomView extends Component {
   }
 
   handlerSettingsOpen(dataAboutDevice) {
-    debugger;
-    this.setState({
-      isSettingsOpen: true,
-      currentDeviceData: dataAboutDevice,
-      isOn: dataAboutDevice.isOn,
+    // debugger;
+    const uid = this.props.userUID;
+    const deviceDocRef = firebase.db
+      .collection('users')
+      .doc(uid)
+      .collection('rooms')
+      .doc(this.props.room.id)
+      .collection('devices')
+      .doc(dataAboutDevice.id);
+    if (uid) {
+      this.getUpdatedDeviceByFBDocRefWithStateUpdate(deviceDocRef);
+    }
+  }
+
+  getUpdatedDeviceByFBDocRefWithStateUpdate(deviceDocRef) {
+    deviceDocRef.get().then(document => {
+      const updatedDevice = {
+        id: document.id,
+        name: document.data().name,
+        isOn: document.data().isOn,
+        isMutable: document.data().isMutable,
+        mutableData: document.data().isMutable
+          ? {
+              currentValue: document.data().mutableData.currentValue,
+              unit: document.data().mutableData.unit,
+              minValue: document.data().mutableData.minValue,
+              maxValue: document.data().mutableData.maxValue,
+              step: document.data().mutableData.step,
+              title: document.data().mutableData.title,
+            }
+          : null,
+      };
+      this.setState({
+        isSettingsOpen: true,
+        currentDeviceData: updatedDevice,
+        isOn: updatedDevice.isOn,
+      });
     });
   }
 
@@ -62,6 +96,7 @@ export default class RoomView extends Component {
       isSettingsOpen: false,
     });
   }
+
   handlerOnOffDevice() {
     const uid = this.props.userUID;
     if (uid) {
@@ -79,6 +114,26 @@ export default class RoomView extends Component {
           this.setState(prevState => ({
             isOn: !prevState.isOn,
           }));
+        });
+    }
+  }
+
+  changeMutableData(roomId, deviceId, newCurrentValue) {
+    const uid = this.props.userUID;
+    const deviceDocRef = firebase.db
+      .collection('users')
+      .doc(uid)
+      .collection('rooms')
+      .doc(roomId)
+      .collection('devices')
+      .doc(deviceId);
+    if (uid) {
+      deviceDocRef
+        .update({
+          'mutableData.currentValue': newCurrentValue,
+        })
+        .then(() => {
+          this.getUpdatedDeviceByFBDocRefWithStateUpdate(deviceDocRef);
         });
     }
   }
@@ -129,7 +184,8 @@ export default class RoomView extends Component {
                 <RangeInput
                   userUID={this.props.userUID}
                   roomID={this.props.room.id}
-                  deviceID={currentDeviceData.id}
+                  device={currentDeviceData}
+                  handeSaveMutable={this.changeMutableData}
                 />
               </div>
             ) : (
