@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
+//import { firebase } from '../../../../firebase';
+
 import lightLogo from '../../../../assets/icons/light-bulb-on.svg';
 import noLightLogo from '../../../../assets/icons/light-bulb-off.svg';
+
+import  turnOnOffLightInRoom from '../../../../services/local-action-light.js'
 
 class LivingRoom extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             isLightOn: true,
         }
     }
 
     handlerClick(e) {
-        console.log(e.target.id);
         if (e.target.id === 'light') {
             this.setState(prevState => ({
                 isLightOn: !prevState.isLightOn
             }))
+            turnOnOffLightInRoom (e.target, this.props.roomData.roomID, this.props.userUID);
         }
         else {
             this.props.history.push(`room/${this.props.roomData.roomID}`);

@@ -50,12 +50,21 @@ class Flat extends Component {
                 height="700" width="700" id='parent-svg'
                 viewBox="0 0 700 500"
                 preserveAspectRatio="xMidYMid">
-                {/* { this.CreateFlat(this.props.roomsData) } */}
-                <LivingRoom roomData={this.state.livingRoom} />
-                <BathRoom  roomData={this.state.bathRoom} />
-                <Kithen roomData={this.state.kithen} />
-                <Bedroom roomData={this.state.bedRoom}/>
-                <Hall roomData={this.state.hall} />
+
+                <LivingRoom roomData={this.state.livingRoom} 
+                            userUID={this.props.userUID}/>
+
+                <BathRoom  roomData={this.state.bathRoom} 
+                            userUID={this.props.userUID}/>
+
+                <Kithen roomData={this.state.kithen} 
+                        userUID={this.props.userUID}/>
+
+                <Bedroom roomData={this.state.bedRoom}
+                        userUID={this.props.userUID}/>
+
+                <Hall roomData={this.state.hall} 
+                        userUID={this.props.userUID}/>
             </svg>)
     }
 }
