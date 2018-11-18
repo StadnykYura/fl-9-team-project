@@ -48,7 +48,12 @@ class HomepageNavTop extends Component {
                   >
                     Settings
                   </a> */}
-            <Button onClick={this.onClickHandler}>Sign Out</Button>
+            <Button
+              onClick={this.onClickHandler}
+              signOut="menu__item_icon menu__sign-out menu__link"
+            >
+              Sign Out
+            </Button>
           </li>
         </ul>
       </section>
