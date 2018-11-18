@@ -52,36 +52,53 @@ export default class RoomView extends Component {
   }
 
   selectDevice(deviceId) {
-    if (
-      this.state.isSettingsOpen &&
-      this.state.selectedDevice.id === deviceId
-    ) {
-      this.setState({
-        isSettingsOpen: false,
-      });
-    } else {
-      this.setState({
-        isSettingsLoading: true,
-        isSettingsOpen: false,
-      });
-      const uid = this.props.userUID;
-      if (uid) {
-        firestoreAPI
-          .getDeviceDataFromRoom(uid, this.props.room.id, deviceId)
-          .then(document => {
-            const selectedDeviceFromDB = {
-              id: document.id,
-              ...document.data(),
-            };
-            console.log(selectedDeviceFromDB);
-            this.setState({
-              isSettingsLoading: false,
-              isSettingsOpen: true,
-              selectedDevice: selectedDeviceFromDB,
-            });
+    const uid = this.props.userUID;
+    if (uid) {
+      firestoreAPI
+        .getDeviceDataFromRoom(uid, this.props.room.id, deviceId)
+        .then(document => {
+          const selectedDeviceFromDB = {
+            id: document.id,
+            ...document.data(),
+          };
+          console.log(selectedDeviceFromDB);
+          this.setState({
+            isSettingsLoading: false,
+            isSettingsOpen: true,
+            selectedDevice: selectedDeviceFromDB,
           });
-      }
+        });
     }
+    // if (
+    //   this.state.isSettingsOpen &&
+    //   this.state.selectedDevice.id === deviceId
+    // ) {
+    //   this.setState({
+    //     isSettingsOpen: false,
+    //   });
+    // } else {
+    //   this.setState({
+    //     isSettingsLoading: true,
+    //     isSettingsOpen: false,
+    //   });
+    //   const uid = this.props.userUID;
+    //   if (uid) {
+    //     firestoreAPI
+    //       .getDeviceDataFromRoom(uid, this.props.room.id, deviceId)
+    //       .then(document => {
+    //         const selectedDeviceFromDB = {
+    //           id: document.id,
+    //           ...document.data(),
+    //         };
+    //         console.log(selectedDeviceFromDB);
+    //         this.setState({
+    //           isSettingsLoading: false,
+    //           isSettingsOpen: true,
+    //           selectedDevice: selectedDeviceFromDB,
+    //         });
+    //       });
+    //   }
+    // }
   }
 
   turnOnOffDevice(device) {
@@ -177,8 +194,18 @@ export default class RoomView extends Component {
               />
             </div>
           )}
-          {this.state.isSettingsOpen ? (
-            <div className="room-view__device-settings">
+          <div
+            className={
+              this.state.isSettingsOpen
+                ? 'room-view__device-settings active'
+                : 'room-view__device-settings not-active'
+            }
+          >
+            {this.state.isSettingsLoading || !this.state.selectedDevice ? (
+              <div className="room-view__device-settings">
+                Loading/Updating Settings
+              </div>
+            ) : (
               <DeviceSettings
                 isTurnOffTogglerLoading={this.state.isTurnOffTogglerLoading}
                 isMutableDataIsLoading={this.state.isMutableDataIsLoading}
@@ -191,13 +218,8 @@ export default class RoomView extends Component {
                   this.handleMutableDataCurrentValueUpdate
                 }
               />
-            </div>
-          ) : null}
-          {this.state.isSettingsLoading && (
-            <div className="room-view__device-settings">
-              Loading/Updating Settings
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     );
