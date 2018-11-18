@@ -9,6 +9,12 @@
     padding-right: 0;
   }
 }
+.menu__sign-out {
+  &:before {
+    content: '\e90b';
+    padding-right: 0;
+  }
+}
 .menu__light {
   &:before {
     content: '\e907';

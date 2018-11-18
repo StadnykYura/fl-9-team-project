@@ -77,11 +77,11 @@ class ThemeToggler extends Component {
           onClick={this.toggleTheme}
           className={
             this.state.nightMode
-              ? 'menu__item_icon menu__daytime_night'
-              : 'menu__item_icon menu__daytime_day'
+              ? 'menu__item_icon menu__daytime_day'
+              : 'menu__item_icon menu__daytime_night'
           }
         >
-          <span>{this.state.nightMode ? 'night' : 'day'}</span>
+          <span>{this.state.nightMode ? 'day' : 'night'}</span>
         </button>
       </React.Fragment>
     );
