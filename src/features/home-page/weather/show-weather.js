@@ -36,14 +36,14 @@ class Weather extends React.Component {
       content = <div>Loading...</div>;
     } else {
       content = (
-        <div class="weather-widget">
+        <div className="weather-widget">
           <img
             src={`http://openweathermap.org/img/w/${
               this.state.weatherIcon
             }.png`}
             alt="weather icon"
           />
-          <div class="temperature">
+          <div className="temperature">
             {this.state.temperature}
             ºC
           </div>

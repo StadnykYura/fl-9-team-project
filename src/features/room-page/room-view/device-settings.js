@@ -6,9 +6,11 @@ export default class DeviceSettings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentRangeValue: this.props.currentDevice.mutableData
-        ? this.props.currentDevice.mutableData.currentValue
-        : null,
+      // currentRangeValue: this.props.currentDevice.mutableData
+      //   ? this.props.currentDevice.mutableData.currentValue
+      //   : null,
+      currentRangeValue: null,
+      currentDeviceSettingKey: null,
     };
 
     this.onInputRangeChange = this.onInputRangeChange.bind(this);
@@ -19,16 +21,20 @@ export default class DeviceSettings extends Component {
     this.props.onDeviceOnOff(this.props.currentDevice);
   }
 
-  onInputRangeChange(value) {
-    console.log('Changed input range', value);
+  onInputRangeChange(value, idKey) {
     this.setState({
       currentRangeValue: value,
+      currentDeviceSettingKey: idKey,
     });
   }
 
   render() {
     console.log(this.props);
     const { currentDevice } = this.props;
+
+    // if (this.props.currentDevice.deviceSettings) {
+    //   const { deviceSettings } = this.props.currentDevice;
+    // }
 
     return (
       <React.Fragment>
@@ -57,17 +63,45 @@ export default class DeviceSettings extends Component {
             <i className="switcher" />
           </button>
         </div>
-        {currentDevice.isMutable && (
-          <RangeInput
-            isMutableDataIsLoading={this.props.isMutableDataIsLoading}
-            currentDevice={currentDevice}
-            onMutableDataCurrentValueUpdate={
-              this.props.handleMutableDataCurrentValueUpdate
+        {currentDevice.isMutable &&
+          Object.keys(currentDevice.deviceSettings).map(idKey => {
+            switch (currentDevice.deviceSettings[idKey].type) {
+              case 'range':
+                return (
+                  <RangeInput
+                    key={idKey}
+                    isMutableDataIsLoading={this.props.isMutableDataIsLoading}
+                    currentDevice={currentDevice}
+                    currentSetting={currentDevice.deviceSettings[idKey]}
+                    onMutableDataCurrentValueUpdate={
+                      this.props.handleMutableDataCurrentValueUpdate
+                    }
+                    onInputRangeChange={this.onInputRangeChange}
+                    currentRangeValue={this.state.currentRangeValue}
+                    currentDeviceSettingKey={this.state.currentDeviceSettingKey}
+                  />
+                );
+              // break;
+              case 'toggle':
+                return <div>Toggle</div>;
+              // break;
+              case 'modes':
+                return <div>Modes</div>;
+
+              default:
+                return <div>Nothing</div>;
             }
-            onInputRangeChange={this.onInputRangeChange}
-            currentRangeValue={this.state.currentRangeValue}
-          />
-        )}
+          })
+        // <RangeInput
+        //   isMutableDataIsLoading={this.props.isMutableDataIsLoading}
+        //   currentDevice={currentDevice}
+        //   onMutableDataCurrentValueUpdate={
+        //     this.props.handleMutableDataCurrentValueUpdate
+        //   }
+        //   onInputRangeChange={this.onInputRangeChange}
+        //   currentRangeValue={this.state.currentRangeValue}
+        // />
+        }
       </React.Fragment>
     );
   }
