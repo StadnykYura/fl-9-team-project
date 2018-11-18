@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 
 import HomepageNavTop from '../features/home-page/homepage-nav-top/homepage-nav-top';
 import HomepageNavBottom from '../features/home-page/homepage-nav-bottom/homepage-nav-bottom';
-import FlatView from '../features/home-page/flat-view/flat-view';
+//import FlatView from '../features/home-page/flat-view/flat-view';
 import FlatViewLoader from '../features/home-page/flat-view/FlatViewLoader/FlatViewLoader';
 
 import { firebase } from '../firebase';
+//import LivingRoom from '../features/home-page/flat-view/livingRoom';
+import Flat from '../features/home-page/flat-view/flat';
 
 class Home extends Component {
   constructor(props) {
@@ -68,10 +70,8 @@ class Home extends Component {
             {isLoading ? (
               <FlatViewLoader />
             ) : (
-              <FlatView
-                roomsData={roomsData}
-                userUID={this.props.auth.userUID}
-              />
+              //<FlatView
+              <Flat roomsData={roomsData} userUID={this.props.auth.userUID} />
             )}
           </div>
           <div className="home-nav-wrapper">

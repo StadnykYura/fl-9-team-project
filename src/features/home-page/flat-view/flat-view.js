@@ -300,13 +300,13 @@ class FlatView extends Component {
       .attr('fill', 'rgba(130,150,255,0.4)');
 
     Hall.append('path')
-
+      //1
       .attr('d', 'M 300 150 L 500 150')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.3);
 
     Hall.append('path')
-
+      //2
       .attr('d', 'M 300 150 L 300 250')
       .attr('stroke', 'black')
       .attr('stroke-width', 1.3);
