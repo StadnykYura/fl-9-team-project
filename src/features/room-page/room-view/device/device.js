@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 export default class Device extends Component {
   render() {
-    const { deviceData, handlerSettingsOpen } = this.props;
+    const { deviceData, onDeviceSelect } = this.props;
     return (
       <button
         className="device"
         onClick={() => {
-          handlerSettingsOpen(this.props.deviceData);
+          onDeviceSelect(this.props.deviceData.id);
         }}
       >
         <div className="device-info">
