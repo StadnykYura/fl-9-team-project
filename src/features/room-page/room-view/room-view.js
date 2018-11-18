@@ -42,7 +42,6 @@ export default class RoomView extends Component {
               ...document.data(),
             });
           });
-          console.log(devicesData);
           this.setState({
             isDevicesLoading: false,
             devices: devicesData,
@@ -73,7 +72,7 @@ export default class RoomView extends Component {
               id: document.id,
               ...document.data(),
             };
-            console.log(selectedDeviceFromDB);
+
             this.setState({
               isSettingsLoading: false,
               isSettingsOpen: true,
@@ -109,7 +108,6 @@ export default class RoomView extends Component {
               const currentUpdatedDevice = devicesData.find(
                 el => el.id === device.id
               );
-              console.log(currentUpdatedDevice);
               this.setState({
                 devices: devicesData,
                 isTurnOffTogglerLoading: false,
@@ -120,8 +118,7 @@ export default class RoomView extends Component {
     }
   }
 
-  handleMutableDataCurrentValueUpdate(value, device) {
-    console.log('HANDLE MUTABLE', value);
+  handleMutableDataCurrentValueUpdate(value, device, currentSetting) {
     this.setState({
       isMutableDataIsLoading: true,
     });
@@ -130,7 +127,7 @@ export default class RoomView extends Component {
       firestoreAPI
         .getDeviceRef(uid, this.props.room.id, device.id)
         .update({
-          'mutableData.currentValue': value,
+          [`deviceSettings.${currentSetting.id}.config.currentValue`]: value,
         })
         .then(() => {
           const devicesData = [];
