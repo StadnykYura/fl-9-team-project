@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ToggleLight from './button-toggle-light';
 import ToggleConditioner from './button-toggle-conditioner';
+import Weather from '../weather/show-weather';
 
 import ShowTime from '../date-time/show-time';
 import ShowDate from '../date-time/show-date';
@@ -19,7 +20,9 @@ class HomepageNavBottom extends Component {
             <ToggleConditioner />
           </li>
           <li className="menu__item menu__item-nobg">
-            <span className="menu__weather">Weather</span>
+            <span className="menu__weather">
+              <Weather />
+            </span>
           </li>
           <li className="menu__item menu__item-nobg">
             <span className="menu__time">
