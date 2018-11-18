@@ -38,12 +38,13 @@ class ToggleLight extends Component {
             });
           });
           batch.commit().then(() => {
-            this.setState({
-              isLoading: false,
-            });
             this.setState(prevstate => ({
+              isLoading: false,
               turnOnOffLight: !prevstate.turnOnOffLight,
             }));
+            if (this.props.globalLightChange) {
+              this.props.globalLightChange();
+            }
           });
         });
     }

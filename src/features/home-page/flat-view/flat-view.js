@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import * as d3 from 'd3';
 import { withRouter } from 'react-router-dom';
 
-import lightLogo from './light-on.svg';
-import noLightLogo from './light-off.svg';
+import { firebase } from '../../../firebase';
+
+import lightLogo from '../../../assets/icons/light-bulb-on.svg';
+import noLightLogo from '../../../assets/icons/light-bulb-off.svg';
 
 import * as roomsID from '../../../constants/roomsID';
 
@@ -85,13 +87,12 @@ class FlatView extends Component {
       .append('g')
       .attr('class', 'bar')
       .attr('id', 'livingRoom');
-    console.log(roomID);
     livingRoom
       .append('text')
       .text(`${name}`)
       .attr('class', 'room-title')
       .attr('dy', '-40')
-      .attr('dx', '-400')
+      .attr('dx', '-380')
       .attr('transform', 'translate(480,250)');
 
     livingRoom
@@ -130,14 +131,20 @@ class FlatView extends Component {
     svg
       .append('image')
       .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
-
+      .attr('id', `light-${roomID}`)
       .attr('width', 60)
       .attr('height', 60)
-      .attr('x', 230)
+      .attr('x', 220)
       .attr('y', 20);
 
     d3.selectAll('#livingRoom').on('click', () => {
       this.props.history.push(`room/${roomID}`);
+    });
+
+    d3.select(`#light-${roomID}`).on('click', () => {
+      debugger;
+      const target = d3.event.target;
+      this.turnOnOffLightInRoom(target, roomID);
     });
   }
 
@@ -151,7 +158,7 @@ class FlatView extends Component {
       .text(`${name}`)
       .attr('class', 'room-title')
       .attr('dy', '-140')
-      .attr('dx', '-160')
+      .attr('dx', '-120')
       .attr('transform', 'translate(480,250)');
 
     BathRoom.append('rect')
@@ -167,18 +174,19 @@ class FlatView extends Component {
     svg
       .append('image')
       .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
-
+      .attr('id', `light-${roomID}`)
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 420)
       .attr('y', 20);
 
-    // d3.selectAll('image').on('click', function() {
-    //   d3.select(this).attr('xlink:href', noLightLogo);
-    // });
-
     d3.selectAll('#BathRoom').on('click', () => {
       this.props.history.push(`room/${roomID}`);
+    });
+
+    d3.select(`#light-${roomID}`).on('click', () => {
+      const target = d3.event.target;
+      this.turnOnOffLightInRoom(target, roomID);
     });
   }
 
@@ -192,7 +200,7 @@ class FlatView extends Component {
       .text(`${name}`)
       .attr('class', 'room-title')
       .attr('dy', '-100')
-      .attr('dx', '80')
+      .attr('dx', '90')
       .attr('transform', 'translate(480,250)');
 
     Kitchen.append('rect')
@@ -208,7 +216,7 @@ class FlatView extends Component {
     svg
       .append('image')
       .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
-
+      .attr('id', `light-${roomID}`)
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 620)
@@ -216,6 +224,11 @@ class FlatView extends Component {
 
     d3.selectAll('#Kitchen').on('click', () => {
       this.props.history.push(`room/${roomID}`);
+    });
+
+    d3.select(`#light-${roomID}`).on('click', () => {
+      const target = d3.event.target;
+      this.turnOnOffLightInRoom(target, roomID);
     });
 
     // d3.selectAll('#Kitchen').on('click', function() {
@@ -233,7 +246,7 @@ class FlatView extends Component {
       .text(`${name}`)
       .attr('class', 'room-title')
       .attr('dy', '150')
-      .attr('dx', '0')
+      .attr('dx', '10')
       .attr('transform', 'translate(480,250)');
 
     BedRoom.append('rect')
@@ -249,7 +262,7 @@ class FlatView extends Component {
     svg
       .append('image')
       .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
-
+      .attr('id', `light-${roomID}`)
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 620)
@@ -257,6 +270,11 @@ class FlatView extends Component {
 
     d3.selectAll('#BedRoom').on('click', () => {
       this.props.history.push(`room/${roomID}`);
+    });
+
+    d3.select(`#light-${roomID}`).on('click', () => {
+      const target = d3.event.target;
+      this.turnOnOffLightInRoom(target, roomID);
     });
   }
 
@@ -270,7 +288,7 @@ class FlatView extends Component {
       .text(`${name}`)
       .attr('class', 'room-title')
       .attr('dy', '120')
-      .attr('dx', '-200')
+      .attr('dx', '-210')
       .attr('transform', 'translate(480,250)');
 
     Hall.append('rect')
@@ -330,7 +348,7 @@ class FlatView extends Component {
     svg
       .append('image')
       .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
-
+      .attr('id', `light-${roomID}`)
       .attr('width', 60)
       .attr('height', 60)
       .attr('x', 420)
@@ -339,7 +357,43 @@ class FlatView extends Component {
     d3.selectAll('#Hall').on('click', () => {
       this.props.history.push(`room/${roomID}`);
     });
+
+    d3.select(`#light-${roomID}`).on('click', () => {
+      const target = d3.event.target;
+      this.turnOnOffLightInRoom(target, roomID);
+    });
   }
+
+  turnOnOffLightInRoom = (target, roomId) => {
+    const uid = this.props.userUID;
+    if (uid) {
+      let roomRef = firebase.db
+        .collection('users')
+        .doc(uid)
+        .collection('rooms')
+        .doc(roomId);
+
+      roomRef
+        .get()
+        .then(function(doc) {
+          let currentLightState = doc.data().turnOnOffLight;
+          roomRef
+            .update({
+              turnOnOffLight: !currentLightState,
+            })
+            .then(function() {
+              target.setAttributeNS(
+                'http://www.w3.org/1999/xlink',
+                'href',
+                !currentLightState ? lightLogo : noLightLogo
+              );
+            });
+        })
+        .catch(function(error) {
+          console.error('Error getting documents: ', error);
+        });
+    }
+  };
 
   render() {
     return <div id="flat-view" />;
