@@ -1,0 +1,15 @@
+.device-info {
+  display: flex;
+  flex-direction: column;
+  //   justify-content: center;
+  //   align-content: center;
+  img {
+    display: block;
+    width: 60px;
+    margin: 0 auto;
+  }
+  p {
+    font-size: 10pt;
+    // width: 50%;
+  }
+}

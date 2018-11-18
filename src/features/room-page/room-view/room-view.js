@@ -1,81 +1,201 @@
 import React, { Component } from 'react';
+import * as firestoreAPI from '../../../firebase/utils/firestoreAPI';
 
-import Device from './device/device';
-import AuthService from '../../authorization/auth-service';
-import { firebase } from '../../../firebase';
+import DeviceList from './device-list';
+import DeviceSettings from './device-settings';
 
 export default class RoomView extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
+      devices: null,
+      isDevicesLoading: false,
       isSettingsOpen: false,
-      devicesData: [],
-      currentDeviceData: {},
+      isSettingsLoading: false,
+      selectedDevice: null,
+      isTurnOffTogglerLoading: false,
+      isMutableDataIsLoading: false,
     };
 
-    this.Auth = new AuthService();
-    this.handlerSettingsOpen = this.handlerSettingsOpen.bind(this);
+    this.selectDevice = this.selectDevice.bind(this);
+    this.turnOnOffDevice = this.turnOnOffDevice.bind(this);
+    this.handleSettingsClose = this.handleSettingsClose.bind(this);
+    this.handleMutableDataCurrentValueUpdate = this.handleMutableDataCurrentValueUpdate.bind(
+      this
+    );
   }
+
   componentDidMount() {
+    this.setState({
+      isDevicesLoading: true,
+    });
     const uid = this.props.userUID;
     const devicesData = [];
     if (uid) {
-      firebase.db
-        .collection('users')
-        .doc(uid)
-        .collection('rooms')
-        .doc(this.props.room.id)
-        .collection('devices')
-        .get()
+      firestoreAPI
+        .getAllDevicesDataForRoom(uid, this.props.room.id)
         .then(documents => {
           documents.forEach(document => {
-            devicesData.push(document.data());
+            devicesData.push({
+              id: document.id,
+              ...document.data(),
+            });
           });
+          console.log(devicesData);
           this.setState({
-            devicesData: devicesData,
+            isDevicesLoading: false,
+            devices: devicesData,
           });
         });
-    } else {
-      console.log('user didn`t logged');
     }
   }
-  handlerSettingsOpen(dataAboutDevice) {
-    this.setState(prevState => ({
-      isSettingsOpen: !prevState.isSettingsOpen,
-    }));
+
+  selectDevice(deviceId) {
+    if (
+      this.state.isSettingsOpen &&
+      this.state.selectedDevice.id === deviceId
+    ) {
+      this.setState({
+        isSettingsOpen: false,
+      });
+    } else {
+      this.setState({
+        isSettingsLoading: true,
+        isSettingsOpen: false,
+      });
+      const uid = this.props.userUID;
+      if (uid) {
+        firestoreAPI
+          .getDeviceDataFromRoom(uid, this.props.room.id, deviceId)
+          .then(document => {
+            const selectedDeviceFromDB = {
+              id: document.id,
+              ...document.data(),
+            };
+            console.log(selectedDeviceFromDB);
+            this.setState({
+              isSettingsLoading: false,
+              isSettingsOpen: true,
+              selectedDevice: selectedDeviceFromDB,
+            });
+          });
+      }
+    }
+  }
+
+  turnOnOffDevice(device) {
     this.setState({
-      currentDeviceData: dataAboutDevice,
+      isTurnOffTogglerLoading: true,
+    });
+    const uid = this.props.userUID;
+    if (uid) {
+      firestoreAPI
+        .getDeviceRef(uid, this.props.room.id, device.id)
+        .update({
+          isOn: !device.isOn,
+        })
+        .then(() => {
+          const devicesData = [];
+          firestoreAPI
+            .getAllDevicesDataForRoom(uid, this.props.room.id)
+            .then(documents => {
+              documents.forEach(document => {
+                devicesData.push({
+                  id: document.id,
+                  ...document.data(),
+                });
+              });
+              const currentUpdatedDevice = devicesData.find(
+                el => el.id === device.id
+              );
+              console.log(currentUpdatedDevice);
+              this.setState({
+                devices: devicesData,
+                isTurnOffTogglerLoading: false,
+                selectedDevice: currentUpdatedDevice,
+              });
+            });
+        });
+    }
+  }
+
+  handleMutableDataCurrentValueUpdate(value, device) {
+    console.log('HANDLE MUTABLE', value);
+    this.setState({
+      isMutableDataIsLoading: true,
+    });
+    const uid = this.props.userUID;
+    if (uid) {
+      firestoreAPI
+        .getDeviceRef(uid, this.props.room.id, device.id)
+        .update({
+          'mutableData.currentValue': value,
+        })
+        .then(() => {
+          const devicesData = [];
+          firestoreAPI
+            .getAllDevicesDataForRoom(uid, this.props.room.id)
+            .then(documents => {
+              documents.forEach(document => {
+                devicesData.push({
+                  id: document.id,
+                  ...document.data(),
+                });
+              });
+              const currentUpdatedDevice = devicesData.find(
+                el => el.id === device.id
+              );
+              this.setState({
+                devices: devicesData,
+                selectedDevice: currentUpdatedDevice,
+                isMutableDataIsLoading: false,
+              });
+            });
+        });
+    }
+  }
+
+  handleSettingsClose() {
+    this.setState({
+      isSettingsOpen: false,
     });
   }
 
   render() {
-    const { isSettingsOpen, devicesData, currentDeviceData } = this.state;
     return (
       <div className="room-view-wrapper">
         <div className="room-title">
           <h2>{this.props.room.name}</h2>
         </div>
         <div className="room-view">
-          <div className="room-view-devices">
-            {devicesData.map((device, index) => (
-              <Device
-                deviceData={device}
-                handlerSettingsOpen={this.handlerSettingsOpen}
-                key={index}
+          {this.state.devices && (
+            <div className="room-view-devices">
+              <DeviceList
+                devices={this.state.devices}
+                onDeviceSelect={this.selectDevice}
               />
-            ))}
-          </div>
-          {isSettingsOpen ? (
-            <div className="room-view-device-settings active">
-              <div className="settings-info">
-                device settings <hr />
-                name: {currentDeviceData.name} <hr />
-                isOn: {currentDeviceData.isOn ? 'yes' : 'no'}
-              </div>
             </div>
-          ) : (
-            <div className="room-view-device-settings not-active">
-              device settings
+          )}
+          {this.state.isSettingsOpen ? (
+            <div className="room-view__device-settings">
+              <DeviceSettings
+                isTurnOffTogglerLoading={this.state.isTurnOffTogglerLoading}
+                isMutableDataIsLoading={this.state.isMutableDataIsLoading}
+                title={'Device settings'}
+                isOpen={this.state.isSettingsOpen}
+                onDeviceOnOff={this.turnOnOffDevice}
+                currentDevice={this.state.selectedDevice}
+                handleSettingsClose={this.handleSettingsClose}
+                handleMutableDataCurrentValueUpdate={
+                  this.handleMutableDataCurrentValueUpdate
+                }
+              />
+            </div>
+          ) : null}
+          {this.state.isSettingsLoading && (
+            <div className="room-view__device-settings">
+              Loading/Updating Settings
             </div>
           )}
         </div>
