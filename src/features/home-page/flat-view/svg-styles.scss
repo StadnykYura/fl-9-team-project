@@ -1,0 +1,62 @@
+.living-room {
+  rect {
+    fill: var(--livingroom);
+    stroke: var(--livingroom);
+  }
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+#parent-svg {
+  width: 90vw;
+  height: 80vh;
+}
+
+text {
+  font-size: 30px;
+}
+
+.bath-room {
+  rect {
+    fill: var(--bath);
+    stroke: var(--bath);
+  }
+}
+
+.kitchen-room {
+  rect {
+    fill: var(--kitchen);
+    stroke: var(--kitchen);
+    stroke-width: 1px;
+  }
+}
+
+.bed-room {
+  rect {
+    fill: var(--bedroom);
+    stroke: var(--bedroom);
+  }
+}
+
+image {
+  width: 60px;
+  height: 60px;
+}
+
+.hall-room {
+  rect {
+    fill: var(--hall);
+    stroke: var(--hall);
+  }
+}
+.living-room,
+.bath-room,
+.kitchen-room,
+.bed-room,
+.hall-room {
+  &:hover {
+    opacity: 0.9;
+    cursor: pointer;
+  }
+}

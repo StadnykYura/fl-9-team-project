@@ -69,7 +69,6 @@ class ToggleConditioner extends Component {
             : 'menu__item_icon menu__conditioner turn_off'
         }
       >
-        <span>{turnOnOffConditioner ? 'on' : 'off'}</span>
         <i className="switcher" />
       </button>
     );

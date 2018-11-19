@@ -19,10 +19,16 @@ class FlatView extends Component {
 
     var parent_div = d3.select('#flat-view').append('div');
 
+    // parent_div
+    //   .style('width', '100%')
+    //   .style('display', 'flex')
+    //   .style('justify-content', 'center')
+    //   .style('height', '100%');
+
     var svg = parent_div
 
       .append('svg')
-      .attr('viewBox', '0 0 700 500')
+      .attr('viewBox')
       .attr('preserveAspectRatio', 'xMidYMid')
       .style('width', '100%');
 
@@ -94,20 +100,26 @@ class FlatView extends Component {
       .attr('width', 300)
       .attr('height', 250)
       .attr('x', 0)
-      .attr('y', 0);
+      .attr('y', 0)
+      .attr('fill', 'rgba(130,150,255,0.4)');
 
     livingRoom.append('path').attr('d', 'M 0 0 L 0 500');
+    // .attr('stroke', 'black');
 
     livingRoom.append('path').attr('d', 'M 0 0 L 300 0');
+    // .attr('stroke', 'black');
 
     livingRoom
       .append('rect')
       .attr('width', 199)
       .attr('height', 250)
       .attr('x', 0)
-      .attr('y', 250);
+      .attr('y', 250)
+      .attr('fill', 'rgba(130,150,255,0.4)');
 
     livingRoom.append('path').attr('d', 'M 0 500 L 200 500');
+    // .attr('stroke', 'black')
+    // .attr('stroke-width', 2);
 
     //img
     svg
@@ -147,7 +159,11 @@ class FlatView extends Component {
       .attr('width', 200)
       .attr('height', 150)
       .attr('x', 300)
-      .attr('y', 0);
+      .attr('y', 0)
+      .attr('fill', 'rgba(130,150,255,0.4)');
+
+    // .attr('stroke-width', 1)
+    // .attr('stroke', '#000');
 
     svg
       .append('image')
@@ -185,7 +201,11 @@ class FlatView extends Component {
       .attr('width', 200)
       .attr('height', 300)
       .attr('x', 500)
-      .attr('y', 0);
+      .attr('y', 0)
+      .attr('fill', 'rgba(130,150,255,0.4)');
+
+    // .attr('stroke-width', 1)
+    // .attr('stroke', '#000');
 
     svg
       .append('image')
@@ -228,6 +248,10 @@ class FlatView extends Component {
       .attr('height', 200)
       .attr('x', 400)
       .attr('y', 300);
+    // .attr('fill', 'rgba(130,150,255,0.4)');
+
+    // .attr('stroke-width', 1)
+    // .attr('stroke', '#000');
 
     svg
       .append('image')
@@ -267,16 +291,31 @@ class FlatView extends Component {
       .attr('height', 100)
       .attr('x', 300)
       .attr('y', 150);
+    // .attr('fill', 'rgba(130,150,255,0.4)');
 
-    Hall.append('path').attr('d', 'M 300 150 L 500 150');
+    Hall.append('path')
+      //1
+      .attr('d', 'M 300 150 L 500 150');
+    // .attr('stroke', 'black')
+    // .attr('stroke-width', 1.3);
 
-    Hall.append('path').attr('d', 'M 300 150 L 300 250');
+    Hall.append('path')
+      //2
+      .attr('d', 'M 300 150 L 300 250');
+    // .attr('stroke', 'black')
+    // .attr('stroke-width', 1.3);
 
     Hall.append('path').attr('d', 'M 300 250 L 200 250');
+    // .attr('stroke', 'black')
+    // .attr('stroke-width', 1.3);
 
     Hall.append('path').attr('d', 'M 200 250 L 200 500');
+    // .attr('stroke', 'black')
+    // .attr('stroke-width', 1.3);
 
     Hall.append('path').attr('d', 'M 200 500 L 400 500');
+    // .attr('stroke', 'black')
+    // .attr('stroke-width', 1.3);
 
     Hall.append('rect')
 
@@ -284,6 +323,7 @@ class FlatView extends Component {
       .attr('height', 50)
       .attr('x', 200)
       .attr('y', 250);
+    // .attr('fill', 'rgba(130,150,255,0.4)');
 
     Hall.append('rect')
 
@@ -291,6 +331,7 @@ class FlatView extends Component {
       .attr('height', 200)
       .attr('x', 200)
       .attr('y', 300);
+    // .attr('fill', 'rgba(130,150,255,0.4)');
 
     svg
       .append('image')

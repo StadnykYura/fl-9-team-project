@@ -1,0 +1,72 @@
+.bar:hover {
+  //fill: #a9a9a9;
+  opacity: 0.6;
+}
+
+.room-title {
+  font-weight: bold;
+}
+#livingRoom {
+}
+.living-room {
+  rect {
+    fill: #9dc8e8;
+  }
+  path {
+    stroke: black;
+    stroke-width: 2px;
+  }
+}
+.living-room:hover {
+  opacity: 0.6;
+}
+
+#parent-svg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 500px;
+}
+
+text {
+  font-size: 30px;
+}
+
+.bath-room {
+  rect {
+    fill: rgba(130, 150, 255, 0.4);
+    stroke: black;
+    stroke-width: 1px;
+  }
+}
+
+.kitchen-room {
+  rect {
+    fill: rgba(130, 150, 255, 0.4);
+    stroke: black;
+    stroke-width: 1px;
+  }
+}
+
+.bed-room {
+  rect {
+    fill: rgba(130, 150, 255, 0.4);
+    stroke: black;
+    stroke-width: 1px;
+  }
+}
+
+image {
+  width: 60px;
+  height: 60px;
+}
+
+.hall-room {
+  rect {
+    fill: rgba(130, 150, 255, 0.4);
+  }
+  path {
+    stroke: black;
+    stroke-width: 1px;
+  }
+}
