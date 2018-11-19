@@ -2,8 +2,12 @@ html {
   height: 100vh;
 }
 body {
-  font-family: 'Montserrat', sans-serif;
-  background: var(--primaryBG);
+  font-family: 'Poppins', sans-serif;
+  background-image: linear-gradient(
+    45deg,
+    var(--secondaryBG),
+    var(--primaryBG)
+  );
   font-size: 16px;
   font-weight: 400;
   height: 100vh;
@@ -31,10 +35,13 @@ button {
   justify-content: center;
   margin: 0 auto;
   background: var(--zero);
+
   padding: 0 15vw;
   flex: 0 0 auto;
+  opacity: 0.9;
 }
-.flat-container {
+.flat-container,
+#flat-view {
   display: flex;
   flex: 1 1 auto;
   position: relative;
@@ -42,7 +49,4 @@ button {
   align-items: center;
   justify-content: center;
   padding: 0 10px;
-}
-#flat-view {
-  width: 100vw;
 }
