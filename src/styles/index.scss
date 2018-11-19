@@ -1,4 +1,3 @@
-@import 'normalize.css';
 @import 'reset';
 @import 'colors';
 @import 'fonts';
@@ -18,5 +17,4 @@
 @import '../features/home-page/homepage-nav-bottom/homepage-nav-bottom.styles.scss';
 @import '../features/home-page/homepage-nav-top/homepage-nav-top.styles.scss';
 
-
-@import  '../features/home-page/weather/weather.scss'
+@import '../features/home-page/weather/weather.scss';

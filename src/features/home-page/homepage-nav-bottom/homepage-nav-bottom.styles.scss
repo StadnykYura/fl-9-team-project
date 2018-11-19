@@ -15,6 +15,7 @@
     padding-right: 0;
   }
 }
+
 .menu__light {
   &:before {
     content: '\e907';
@@ -63,15 +64,39 @@
       display: block;
       border: 6px solid;
       border-radius: 100%;
-      margin: 2px 16px 2px 2px;
+      margin: 2px 2px 2px 16px;
       @extend #Transition;
     }
+  }
+}
+.turn_on {
+  i.switcher {
+    background: var(--switcherBG);
   }
 }
 .turn_off {
   i.switcher {
     &::after {
-      margin: 2px 2px 2px 16px;
+      margin: 2px 16px 2px 2px;
+    }
+  }
+}
+.menu__item {
+  .menu__time {
+    line-height: 24px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .app-clock {
+      font-size: 16px;
+      margin-top: 5px;
+      height: 14px;
+    }
+    .date {
+      font-size: 8px;
+      height: 8px;
     }
   }
 }

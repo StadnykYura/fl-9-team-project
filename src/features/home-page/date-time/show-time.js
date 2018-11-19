@@ -23,12 +23,12 @@ class ShowTime extends Component {
   }
   render() {
     return (
-      <div className="App-clock">
+      <span className="app-clock">
         {this.state.time.toLocaleTimeString([], {
           hour: '2-digit',
           minute: '2-digit',
         })}
-      </div>
+      </span>
     );
   }
 }
