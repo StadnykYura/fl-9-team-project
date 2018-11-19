@@ -20,9 +20,7 @@ class HomepageNavBottom extends Component {
             <ToggleConditioner />
           </li>
           <li className="menu__item menu__item-nobg">
-            <span className="menu__weather">
-              <Weather />
-            </span>
+            <ThemeToggler />
           </li>
           <li className="menu__item menu__item-nobg">
             <span className="menu__time">
@@ -32,7 +30,9 @@ class HomepageNavBottom extends Component {
           </li>
 
           <li className="menu__item menu__item-nobg">
-            <ThemeToggler />
+            <span className="menu__weather">
+              <Weather />
+            </span>
           </li>
         </ul>
       </section>
