@@ -1,64 +1,65 @@
 .living-room {
     rect {
-        fill: rgba(130,150,255,0.4);
+      fill: var(--livingroom);
+      stroke: var(--livingroom);
     }
-    path {
-        stroke: black;
-        stroke-width: 2px;
+    &:hover {
+      opacity: 0.9;
     }
-}
-.living-room:hover {
-    opacity: 0.6;
-}
-
-#parent-svg {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    height: 500px;
-}
-
-text {
-    font-size: 30px;
-}
-
-.bath-room {
+  }
+  
+  #parent-svg {
+    width: 90vw;
+    height: 80vh;
+  }
+  
+  text {
+    font: bold;
+    font-size: 25px;
+    fill: white;
+  }
+  
+  .bath-room {
     rect {
-        fill: rgba(130,150,255,0.4);
-        stroke: black;
-        stroke-width: 1px;
+      fill: var(--bath);
+      stroke: var(--bath);
     }
-
-}
-
-.kitchen-room {
+  }
+  
+  .kitchen-room {
     rect {
-        fill: rgba(130,150,255,0.4);
-        stroke: black;
-        stroke-width: 1px;
+      fill: var(--kitchen);
+      stroke: var(--kitchen);
+      stroke-width: 1px;
     }
-}
-
-.bed-room {
+  }
+  
+  .bed-room {
     rect {
-        fill: rgba(130,150,255,0.4);
-        stroke: black;
-        stroke-width: 1px;
+      fill: var(--bedroom);
+      stroke: var(--bedroom);
     }
-
-}
-
-image {
+  }
+  
+  image {
     width: 60px;
     height: 60px;
-}
-
-.hall-room {
+  }
+  
+  .hall-room {
     rect {
-        fill: rgba(130,150,255,0.4);;
+      fill: var(--hall);
+      stroke: var(--hall);
     }
-    path {
-        stroke: black;
-        stroke-width: 1px;
+  }
+
+  .living-room,
+  .bath-room,
+  .kitchen-room,
+  .bed-room,
+  .hall-room {
+    &:hover {
+      opacity: 0.9;
+      cursor: pointer;
     }
-}
+  }

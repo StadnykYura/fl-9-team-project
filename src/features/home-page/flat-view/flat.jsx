@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import LivingRoom from './rooms/livingRoom';
-import BathRoom  from './rooms/bathRoom';
+import BathRoom from './rooms/bathRoom';
 import Kithen from './rooms/kitchen';
 import Bedroom from './rooms/bedRoom';
 import Hall from './rooms/hall'
@@ -10,35 +10,34 @@ import * as roomsID from '../../../constants/roomsID';
 class Flat extends Component {
     constructor(props) {
         super(props);
-        //this.CreateFlat = this.CreateFlat.bind(this);
         this.state = {
             livingRoom: null,
             bathRoom: null,
             kithen: null,
             bedRoom: null,
-            hall: null
+            hall: null,
         }
     }
-    componentDidMount( ) {
+    componentDidMount() {
         const { roomsData } = this.props;
         if (roomsData) {
             roomsData.forEach(room => {
                 switch (room.roomID) {
                     case roomsID.LIVINGROOM:
-                    this.setState({livingRoom:room})
-                    break;
+                        this.setState({ livingRoom: room })
+                        break;
                     case roomsID.BATHROOM:
-                    this.setState({bathRoom:room})
-                    break;
+                        this.setState({ bathRoom: room })
+                        break;
                     case roomsID.KITCHEN:
-                    this.setState({kithen:room})
-                    break;
+                        this.setState({ kithen: room })
+                        break;
                     case roomsID.BEDROOM:
-                    this.setState({bedRoom:room})
-                    break;
+                        this.setState({ bedRoom: room })
+                        break;
                     case roomsID.HALL:
-                    this.setState({hall:room})
-                    break;
+                        this.setState({ hall: room })
+                        break;
                 }
             });
         }
@@ -51,20 +50,16 @@ class Flat extends Component {
                 viewBox="0 0 700 500"
                 preserveAspectRatio="xMidYMid">
 
-                <LivingRoom roomData={this.state.livingRoom} 
-                            userUID={this.props.userUID}/>
-
-                <BathRoom  roomData={this.state.bathRoom} 
-                            userUID={this.props.userUID}/>
-
-                <Kithen roomData={this.state.kithen} 
-                        userUID={this.props.userUID}/>
-
+                <LivingRoom roomData={this.state.livingRoom}
+                    userUID={this.props.userUID} />
+                <BathRoom roomData={this.state.bathRoom}
+                    userUID={this.props.userUID} />
+                <Kithen roomData={this.state.kithen}
+                    userUID={this.props.userUID} />
                 <Bedroom roomData={this.state.bedRoom}
-                        userUID={this.props.userUID}/>
-
-                <Hall roomData={this.state.hall} 
-                        userUID={this.props.userUID}/>
+                    userUID={this.props.userUID} />
+                <Hall roomData={this.state.hall}
+                    userUID={this.props.userUID} />
             </svg>)
     }
 }

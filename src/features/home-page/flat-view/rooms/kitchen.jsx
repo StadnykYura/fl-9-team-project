@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import lightLogo from '../../../../assets/icons/light-bulb-on.svg';
 import noLightLogo from '../../../../assets/icons/light-bulb-off.svg';
 
-import  turnOnOffLightInRoom from '../../../../services/local-action-light.js'
+import turnOnOffLightInRoom from '../../../../services/local-action-light.js'
 
 class Kitchen extends Component {
     constructor(props) {
@@ -20,7 +20,7 @@ class Kitchen extends Component {
             this.setState(prevState => ({
                 isLightOn: !prevState.isLightOn
             }))
-            turnOnOffLightInRoom (e.target, this.props.roomData.roomID, this.props.userUID);
+            turnOnOffLightInRoom(e.target, this.props.roomData.roomID, this.props.userUID);
         }
         else {
             this.props.history.push(`room/${this.props.roomData.roomID}`);
@@ -32,14 +32,14 @@ class Kitchen extends Component {
             return <div>Loading</div>;
         }
         return (
-            <svg height="700" width="700" className ="kitchen-room"
+            <svg height="700" width="700" className="kitchen-room"
                 onClick={this.handlerClick.bind(this)}>
-                <rect width="200" height="300" x="500" y="0"/>
-                <text x= "530" y="200">
-                {this.props.roomData.roomInfo.name}
-                </text>                             
-                <image id='light' href = {  this.state.isLightOn ? lightLogo : noLightLogo} x = "620" y ="10" />
- 
+                <rect width="200" height="300" x="500" y="0" />
+                <text x="550" y="200">
+                    {this.props.roomData.roomInfo.name}
+                </text>
+                <image id='light' href={this.state.isLightOn ? lightLogo : noLightLogo} x="620" y="10" />
+
             </svg>
         )
     }

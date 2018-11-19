@@ -8,7 +8,7 @@ import lightLogo from '../../../assets/icons/light-bulb-on.svg';
 import noLightLogo from '../../../assets/icons/light-bulb-off.svg';
 
 import * as roomsID from '../../../constants/roomsID';
-
+//don`t make any changes in this file. All logic was moved to jsx components.
 class FlatView extends Component {
   componentDidMount() {
     this.createFlatView();

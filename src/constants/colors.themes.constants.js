@@ -1,4 +1,4 @@
-const themes = {
+/*const themes = {
   LIGHT: {
     zero: '#fff',
     primaryBG: '#f3f4f8',
@@ -24,6 +24,54 @@ const themes = {
     error: '#bf352b',
     'hover-link': '#fff',
     'menu-color': '#fff',
+  },
+};
+
+export default themes;
+*/
+
+const themes = {
+  LIGHT: {
+    zero: '#fff',
+    primaryBG: '#f3f4f8',
+    secondaryBG: '#a9b6f8',
+    link: '#0d0f1d',
+    linkBG: '#fff',
+    hoverBG: '#8888de',
+    active: '#fff',
+    activeBG: '#647bfd',
+    dark: '#000',
+    error: '#ff0000',
+    switcherBG: '#afafd6',
+    'activ-color': '#8888de',
+    'zero-rgb': '255, 255, 255',
+    'hover-link': '#fff',
+    'menu-border': '#e9eaee',
+    'menu-color': '#797a8c',
+    livingroom: '#2b3884',
+    bath: '#3747a2',
+    kitchen: '#4d61ce',
+    bedroom: '#2b3884',
+    hall: '#657cfa',
+  },
+  DARK: {
+    zero: '#0c0f1f',
+    primaryBG: '#232b5c',
+    secondaryBG: '#0d1125',
+    link: '#fff',
+    linkBG: '#0c0f1f',
+    hoverBG: '#c7ccd0',
+    active: '#fff',
+    error: '#bf352b',
+    switcherBG: '#283275',
+    'activ-color': '#c7ccd0',
+    'hover-link': '#fff',
+    'menu-color': '#fff',
+    livingroom: '#616cb1',
+    bath: '#535fab',
+    kitchen: '#414b8a',
+    bedroom: '#616cb1',
+    hall: '#6c7ffb',
   },
 };
 
