@@ -50,35 +50,42 @@ export default class RangeInput extends Component {
     return (
       <div style={{ marginTop: '20px', marginBottom: '20px' }}>
         <span style={{ fontSize: '16px', marginBottom: '6px' }}>
-          <p>{title}</p>
-          {/* {this.props.currentRangeValue} */}
-          {this.props.currentDeviceSettingKey === this.props.currentSetting.id
-            ? this.props.currentRangeValue
-            : currentValue}
-          {unit}
+          <div className="input-title">
+            {title}
+            <span>
+              {/* {this.props.currentRangeValue} */}
+              {this.props.currentDeviceSettingKey ===
+              this.props.currentSetting.id
+                ? this.props.currentRangeValue
+                : currentValue}
+            </span>
+            {unit}
+          </div>
         </span>
         <hr />
         <React.Fragment>
-          <span>min {minValue}</span>
-          <input
-            disabled={this.props.isMutableDataIsLoading}
-            type="range"
-            // value={this.props.currentRangeValue}
-            value={
-              this.props.currentDeviceSettingKey ===
-              this.props.currentSetting.id
-                ? this.props.currentRangeValue
-                : currentValue
-            }
-            min={minValue}
-            max={maxValue}
-            className="slider"
-            onChange={this.handleSliderChange}
-            // onMouseUp={this.handleInputMouseUp}
-            // onTouchEnd={this.handleInputMouseUp}
-            step={step}
-          />
-          <span>max {maxValue}</span>
+          <div className="input-range">
+            <span>min {minValue}</span>
+            <input
+              disabled={this.props.isMutableDataIsLoading}
+              type="range"
+              // value={this.props.currentRangeValue}
+              value={
+                this.props.currentDeviceSettingKey ===
+                this.props.currentSetting.id
+                  ? this.props.currentRangeValue
+                  : currentValue
+              }
+              min={minValue}
+              max={maxValue}
+              className="slider"
+              onChange={this.handleSliderChange}
+              // onMouseUp={this.handleInputMouseUp}
+              // onTouchEnd={this.handleInputMouseUp}
+              step={step}
+            />
+            <span>max {maxValue}</span>
+          </div>
         </React.Fragment>
       </div>
     );

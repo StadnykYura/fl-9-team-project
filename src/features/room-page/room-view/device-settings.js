@@ -29,6 +29,7 @@ export default class DeviceSettings extends Component {
   }
 
   render() {
+    console.log(this.props);
     const { currentDevice } = this.props;
 
     // if (this.props.currentDevice.deviceSettings) {
@@ -44,13 +45,19 @@ export default class DeviceSettings extends Component {
           />
         </div>
         <div className="settings-info">
-          {this.props.title}
-          <hr />
-          Device name: {currentDevice.name} <hr />
+          {/* <p className="settings-title">{this.props.title}</p> */}
+          <p className="settings-device-image">
+            <img src={currentDevice.url} alt="device" />
+          </p>
+          <p className="settings-device-name">{currentDevice.name} </p>
           <button
             disabled={this.props.isTurnOffTogglerLoading}
             onClick={this.onDeviceOnOff}
-            className={currentDevice.isOn ? 'turn_on' : 'turn_off'}
+            className={
+              currentDevice.isOn
+                ? 'settings-device-on-off turn_on'
+                : 'settings-device-on-off turn_off'
+            }
           >
             <span>{currentDevice.isOn ? 'on' : 'off'}</span>
             <i className="switcher" />
@@ -85,15 +92,15 @@ export default class DeviceSettings extends Component {
                 return <div>Nothing</div>;
             }
           })
-          // <RangeInput
-          //   isMutableDataIsLoading={this.props.isMutableDataIsLoading}
-          //   currentDevice={currentDevice}
-          //   onMutableDataCurrentValueUpdate={
-          //     this.props.handleMutableDataCurrentValueUpdate
-          //   }
-          //   onInputRangeChange={this.onInputRangeChange}
-          //   currentRangeValue={this.state.currentRangeValue}
-          // />
+        // <RangeInput
+        //   isMutableDataIsLoading={this.props.isMutableDataIsLoading}
+        //   currentDevice={currentDevice}
+        //   onMutableDataCurrentValueUpdate={
+        //     this.props.handleMutableDataCurrentValueUpdate
+        //   }
+        //   onInputRangeChange={this.onInputRangeChange}
+        //   currentRangeValue={this.state.currentRangeValue}
+        // />
         }
       </React.Fragment>
     );

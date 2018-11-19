@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class FlatWievLoader extends Component {
+class Loader extends Component {
   render() {
     return (
       <div className="flat-view-loader">
@@ -12,4 +12,4 @@ class FlatWievLoader extends Component {
   }
 }
 
-export default FlatWievLoader;
+export default Loader;
