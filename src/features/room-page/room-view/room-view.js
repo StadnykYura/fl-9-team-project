@@ -51,53 +51,36 @@ export default class RoomView extends Component {
   }
 
   selectDevice(deviceId) {
-    const uid = this.props.userUID;
-    if (uid) {
-      firestoreAPI
-        .getDeviceDataFromRoom(uid, this.props.room.id, deviceId)
-        .then(document => {
-          const selectedDeviceFromDB = {
-            id: document.id,
-            ...document.data(),
-          };
-          console.log(selectedDeviceFromDB);
-          this.setState({
-            isSettingsLoading: false,
-            isSettingsOpen: true,
-            selectedDevice: selectedDeviceFromDB,
+    if (
+      this.state.isSettingsOpen &&
+      this.state.selectedDevice.id === deviceId
+    ) {
+      this.setState({
+        isSettingsOpen: false,
+      });
+    } else {
+      this.setState({
+        isSettingsLoading: true,
+        //isSettingsOpen: false,
+      });
+      const uid = this.props.userUID;
+      if (uid) {
+        firestoreAPI
+          .getDeviceDataFromRoom(uid, this.props.room.id, deviceId)
+          .then(document => {
+            const selectedDeviceFromDB = {
+              id: document.id,
+              ...document.data(),
+            };
+            console.log(selectedDeviceFromDB);
+            this.setState({
+              isSettingsLoading: false,
+              isSettingsOpen: true,
+              selectedDevice: selectedDeviceFromDB,
+            });
           });
-        });
+      }
     }
-    // if (
-    //   this.state.isSettingsOpen &&
-    //   this.state.selectedDevice.id === deviceId
-    // ) {
-    //   this.setState({
-    //     isSettingsOpen: false,
-    //   });
-    // } else {
-    //   this.setState({
-    //     isSettingsLoading: true,
-    //     isSettingsOpen: false,
-    //   });
-    //   const uid = this.props.userUID;
-    //   if (uid) {
-    //     firestoreAPI
-    //       .getDeviceDataFromRoom(uid, this.props.room.id, deviceId)
-    //       .then(document => {
-    //         const selectedDeviceFromDB = {
-    //           id: document.id,
-    //           ...document.data(),
-    //         };
-    //         console.log(selectedDeviceFromDB);
-    //         this.setState({
-    //           isSettingsLoading: false,
-    //           isSettingsOpen: true,
-    //           selectedDevice: selectedDeviceFromDB,
-    //         });
-    //       });
-    //   }
-    // }
   }
 
   turnOnOffDevice(device) {
