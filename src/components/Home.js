@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import HomepageNavTop from '../features/home-page/homepage-nav-top/homepage-nav-top';
 import HomepageNavBottom from '../features/home-page/homepage-nav-bottom/homepage-nav-bottom';
 import FlatView from '../features/home-page/flat-view/flat-view';
-import FlatViewLoader from '../features/home-page/flat-view/FlatViewLoader/FlatViewLoader';
+import Loader from '../features/Loader/Loader';
 
 import { firebase } from '../firebase';
 
@@ -66,7 +66,7 @@ class Home extends Component {
           </div>
           <div className="flat-container">
             {isLoading ? (
-              <FlatViewLoader />
+              <Loader />
             ) : (
               <FlatView
                 roomsData={roomsData}
