@@ -35,7 +35,7 @@ class ToggleConditioner extends Component {
                 .get()
                 .then(snapshot => {
                   snapshot.docs.forEach(document => {
-                    if (document.data().name === 'conditioner') {
+                    if (document.data().name === 'Conditioner') {
                       roomDocRef
                         .collection('devices')
                         .doc(document.id)
