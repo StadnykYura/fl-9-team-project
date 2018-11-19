@@ -26,16 +26,11 @@ class HomepageNavBottom extends Component {
           </li>
           <li className="menu__item menu__item-nobg">
             <span className="menu__time">
-              <div>
-                <ShowTime />
-              </div>
+              <ShowTime />
+              <ShowDate />
             </span>
           </li>
-          <li className="menu__item">
-            <a className="menu__link" href="?">
-              <ShowDate />
-            </a>
-          </li>
+
           <li className="menu__item menu__item-nobg">
             <ThemeToggler />
           </li>

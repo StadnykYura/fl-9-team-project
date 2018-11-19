@@ -13,7 +13,7 @@ class ShowDate extends Component {
   }
 
   render() {
-    return <div className="Data">{this.state.date}</div>;
+    return <span className="data">{this.state.date}</span>;
   }
 }
 
