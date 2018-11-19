@@ -61,7 +61,7 @@ export default class RoomView extends Component {
     } else {
       this.setState({
         isSettingsLoading: true,
-        isSettingsOpen: false,
+        //isSettingsOpen: false,
       });
       const uid = this.props.userUID;
       if (uid) {
@@ -72,7 +72,7 @@ export default class RoomView extends Component {
               id: document.id,
               ...document.data(),
             };
-
+            console.log(selectedDeviceFromDB);
             this.setState({
               isSettingsLoading: false,
               isSettingsOpen: true,
@@ -174,8 +174,18 @@ export default class RoomView extends Component {
               />
             </div>
           )}
-          {this.state.isSettingsOpen ? (
-            <div className="room-view__device-settings">
+          <div
+            className={
+              this.state.isSettingsOpen
+                ? 'room-view__device-settings active'
+                : 'room-view__device-settings not-active'
+            }
+          >
+            {this.state.isSettingsLoading || !this.state.selectedDevice ? (
+              <div className="room-view__device-settings">
+                Loading/Updating Settings
+              </div>
+            ) : (
               <DeviceSettings
                 isTurnOffTogglerLoading={this.state.isTurnOffTogglerLoading}
                 isMutableDataIsLoading={this.state.isMutableDataIsLoading}
@@ -188,13 +198,8 @@ export default class RoomView extends Component {
                   this.handleMutableDataCurrentValueUpdate
                 }
               />
-            </div>
-          ) : null}
-          {this.state.isSettingsLoading && (
-            <div className="room-view__device-settings">
-              Loading/Updating Settings
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     );

@@ -1,15 +1,14 @@
 .device-info {
   display: flex;
   flex-direction: column;
-  //   justify-content: center;
-  //   align-content: center;
   img {
     display: block;
-    width: 60px;
+    width: 90px;
     margin: 0 auto;
   }
   p {
-    font-size: 10pt;
-    // width: 50%;
+    margin: 10px 0;
+    font-size: 11pt;
+    color: var(--link);
   }
 }
