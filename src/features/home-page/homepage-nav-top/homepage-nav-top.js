@@ -32,7 +32,7 @@ class HomepageNavTop extends Component {
             </Link>{' '}
           </li>{' '}
           <li className="menu__item">
-            <Link to={routes.HOME} className="menu__link">
+            <Link to={routes.FLAT_MANAGER} className="menu__link">
               Flat manager
             </Link>
           </li>

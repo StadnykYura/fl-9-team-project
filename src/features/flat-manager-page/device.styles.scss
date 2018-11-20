@@ -1,4 +1,22 @@
 .device {
-  padding: 10px;
-  border: 1px solid gray;
+  padding: 7px;
+  margin: 2px;
+
+}
+.img-icon{
+  width: 25px;
+  height: 25px;
+  float: left;
+color: var( --link);
+}
+.device-name{
+  font-size: 15px;
+  color: var(--link);
+  margin-left: 40px;
+}
+.startDrag{
+  background: var( --menu-color);
+}
+.stopDrag{
+  background: white;
 }

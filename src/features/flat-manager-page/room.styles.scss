@@ -2,8 +2,10 @@
   display: flex;
   flex-flow: column;
   padding: 10px;
-  margin: 10px;
-  border: 1px solid black;
+  margin: 5px;
+  margin-left: 70px;
+  height: 240px;
+  width: 200px;
 
   &:not(:last-child) {
     margin-right: 10px;
@@ -13,4 +15,22 @@
     display: flex;
     flex-flow: column;
   }
+  .name-room{
+    color:var(--dark);
+    margin: 0 auto;
+  font-size: 14px;
+  &::first-letter{
+    font-size: 25px;
+  }}
+
 }
+.startDrop{
+  background: green;
+}
+.stopDrop{
+  background: white;
+}
+
+
+
+
