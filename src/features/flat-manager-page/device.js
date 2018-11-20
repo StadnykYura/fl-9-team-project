@@ -24,13 +24,9 @@ class Device extends Component {
         className={this.props.isDragging ? 'startDrag' : '  stopDrag'}
       >
         <div className="device-information">
-          <i className={this.props.deviceData.url} />
-          {/* <div  className="img-icon">
-        
-      
-       
-    
-        </div> */}
+          <div className="img-icon">
+            <i className={` ${this.props.deviceData.url}`} />
+          </div>
           <div className="device-name">
             {' '}
             <p>{this.props.name}</p>
