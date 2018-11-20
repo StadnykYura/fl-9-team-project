@@ -29,7 +29,7 @@ export default class DeviceSettings extends Component {
   }
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     const { currentDevice } = this.props;
 
     // if (this.props.currentDevice.deviceSettings) {
