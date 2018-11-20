@@ -6,8 +6,8 @@ svg {
 }
 #livingRoom {
   rect {
-    fill: #2b3884;
-    stroke: #2b3884;
+    fill: var(--livingroom);
+    stroke: var(--livingroom);
   }
 }
 
@@ -29,23 +29,23 @@ svg {
 
 #BathRoom {
   rect {
-    fill: #3747a2;
-    stroke: #3747a2;
+    fill: var(--bath);
+    stroke: var(--bath);
   }
 }
 
 #Kitchen {
   rect {
-    fill: #4d61ce;
-    stroke: #4d61ce;
+    fill: var(--kitchen);
+    stroke: var(--kitchen);
     stroke-width: 1px;
   }
 }
 
 #BedRoom {
   rect {
-    fill: #2b3884;
-    stroke: #2b3884;
+    fill: var(--bedroom);
+    stroke: var(--bedroom);
   }
 }
 
@@ -56,8 +56,8 @@ image {
 
 #Hall {
   rect {
-    fill: #657cfa;
-    stroke: #657cfa;
+    fill: var(--hall);
+    stroke: var(--hall);
   }
 }
 #livingRoom,
@@ -71,12 +71,3 @@ image {
     cursor: pointer;
   }
 }
-// .bath-room,
-// .kitchen-room,
-// .bed-room,
-// .hall-room {
-//   &:hover {
-//     opacity: 0.9;
-//     cursor: pointer;
-//   }
-// }

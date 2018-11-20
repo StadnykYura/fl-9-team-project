@@ -16,6 +16,11 @@ const themes = {
     'hover-link': '#fff',
     'menu-border': '#e9eaee',
     'menu-color': '#797a8c',
+    livingroom: '#2b3884',
+    bath: '#3747a2',
+    kitchen: '#4d61ce',
+    bedroom: '#2b3884',
+    hall: '#657cfa',
   },
   DARK: {
     zero: '#0c0f1f',
@@ -30,6 +35,11 @@ const themes = {
     'activ-color': '#c7ccd0',
     'hover-link': '#fff',
     'menu-color': '#fff',
+    livingroom: '#616cb1',
+    bath: '#535fab',
+    kitchen: '#414b8a',
+    bedroom: '#616cb1',
+    hall: '#6c7ffb',
   },
 };
 
