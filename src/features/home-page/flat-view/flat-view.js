@@ -19,18 +19,10 @@ class FlatView extends Component {
 
     var parent_div = d3.select('#flat-view').append('div');
 
-    parent_div
-      .style('width', '100%')
-      .style('display', 'flex')
-      .style('justify-content', 'center')
-      .style('height', '500px');
-
     var svg = parent_div
-
       .append('svg')
       .attr('viewBox', '0 0 700 500')
-      .attr('preserveAspectRatio', 'xMidYMid')
-      .style('width', '80%');
+      .attr('preserveAspectRatio', 'xMidYMid');
 
     if (roomsData) {
       // if not null
@@ -87,6 +79,13 @@ class FlatView extends Component {
       .append('g')
       .attr('class', 'bar')
       .attr('id', 'livingRoom');
+
+    livingRoom
+      .append('rect')
+      .attr('width', 300)
+      .attr('height', 250)
+      .attr('x', 0)
+      .attr('y', 0);
     livingRoom
       .append('text')
       .text(`${name}`)
@@ -95,37 +94,18 @@ class FlatView extends Component {
       .attr('dx', '-380')
       .attr('transform', 'translate(480,250)');
 
-    livingRoom
-      .append('rect')
-      .attr('width', 300)
-      .attr('height', 250)
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('fill', 'rgba(130,150,255,0.4)');
+    livingRoom.append('path').attr('d', 'M 0 0 L 0 500');
 
-    livingRoom
-      .append('path')
-      .attr('d', 'M 0 0 L 0 500')
-      .attr('stroke', 'black');
-
-    livingRoom
-      .append('path')
-      .attr('d', 'M 0 0 L 300 0')
-      .attr('stroke', 'black');
+    livingRoom.append('path').attr('d', 'M 0 0 L 300 0');
 
     livingRoom
       .append('rect')
       .attr('width', 199)
       .attr('height', 250)
       .attr('x', 0)
-      .attr('y', 250)
-      .attr('fill', 'rgba(130,150,255,0.4)');
+      .attr('y', 250);
 
-    livingRoom
-      .append('path')
-      .attr('d', 'M 0 500 L 200 500')
-      .attr('stroke', 'black')
-      .attr('stroke-width', 2);
+    livingRoom.append('path').attr('d', 'M 0 500 L 200 500');
 
     //img
     svg
@@ -154,22 +134,17 @@ class FlatView extends Component {
       .attr('class', 'bar')
       .attr('id', 'BathRoom');
 
+    BathRoom.append('rect')
+      .attr('width', 200)
+      .attr('height', 150)
+      .attr('x', 300)
+      .attr('y', 0);
     BathRoom.append('text')
       .text(`${name}`)
       .attr('class', 'room-title')
       .attr('dy', '-140')
       .attr('dx', '-120')
       .attr('transform', 'translate(480,250)');
-
-    BathRoom.append('rect')
-      .attr('width', 200)
-      .attr('height', 150)
-      .attr('x', 300)
-      .attr('y', 0)
-      .attr('fill', 'rgba(130,150,255,0.4)')
-
-      .attr('stroke-width', 1)
-      .attr('stroke', '#000');
 
     svg
       .append('image')
@@ -196,23 +171,17 @@ class FlatView extends Component {
       .attr('class', 'bar')
       .attr('id', 'Kitchen');
 
-    Kitchen.append('text')
-      .text(`${name}`)
-      .attr('class', 'room-title')
-      .attr('dy', '-100')
-      .attr('dx', '90')
-      .attr('transform', 'translate(480,250)');
-
     Kitchen.append('rect')
       .attr('width', 200)
       .attr('height', 300)
       .attr('x', 500)
-      .attr('y', 0)
-      .attr('fill', 'rgba(130,150,255,0.4)')
+      .attr('y', 0);
 
-      .attr('stroke-width', 1)
-      .attr('stroke', '#000');
-
+    Kitchen.append('text')
+      .text(`${name}`)
+      .attr('class', 'room-title')
+      .attr('dy', '160')
+      .attr('dx', '550');
     svg
       .append('image')
       .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
@@ -242,23 +211,17 @@ class FlatView extends Component {
       .attr('class', 'bar')
       .attr('id', 'BedRoom');
 
-    BedRoom.append('text')
-      .text(`${name}`)
-      .attr('class', 'room-title')
-      .attr('dy', '150')
-      .attr('dx', '10')
-      .attr('transform', 'translate(480,250)');
-
     BedRoom.append('rect')
       .attr('width', 300)
       .attr('height', 200)
       .attr('x', 400)
-      .attr('y', 300)
-      .attr('fill', 'rgba(130,150,255,0.4)')
+      .attr('y', 300);
 
-      .attr('stroke-width', 1)
-      .attr('stroke', '#000');
-
+    BedRoom.append('text')
+      .text(`${name}`)
+      .attr('class', 'room-title')
+      .attr('dy', '425')
+      .attr('dx', '450');
     svg
       .append('image')
       .attr('xlink:href', isLightOn ? lightLogo : noLightLogo)
@@ -284,66 +247,42 @@ class FlatView extends Component {
       .attr('class', 'bar')
       .attr('id', 'Hall');
 
-    Hall.append('text')
-      .text(`${name}`)
-      .attr('class', 'room-title')
-      .attr('dy', '120')
-      .attr('dx', '-210')
-      .attr('transform', 'translate(480,250)');
-
     Hall.append('rect')
 
       .attr('width', 200)
       .attr('height', 100)
       .attr('x', 300)
-      .attr('y', 150)
-      .attr('fill', 'rgba(130,150,255,0.4)');
+      .attr('y', 150);
 
-    Hall.append('path')
+    Hall.append('path').attr('d', 'M 300 150 L 500 150');
 
-      .attr('d', 'M 300 150 L 500 150')
-      .attr('stroke', 'black')
-      .attr('stroke-width', 1.3);
+    Hall.append('path').attr('d', 'M 300 150 L 300 250');
 
-    Hall.append('path')
+    Hall.append('path').attr('d', 'M 300 250 L 200 250');
 
-      .attr('d', 'M 300 150 L 300 250')
-      .attr('stroke', 'black')
-      .attr('stroke-width', 1.3);
+    Hall.append('path').attr('d', 'M 200 250 L 200 500');
 
-    Hall.append('path')
-
-      .attr('d', 'M 300 250 L 200 250')
-      .attr('stroke', 'black')
-      .attr('stroke-width', 1.3);
-
-    Hall.append('path')
-
-      .attr('d', 'M 200 250 L 200 500')
-      .attr('stroke', 'black')
-      .attr('stroke-width', 1.3);
-
-    Hall.append('path')
-
-      .attr('d', 'M 200 500 L 400 500')
-      .attr('stroke', 'black')
-      .attr('stroke-width', 1.3);
+    Hall.append('path').attr('d', 'M 200 500 L 400 500');
 
     Hall.append('rect')
 
       .attr('width', 300)
       .attr('height', 50)
       .attr('x', 200)
-      .attr('y', 250)
-      .attr('fill', 'rgba(130,150,255,0.4)');
+      .attr('y', 250);
 
     Hall.append('rect')
 
       .attr('width', 200)
       .attr('height', 200)
       .attr('x', 200)
-      .attr('y', 300)
-      .attr('fill', 'rgba(130,150,255,0.4)');
+      .attr('y', 300);
+    Hall.append('text')
+      .text(`${name}`)
+      .attr('class', 'room-title')
+      .attr('dy', '115')
+      .attr('dx', '-250')
+      .attr('transform', 'translate(480,250)');
 
     svg
       .append('image')
