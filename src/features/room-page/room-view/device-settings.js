@@ -47,7 +47,7 @@ export default class DeviceSettings extends Component {
         <div className="settings-info">
           {/* <p className="settings-title">{this.props.title}</p> */}
           <p className="settings-device-image">
-            <img src={currentDevice.url} alt="device" />
+            <i className={`icon ${currentDevice.url}`} />
           </p>
           <p className="settings-device-name">{currentDevice.name} </p>
           <button
