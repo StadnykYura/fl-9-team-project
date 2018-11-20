@@ -149,8 +149,11 @@ class Room extends Component {
 
     return this.props.connectDropTarget(
       <div
+        // className={this.props.isOver ? 'startDrop' : 'stopDrop'}
         style={{
-          background: this.props.isOver ? 'var( --menu-color)' : 'white',
+          background: this.props.isOver
+            ? 'var(--hoverBG)'
+            : 'var( --menu-border)',
         }}
         className="room"
       >

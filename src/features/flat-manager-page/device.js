@@ -18,11 +18,7 @@ const collect = (connect, monitor) => {
 class Device extends Component {
   render() {
     return this.props.connectDragSource(
-      <div
-        // style={{ background: this.props.isDragging ? 'var( --menu-color)' : 'white' }}
-
-        className={this.props.isDragging ? 'startDrag' : '  stopDrag'}
-      >
+      <div className={this.props.isDragging ? 'startDrag' : '  stopDrag'}>
         <div className="device-information">
           <div className="img-icon">
             <i className={` ${this.props.deviceData.url}`} />

@@ -5,17 +5,17 @@
   height: 25px;
   margin: 5px;
   padding-top: 5px;
-  color: var( --activeBG);
+  color: var(--activeBG);
 }
 .device-name {
   font-size: 15px;
-  color: var( --activeBG);
+  color: var(--activeBG);
 }
 .startDrag {
-  background: var(  --switcherBG);
+  background: var(--switcherBG);
 }
 .stopDrag {
-  background: white;
+  background: var(--zero);
 }
 .device-information {
   display: flex;

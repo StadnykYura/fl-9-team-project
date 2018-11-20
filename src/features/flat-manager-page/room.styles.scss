@@ -1,9 +1,7 @@
 .room {
-  
-margin-left: 70px;
-margin-bottom: 10px;
-
-  
+  margin-left: 70px;
+  margin-bottom: 10px;
+  background: var( --menu-color);
   height: 250px;
   width: 200px;
   border-radius: 5px;
@@ -12,26 +10,15 @@ margin-bottom: 10px;
   &:not(:last-child) {
     margin-right: 10px;
   }
-
-  .devices {
-  
-  
-
+  .startDrop {
+    background: var(--menu-border);
   }
-  .name-room{
+  .stopDrop {
+    background: var(--zero);
+  }
+  .name-room {
     text-align: center;
-  font-size: 17px;
- 
+    font-size: 17px;
+  }
 }
-
-}
-.startDrop{
-  background: green;
-}
-.stopDrop{
-  background: white;
-}
-
-
-
 
