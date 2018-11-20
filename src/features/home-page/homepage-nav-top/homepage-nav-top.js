@@ -32,22 +32,11 @@ class HomepageNavTop extends Component {
             </Link>
           </li>
           <li className="menu__item">
-            <Link to={routes.HOME} className="menu__link">
+            <Link to={routes.HOME} className="menu__link menu__item-manager">
               Flat manager
             </Link>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="?">
-              Statistic
-            </a>
-          </li>
-          <li className="menu__item">
-            {/* <a
-                    className=" menu__link menu__settings menu__item_icon"
-                    href="?"
-                  >
-                    Settings
-                  </a> */}
             <Button
               onClick={this.onClickHandler}
               signOut="menu__item_icon menu__sign-out menu__link"

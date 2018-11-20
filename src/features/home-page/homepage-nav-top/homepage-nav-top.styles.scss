@@ -39,6 +39,9 @@
       color: var(--activ-color);
     }
   }
+  .menu__item-manager {
+    padding: 0 200px;
+  }
 }
 .menu__item-nobg {
   > * {
