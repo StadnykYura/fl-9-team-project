@@ -24,7 +24,6 @@ class Home extends Component {
     });
     this.firebaseApiGetRoomsWithStateChange();
   }
-
   componentDidMount() {
     this.setState({
       isLoading: true,

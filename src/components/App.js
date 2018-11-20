@@ -11,6 +11,7 @@ import UnauthenticatedOnlyRoute from '../features/authorization/unauthenticated-
 import RoomPage from '../features/room-page/room-page';
 import SignInPage from '../features/authorization/sign-in.page';
 import withAuthentication from '../features/authorization/with-authentication.hoc';
+import FlatManager from '../features/flat-manager-page/flat-manager';
 
 class App extends Component {
   render() {
@@ -29,6 +30,11 @@ class App extends Component {
               exact
               path={routes.HOME_ROOM_ID}
               component={RoomPage}
+            />
+            <PrivateRoute
+              exact
+              path={routes.FLAT_MANAGER}
+              component={FlatManager}
             />
             <Route component={NotFound} />
           </Switch>

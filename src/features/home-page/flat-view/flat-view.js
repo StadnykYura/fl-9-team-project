@@ -35,6 +35,7 @@ class FlatView extends Component {
     if (roomsData) {
       // if not null
       roomsData.forEach(room => {
+        console.log(room.roomID);
         switch (room.roomID) {
           case roomsID.LIVINGROOM:
             this.drawLivingRoom(
