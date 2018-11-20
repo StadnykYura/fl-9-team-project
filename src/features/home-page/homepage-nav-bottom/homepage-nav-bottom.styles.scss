@@ -9,6 +9,13 @@
     padding-right: 0;
   }
 }
+.menu__sign-out {
+  &:before {
+    content: '\e90b';
+    padding-right: 0;
+  }
+}
+
 .menu__light {
   &:before {
     content: '\e907';
@@ -57,15 +64,40 @@
       display: block;
       border: 6px solid;
       border-radius: 100%;
-      margin: 2px 16px 2px 2px;
+      margin: 2px 2px 2px 16px;
       @extend #Transition;
     }
+  }
+}
+.turn_on {
+  i.switcher {
+    background: var(--switcherBG);
   }
 }
 .turn_off {
   i.switcher {
     &::after {
-      margin: 2px 2px 2px 16px;
+      margin: 2px 16px 2px 2px;
+    }
+  }
+}
+.menu__item {
+  .menu__time {
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    * {
+      white-space: nowrap;
+    }
+    .app-clock {
+      font-size: 16px;
+      height: 14px;
+    }
+    .data {
+      font-size: 12px;
+      height: 12px;
     }
   }
 }

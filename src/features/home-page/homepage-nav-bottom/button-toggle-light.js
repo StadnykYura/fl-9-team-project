@@ -62,7 +62,6 @@ class ToggleLight extends Component {
             : 'menu__item_icon menu__light turn_off'
         }
       >
-        <span>{turnOnOffLight ? 'on' : 'off'}</span>
         <i className="switcher" />
       </button>
     );

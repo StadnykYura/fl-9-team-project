@@ -1,0 +1,14 @@
+.device-info {
+  display: flex;
+  flex-direction: column;
+  img {
+    display: block;
+    width: 90px;
+    margin: 0 auto;
+  }
+  p {
+    margin: 10px 0;
+    font-size: 11pt;
+    color: var(--link);
+  }
+}

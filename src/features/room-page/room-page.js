@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 import HomepageNavTop from '../home-page/homepage-nav-top/homepage-nav-top';
 import HomepageNavBottom from '../home-page/homepage-nav-bottom/homepage-nav-bottom';
+import Loader from '../Loader/Loader';
 
 import RoomView from './room-view/room-view';
 import { firebase } from '../../firebase';
@@ -53,7 +54,7 @@ class RoomPage extends Component {
         </div>
         <div className="flat-container">
           {room == null ? (
-            <div>Room Loading</div>
+            <Loader />
           ) : (
             <RoomView
               userUID={this.props.auth.userUID}

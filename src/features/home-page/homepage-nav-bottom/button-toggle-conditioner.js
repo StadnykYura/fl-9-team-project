@@ -35,7 +35,7 @@ class ToggleConditioner extends Component {
                 .get()
                 .then(snapshot => {
                   snapshot.docs.forEach(document => {
-                    if (document.data().name === 'conditioner') {
+                    if (document.data().name === 'Conditioner') {
                       roomDocRef
                         .collection('devices')
                         .doc(document.id)
@@ -69,7 +69,6 @@ class ToggleConditioner extends Component {
             : 'menu__item_icon menu__conditioner turn_off'
         }
       >
-        <span>{turnOnOffConditioner ? 'on' : 'off'}</span>
         <i className="switcher" />
       </button>
     );

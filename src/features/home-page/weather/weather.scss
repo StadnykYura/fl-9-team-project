@@ -1,0 +1,13 @@
+.weather-widget {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    .temperature {
+        align-self: center;
+    }
+    img {
+        align-self: center;
+        margin-right: 5px;
+    }
+}

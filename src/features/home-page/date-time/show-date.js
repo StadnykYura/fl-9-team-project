@@ -7,13 +7,13 @@ class ShowDate extends Component {
       date: new Date().toLocaleString('en-En', {
         day: 'numeric',
         month: 'short',
-        weekday: 'long',
+        weekday: 'short',
       }),
     };
   }
 
   render() {
-    return <div className="Data">{this.state.date}</div>;
+    return <span className="data">{this.state.date}</span>;
   }
 }
 
