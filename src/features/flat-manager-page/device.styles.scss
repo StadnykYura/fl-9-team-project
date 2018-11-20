@@ -1,17 +1,15 @@
 .device {
-  padding: 7px;
-  margin: 2px;
-
+ 
 }
 .img-icon{
   width: 25px;
   height: 25px;
-  float: left;
+margin: 0;
 color: var( --link);
 }
 .device-name{
   font-size: 15px;
-  color: var(--link);
+  color: red;
   margin-left: 40px;
 }
 .startDrag{
@@ -19,4 +17,11 @@ color: var( --link);
 }
 .stopDrag{
   background: white;
+}
+.device-info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
 }

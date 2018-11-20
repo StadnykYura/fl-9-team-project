@@ -19,9 +19,9 @@ class Device extends Component {
   render() {
     return this.props.connectDragSource(
       <div
-        // style={{ background: this.props.isDragging ? 'red' : 'green' }}
-        // className="device"
-        className={'device' + this.props.isDragging ? 'startDrag' : 'stopDrag'}
+        style={{ background: this.props.isDragging ? 'red' : 'white' }}
+        className="device"
+        // className={ this.props.isDragging ? "device startDrag" : " device stopDrag"}
       >
         <div className="device-info">
           <img

@@ -14,11 +14,11 @@ const spec = {
       id: device.id,
       roomId: props.id,
       name: device.deviceData.name,
-      // deviceSettings: device.deviceData.deviceSettings,
-      // isMutable: device.deviceData.isMutable,
-      // isOn: device.deviceData.isOn,
+      deviceSettings: device.deviceData.deviceSettings,
+      isMutable: device.deviceData.isMutable,
+      isOn: device.deviceData.isOn,
       // mutableData: device.deviceData.mutableData,
-      // url: device.deviceData.url,
+      url: device.deviceData.url,
     };
 
     // Delete
@@ -43,11 +43,11 @@ const spec = {
       .doc(device.id)
       .set({
         name: nextDevice.name,
-        // deviceSettings: nextDevice.deviceSettings,
-        // isMutable: nextDevice.isMutable,
-        // isOn: nextDevice.isOn,
+        deviceSettings: nextDevice.deviceSettings,
+        isMutable: nextDevice.isMutable,
+        isOn: nextDevice.isOn,
         // mutableData:nextDevice.mutableData,
-        // url: nextDevice.url,
+        url: nextDevice.url,
       })
       .then(() => {
         component.addDevice(nextDevice);

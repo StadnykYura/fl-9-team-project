@@ -1,10 +1,9 @@
 .room {
   display: flex;
   flex-flow: column;
-  padding: 10px;
-  margin: 5px;
+  align-items: flex-start;
   margin-left: 70px;
-  height: 240px;
+  height: 250px;
   width: 200px;
 
   &:not(:last-child) {
@@ -14,6 +13,7 @@
   .devices {
     display: flex;
     flex-flow: column;
+
   }
   .name-room{
     color:var(--dark);
