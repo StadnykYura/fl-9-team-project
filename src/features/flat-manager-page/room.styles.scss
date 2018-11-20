@@ -1,27 +1,28 @@
 .room {
-  display: flex;
-  flex-flow: column;
-  align-items: flex-start;
-  margin-left: 70px;
+  
+margin-left: 70px;
+margin-bottom: 10px;
+
+  
   height: 250px;
   width: 200px;
+  border-radius: 5px;
+  overflow: auto;
 
   &:not(:last-child) {
     margin-right: 10px;
   }
 
   .devices {
-    display: flex;
-    flex-flow: column;
+  
+  
 
   }
   .name-room{
-    color:var(--dark);
-    margin: 0 auto;
-  font-size: 14px;
-  &::first-letter{
-    font-size: 25px;
-  }}
+    text-align: center;
+  font-size: 17px;
+ 
+}
 
 }
 .startDrop{

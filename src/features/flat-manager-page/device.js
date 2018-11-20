@@ -19,17 +19,22 @@ class Device extends Component {
   render() {
     return this.props.connectDragSource(
       <div
-        style={{ background: this.props.isDragging ? 'red' : 'white' }}
-        className="device"
-        // className={ this.props.isDragging ? "device startDrag" : " device stopDrag"}
+        // style={{ background: this.props.isDragging ? 'var( --menu-color)' : 'white' }}
+
+        className={this.props.isDragging ? 'startDrag' : '  stopDrag'}
       >
-        <div className="device-info">
-          <img
-            className="img-icon"
-            src={this.props.deviceData.url}
-            alt="device"
-          />
-          <p className="device-name">{this.props.name}</p>
+        <div className="device-information">
+          <i className={this.props.deviceData.url} />
+          {/* <div  className="img-icon">
+        
+      
+       
+    
+        </div> */}
+          <div className="device-name">
+            {' '}
+            <p>{this.props.name}</p>
+          </div>
         </div>
       </div>
     );

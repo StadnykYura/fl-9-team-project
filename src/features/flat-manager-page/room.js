@@ -8,8 +8,6 @@ import dndTypes from '../../constants/dnd-types.constants';
 const spec = {
   drop(props, monitor, component) {
     const device = monitor.getItem();
-
-    console.log('кинутий девайс  на цю кімнату -->', device.deviceData);
     const nextDevice = {
       id: device.id,
       roomId: props.id,
@@ -17,7 +15,6 @@ const spec = {
       deviceSettings: device.deviceData.deviceSettings,
       isMutable: device.deviceData.isMutable,
       isOn: device.deviceData.isOn,
-      // mutableData: device.deviceData.mutableData,
       url: device.deviceData.url,
     };
 
@@ -46,7 +43,6 @@ const spec = {
         deviceSettings: nextDevice.deviceSettings,
         isMutable: nextDevice.isMutable,
         isOn: nextDevice.isOn,
-        // mutableData:nextDevice.mutableData,
         url: nextDevice.url,
       })
       .then(() => {
@@ -120,7 +116,6 @@ class Room extends Component {
       const devices = [];
 
       documents.forEach(document => {
-        // console.log( 'а це що таке',document.data())
         devices.push({
           ...document.data(),
           id: document.id,
@@ -134,8 +129,6 @@ class Room extends Component {
   }
 
   renderDevice(device) {
-    // console.log('in room device', device);
-    // console.log('in room props', this.props);
     return (
       <Device
         key={device.id}
@@ -161,7 +154,9 @@ class Room extends Component {
         }}
         className="room"
       >
-        <h3 className="name-room">{this.props.name}</h3>
+        <div className="name-room">
+          <h3>{this.props.name}</h3>
+        </div>
         <div className="devices">
           {this.state.devices.map(this.renderDevice)}
         </div>
