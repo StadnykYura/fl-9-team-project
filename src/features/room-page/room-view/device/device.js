@@ -11,7 +11,7 @@ export default class Device extends Component {
         }}
       >
         <div className="device-info">
-          <img src={deviceData.url} alt="device" />
+          <i className={`icon ${deviceData.url}`} />
           <p>{deviceData.name}</p>
         </div>
       </button>
