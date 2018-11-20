@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { auth } from '../../firebase';
+
 import AuthService from './auth-service';
+import Loader from '../Loader/Loader';
 
 const stateSetter = (propName, value) => ({
   [propName]: value,
@@ -10,6 +12,7 @@ const initial_state = {
   email: '',
   password: '',
   error: null,
+  isLoading: false,
 };
 
 class SignInForm extends Component {
@@ -21,6 +24,8 @@ class SignInForm extends Component {
 
   // arrow function remembers the context
   onSubmit = event => {
+    this.setState(stateSetter('isLoading', true));
+
     const { email, password } = this.state;
 
     auth
@@ -30,6 +35,7 @@ class SignInForm extends Component {
         this.props.auth.authorize(authUser.user.uid);
       })
       .catch(error => {
+        this.setState({ ...initial_state });
         this.setState(stateSetter('error', error));
       });
 
@@ -41,42 +47,48 @@ class SignInForm extends Component {
   }
 
   render() {
-    const { email, password, error } = this.state;
+    const { email, password, error, isLoading } = this.state;
 
     const isInvalid = email === '' || password === '';
 
     return (
       <div className="main-for-sin-in">
-        <form className="form-main-for-sin-in" onSubmit={this.onSubmit}>
-          <div className="form-greeting">Sign In to your account</div>
-          <div>
-            <input
-              className="main-for-sin-in-email"
-              value={email}
-              type="text"
-              placeholder="Email Address"
-              onChange={event => this.handleChange(event, 'email')}
-            />
-          </div>
-          <div className="main-for-sin-in-email">
-            <input
-              value={password}
-              type="password"
-              placeholder="Password"
-              onChange={event => this.handleChange(event, 'password')}
-            />
-          </div>
-          <div>
-            <button
-              className=" main-for-sin-in-bottom "
-              disabled={isInvalid}
-              type="submit"
-            >
-              Sign In
-            </button>
-          </div>
-          <div className="error-message">{error && <p>{error.message}</p>}</div>
-        </form>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <form className="form-main-for-sin-in" onSubmit={this.onSubmit}>
+            <div className="form-greeting">Sign In to your account</div>
+            <div>
+              <input
+                className="main-for-sin-in-email"
+                value={email}
+                type="text"
+                placeholder="Email Address"
+                onChange={event => this.handleChange(event, 'email')}
+              />
+            </div>
+            <div className="main-for-sin-in-email">
+              <input
+                value={password}
+                type="password"
+                placeholder="Password"
+                onChange={event => this.handleChange(event, 'password')}
+              />
+            </div>
+            <div>
+              <button
+                className=" main-for-sin-in-bottom "
+                disabled={isInvalid}
+                type="submit"
+              >
+                Sign In
+              </button>
+            </div>
+            <div className="error-message">
+              {error && <p>{error.message}</p>}
+            </div>
+          </form>
+        )}
       </div>
     );
   }

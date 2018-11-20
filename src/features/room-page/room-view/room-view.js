@@ -72,7 +72,7 @@ export default class RoomView extends Component {
               id: document.id,
               ...document.data(),
             };
-            console.log(selectedDeviceFromDB);
+            // console.log(selectedDeviceFromDB);
             this.setState({
               isSettingsLoading: false,
               isSettingsOpen: true,
