@@ -44,7 +44,7 @@ class Weather extends React.Component {
             alt="weather icon"
           />
           <div className="temperature">
-            {this.state.temperature}
+            {this.state.temperature.toFixed()}
             ºC
           </div>
         </div>
