@@ -21,6 +21,7 @@ const themes = {
     kitchen: '#ccced8',
     bedroom: '#c4c6d2',
     hall: '#d6d8e0',
+    shadow: '0px 4px 25px 2px #ababab',
   },
   DARK: {
     zero: '#0c0f1f',
@@ -41,6 +42,7 @@ const themes = {
     kitchen: '#414b8a',
     bedroom: '#343d77',
     hall: '#333b6d',
+    shadow: '2px 2px 20px 2px #2c3466',
   },
 };
 

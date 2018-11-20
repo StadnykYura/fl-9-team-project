@@ -21,7 +21,7 @@
     background: var(--zero);
     opacity: 0.9;
     border-radius: 5px;
-    box-shadow: 0px 0px 20px 1px #a3a1a3;
+    box-shadow: var(--shadow);
 
     .room-view-devices {
       height: 100%;
