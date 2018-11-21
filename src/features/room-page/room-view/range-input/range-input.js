@@ -48,8 +48,8 @@ export default class RangeInput extends Component {
       title,
     } = this.props.currentSetting.config;
     return (
-      <div style={{ marginTop: '20px', marginBottom: '20px' }}>
-        <span style={{ fontSize: '16px', marginBottom: '6px' }}>
+      <div className="input-range-wrapper">
+        <span className=".input-range-title">
           <div className="input-title">
             {title}
             <span>
