@@ -82,6 +82,7 @@ class ThemeToggler extends Component {
           }
         >
           <span>{this.state.nightMode ? 'day' : 'night'}</span>
+          <span className="tooltip-bottom">Switch theme</span>
         </button>
       </React.Fragment>
     );

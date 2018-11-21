@@ -23,12 +23,12 @@ class HomepageNavTop extends Component {
     return (
       <section className="homepage">
         <ul className="menu">
-          <li className="menu__item" title="Home">
+          <li className="menu__item">
             <Link
               to={routes.HOME}
               className="menu__item_icon menu__home menu__link"
             >
-              Home
+              <span className="tooltip">Home</span>
             </Link>
           </li>
           <li className="menu__item menu__item-manager">
@@ -36,12 +36,12 @@ class HomepageNavTop extends Component {
               Apartment manager
             </Link>
           </li>
-          <li className="menu__item" title="Sign Out">
+          <li className="menu__item">
             <Button
               onClick={this.onClickHandler}
               signOut="menu__item_icon menu__sign-out menu__link"
             >
-              Sign Out
+              <span className="tooltip">Sign Out</span>
             </Button>
           </li>
         </ul>
