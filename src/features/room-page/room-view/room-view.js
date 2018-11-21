@@ -63,7 +63,6 @@ export default class RoomView extends Component {
     } else {
       this.setState({
         isSettingsLoading: true,
-        //isSettingsOpen: false,
       });
       const uid = this.props.userUID;
       if (uid) {

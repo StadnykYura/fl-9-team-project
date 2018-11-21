@@ -6,9 +6,6 @@ export default class DeviceSettings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // currentRangeValue: this.props.currentDevice.mutableData
-      //   ? this.props.currentDevice.mutableData.currentValue
-      //   : null,
       currentRangeValue: null,
       currentDeviceSettingKey: null,
     };
@@ -74,10 +71,8 @@ export default class DeviceSettings extends Component {
                     currentDeviceSettingKey={this.state.currentDeviceSettingKey}
                   />
                 );
-              // break;
               case 'toggle':
                 return <div>Toggle</div>;
-              // break;
               case 'modes':
                 return <div>Modes</div>;
 

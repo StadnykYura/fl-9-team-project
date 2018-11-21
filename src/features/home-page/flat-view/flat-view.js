@@ -27,7 +27,6 @@ class FlatView extends Component {
     if (roomsData) {
       // if not null
       roomsData.forEach(room => {
-        console.log(room.roomID);
         switch (room.roomID) {
           case roomsID.LIVINGROOM:
             this.drawLivingRoom(
@@ -123,7 +122,6 @@ class FlatView extends Component {
     });
 
     d3.select(`#light-${roomID}`).on('click', () => {
-      debugger;
       const target = d3.event.target;
       this.turnOnOffLightInRoom(target, roomID);
     });
