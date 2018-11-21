@@ -7,7 +7,7 @@
     margin: 0 auto;
     font-size: 14pt;
     overflow: hidden;
-    background: var(--secondaryBG);
+    background: var(--zero);
     opacity: 0.9;
     border-radius: 5px;
     box-shadow: var(--shadow);
@@ -47,11 +47,10 @@
       }
       .room-view__device-settings {
         background-image: linear-gradient(
-          90deg,
-          var(--secondaryBG),
+          to right,
+          var(--zero) 20%,
           var(--thirdBG)
         );
-        // height: 100%;
         color: var(--link);
         text-align: center;
         flex: 0 0 30%;
@@ -99,15 +98,15 @@
     }
   }
 }
-
 .room-page-spinner {
   width: 100%;
   height: 100%;
   display: flex;
-  margin: 100px 0 0;
+  margin: 20% 0 0;
+  font-size: 0.8em;
   justify-content: center;
 }
 .room-page-spinner-settings {
-  margin: 120px 0 0;
-  font-size: 0.7em;
+  margin: 60% 0 0;
+  font-size: 0.6em;
 }
