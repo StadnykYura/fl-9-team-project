@@ -194,7 +194,7 @@ export default class RoomView extends Component {
               {this.state.selectedDevice !== null ? (
                 this.state.isSettingsLoading ||
                 (!this.state.selectedDevice && !this.state.isSettingsOpen) ? (
-                  <div className="room-page-spinner">
+                  <div className="room-page-spinner-settings">
                     <Loader />
                   </div>
                 ) : (
