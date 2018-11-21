@@ -31,7 +31,7 @@ class HomepageNavTop extends Component {
               Home
             </Link>
           </li>
-          <li className="menu__item">
+          <li className="menu__item menu__item-manager">
             <Link to={routes.FLAT_MANAGER} className="menu__link">
               Apartment manager
             </Link>
