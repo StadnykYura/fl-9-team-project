@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 const KEY = 'f5672b9d8248bed28c43b00460aa62eb';
 const URL = 'https://api.openweathermap.org/data/2.5';
 const CITY = 'LVIV';
 
-class Weather extends React.Component {
+class Weather extends Component {
+  _isMounted = false;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -15,19 +17,25 @@ class Weather extends React.Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
+
     let url = `${URL}/weather?q=${CITY}&APPID=${KEY}&units=metric`;
     fetch(url)
       .then(data => data.json())
-      .then(parsedData =>
-        this.setState({
-          temperature: parsedData.main.temp,
-          weatherIcon: parsedData.weather[0].icon,
-          loading: false,
-        })
-      )
-      .catch(error => {
-        console.log(error);
-      });
+      .then(parsedData => {
+        if (this._isMounted) {
+          this.setState({
+            temperature: parsedData.main.temp,
+            weatherIcon: parsedData.weather[0].icon,
+            loading: false,
+          });
+        }
+      })
+      .catch(() => {});
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {

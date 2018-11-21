@@ -22,7 +22,6 @@ class SignInForm extends Component {
     this.Auth = new AuthService();
   }
 
-  // arrow function remembers the context
   onSubmit = event => {
     this.setState(stateSetter('isLoading', true));
 
