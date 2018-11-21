@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loader from '../Loader/Loader';
 import Device from './device';
 import { firebase } from '../../firebase';
 import AuthUserContext from '../authorization/auth-user.context';
@@ -143,10 +144,6 @@ class Room extends Component {
   }
 
   render() {
-    if (this.state.isLoading) {
-      return <p>Device loadin....</p>;
-    }
-
     return this.props.connectDropTarget(
       <div
         style={{
@@ -158,7 +155,13 @@ class Room extends Component {
           <h3>{this.props.name}</h3>
         </div>
         <div className="devices">
-          {this.state.devices.map(this.renderDevice)}
+          {this.state.isLoading ? (
+            <div className="devces-spinner">
+              <Loader />
+            </div>
+          ) : (
+            this.state.devices.map(this.renderDevice)
+          )}
         </div>
       </div>
     );
