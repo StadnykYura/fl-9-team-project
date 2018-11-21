@@ -163,9 +163,6 @@ export default class RoomView extends Component {
     return (
       <div className="room-view-wrapper">
         <div className="room-view">
-          <div className="room-title">
-            <h2>{this.props.room.name}</h2>
-          </div>
           <div className="room-content">
             {this.state.isDevicesLoading ? (
               <div className="room-page-spinner">
@@ -174,6 +171,9 @@ export default class RoomView extends Component {
             ) : (
               this.state.devices && (
                 <div className="room-view-devices">
+                  <div className="room-title">
+                    <h2>{this.props.room.name}</h2>
+                  </div>
                   <DeviceList
                     devices={this.state.devices}
                     onDeviceSelect={this.selectDevice}
