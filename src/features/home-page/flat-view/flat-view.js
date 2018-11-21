@@ -224,7 +224,6 @@ class FlatView extends Component {
       .attr('y', 20);
 
     d3.selectAll('#Kitchen').on('click', () => {
-      debugger;
       this.props.history.push(`room/${roomID}`);
     });
 
@@ -232,10 +231,6 @@ class FlatView extends Component {
       const target = d3.event.target;
       this.turnOnOffLightInRoom(target, roomID);
     });
-
-    // d3.selectAll('#Kitchen').on('click', function() {
-    //   d3.select(this).attr('xlink:href', noLightLogo);
-    // });
   }
 
   drawBedRoom(svg, roomID, name, isLightOn) {
