@@ -1,18 +1,5 @@
-.device {
-}
-.img-icon {
-  width: 25px;
-  height: 25px;
-  margin: 5px;
-  padding-top: 5px;
-  color: var( --activeBG);
-}
-.device-name {
-  font-size: 15px;
-  color: var( --activeBG);
-}
 .startDrag {
-  background: var(  --switcherBG);
+  background: var(--switcherBG);
 }
 .stopDrag {
   background: white;
@@ -22,5 +9,20 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  border-bottom: 0.5px solid var(--switcherBG);
+  border-bottom: 0.5px solid var(--bedroom);
+  background: var(--zero);
+  .img-icon {
+    i {
+      font-size: 30px;
+    }
+
+    margin: 5px;
+    margin-left: 10px;
+    padding-top: 5px;
+    color: var(--link);
+  }
+  .device-name {
+    font-size: 15px;
+    color: var(--link);
+  }
 }
