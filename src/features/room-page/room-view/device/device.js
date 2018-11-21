@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class Device extends Component {
   render() {
-    const { deviceData, onDeviceSelect } = this.props;
+    const { deviceData, onDeviceSelect, isActive } = this.props;
     return (
       <button
         className="device"
@@ -11,7 +11,11 @@ export default class Device extends Component {
         }}
       >
         <div className="device-info">
-          <i className={`icon ${deviceData.url}`} />
+          <i
+            className={`${deviceData.url} ${
+              isActive ? 'icon-active' : 'icon-default'
+            }`}
+          />
           <p>{deviceData.name}</p>
         </div>
       </button>

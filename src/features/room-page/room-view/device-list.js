@@ -10,6 +10,12 @@ export default class DeviceList extends Component {
           <Device
             deviceData={device}
             onDeviceSelect={this.props.onDeviceSelect}
+            isActive={
+              this.props.currentActiveDevice !== null &&
+              device.id === this.props.currentActiveDevice.id
+                ? true
+                : false
+            }
             key={index}
           />
         ))}

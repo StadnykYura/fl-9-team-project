@@ -172,6 +172,7 @@ export default class RoomView extends Component {
                 <DeviceList
                   devices={this.state.devices}
                   onDeviceSelect={this.selectDevice}
+                  currentActiveDevice={this.state.selectedDevice}
                 />
               </div>
             )}
