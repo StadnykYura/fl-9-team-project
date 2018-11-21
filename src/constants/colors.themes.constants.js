@@ -17,6 +17,12 @@ const themes = {
     'hover-link': '#fff',
     'menu-border': '#e9eaee',
     'menu-color': '#797a8c',
+    livingroom: '#e9eaef',
+    bath: '#eeeeee',
+    kitchen: '#ccced8',
+    bedroom: '#c4c6d2',
+    hall: '#d6d8e0',
+    shadow: '0px 4px 25px 2px #ababab',
   },
   DARK: {
     zero: '#0c0f1f',
@@ -31,7 +37,14 @@ const themes = {
     switcherBG: '#283275',
     'activ-color': '#c7ccd0',
     'hover-link': '#fff',
+    'menu-border': '#303349',
     'menu-color': '#fff',
+    livingroom: '#3f4777',
+    bath: '#414b8ad4',
+    kitchen: '#414b8a',
+    bedroom: '#343d77',
+    hall: '#333b6d',
+    shadow: '2px 2px 20px 2px #2c3466',
   },
 };
 
