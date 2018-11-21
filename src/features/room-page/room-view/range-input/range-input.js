@@ -32,13 +32,6 @@ export default class RangeInput extends Component {
   }
 
   render() {
-    // const {
-    //   unit,
-    //   maxValue,
-    //   minValue,
-    //   step,
-    //   title,
-    // } = this.props.currentDevice.mutableData;
     const {
       unit,
       maxValue,
@@ -53,7 +46,6 @@ export default class RangeInput extends Component {
           <div className="input-title">
             {title}
             <span>
-              {/* {this.props.currentRangeValue} */}
               {this.props.currentDeviceSettingKey ===
               this.props.currentSetting.id
                 ? this.props.currentRangeValue
@@ -69,7 +61,6 @@ export default class RangeInput extends Component {
             <input
               disabled={this.props.isMutableDataIsLoading}
               type="range"
-              // value={this.props.currentRangeValue}
               value={
                 this.props.currentDeviceSettingKey ===
                 this.props.currentSetting.id
@@ -80,8 +71,6 @@ export default class RangeInput extends Component {
               max={maxValue}
               className="slider"
               onChange={this.handleSliderChange}
-              // onMouseUp={this.handleInputMouseUp}
-              // onTouchEnd={this.handleInputMouseUp}
               step={step}
             />
             <span>max {maxValue}</span>

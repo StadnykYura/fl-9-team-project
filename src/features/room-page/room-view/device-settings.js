@@ -29,13 +29,7 @@ export default class DeviceSettings extends Component {
   }
 
   render() {
-    // console.log(this.props);
     const { currentDevice } = this.props;
-
-    // if (this.props.currentDevice.deviceSettings) {
-    //   const { deviceSettings } = this.props.currentDevice;
-    // }
-
     return (
       <React.Fragment>
         <div className="settings-close">
@@ -45,7 +39,6 @@ export default class DeviceSettings extends Component {
           />
         </div>
         <div className="settings-info">
-          {/* <p className="settings-title">{this.props.title}</p> */}
           <p className="settings-device-image">
             <i className={`icon ${currentDevice.url}`} />
           </p>
@@ -91,17 +84,7 @@ export default class DeviceSettings extends Component {
               default:
                 return <div>Nothing</div>;
             }
-          })
-        // <RangeInput
-        //   isMutableDataIsLoading={this.props.isMutableDataIsLoading}
-        //   currentDevice={currentDevice}
-        //   onMutableDataCurrentValueUpdate={
-        //     this.props.handleMutableDataCurrentValueUpdate
-        //   }
-        //   onInputRangeChange={this.onInputRangeChange}
-        //   currentRangeValue={this.state.currentRangeValue}
-        // />
-        }
+          })}
       </React.Fragment>
     );
   }
