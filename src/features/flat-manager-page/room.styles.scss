@@ -1,0 +1,37 @@
+.room {
+  
+margin-left: 70px;
+margin-bottom: 10px;
+
+  
+  height: 250px;
+  width: 200px;
+  border-radius: 5px;
+  overflow: auto;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  .devices {
+  
+  
+
+  }
+  .name-room{
+    text-align: center;
+  font-size: 17px;
+ 
+}
+
+}
+.startDrop{
+  background: green;
+}
+.stopDrop{
+  background: white;
+}
+
+
+
+

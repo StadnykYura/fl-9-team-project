@@ -28,11 +28,11 @@ class HomepageNavTop extends Component {
               to={routes.HOME}
               className="menu__item_icon menu__home menu__link"
             >
-              Home
-            </Link>
-          </li>
+              Home{' '}
+            </Link>{' '}
+          </li>{' '}
           <li className="menu__item">
-            <Link to={routes.HOME} className="menu__link menu__item-manager">
+            <Link to={routes.FLAT_MANAGER} className="menu__link">
               Flat manager
             </Link>
           </li>

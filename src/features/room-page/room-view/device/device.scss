@@ -1,10 +1,9 @@
 .device-info {
   display: flex;
   flex-direction: column;
-  img {
-    display: block;
-    width: 90px;
-    margin: 0 auto;
+  .icon {
+    font-size: 70pt;
+    color: var(--link);
   }
   p {
     margin: 10px 0;
