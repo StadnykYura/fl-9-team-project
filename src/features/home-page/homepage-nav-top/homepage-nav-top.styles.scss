@@ -23,9 +23,7 @@
   &:first-child {
     border-left: 1px solid var(--menu-border);
   }
-  &:nth-of-type(2) {
-    flex-basis: 200%;
-  }
+
   > * {
     padding: 0 10px;
     display: block;
@@ -43,6 +41,9 @@
       color: var(--activ-color);
     }
   }
+}
+.menu__item-manager {
+  flex-basis: 200%;
 }
 .menu__item-nobg {
   > * {
