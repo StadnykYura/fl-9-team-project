@@ -11,6 +11,7 @@ export default class DeviceList extends Component {
             deviceData={device}
             onDeviceSelect={this.props.onDeviceSelect}
             isActive={
+              this.props.isSettingsOpen &&
               this.props.currentActiveDevice !== null &&
               device.id === this.props.currentActiveDevice.id
                 ? true
