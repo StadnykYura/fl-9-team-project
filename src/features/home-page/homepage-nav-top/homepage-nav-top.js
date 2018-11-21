@@ -32,10 +32,7 @@ class HomepageNavTop extends Component {
             </Link>
           </li>
           <li className="menu__item">
-            <Link
-              to={routes.FLAT_MANAGER}
-              className="menu__link menu__item-manager "
-            >
+            <Link to={routes.FLAT_MANAGER} className="menu__link">
               Apartment manager
             </Link>
           </li>
