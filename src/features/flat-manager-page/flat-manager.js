@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import HomepageNavTop from '../../features/home-page/homepage-nav-top/homepage-nav-top';
 import HomepageNavBottom from '../../features/home-page/homepage-nav-bottom/homepage-nav-bottom';
-
+import Loader from '../Loader/Loader';
 import Room from './room';
 import { firebase } from '../../firebase';
 import AuthUserContext from '../authorization/auth-user.context';
@@ -58,10 +58,6 @@ class FlatManager extends Component {
   }
 
   render() {
-    if (this.state.isLoading) {
-      return <p>Room loading...</p>;
-    }
-
     return (
       <React.Fragment>
         <div className="page">
@@ -69,9 +65,13 @@ class FlatManager extends Component {
             <HomepageNavTop />
           </div>
           <div className="flat-container">
-            <div className="flat-manager">
-              {this.state.rooms.map(this.renderRoom)}
-            </div>
+            {this.state.isLoading ? (
+              <Loader />
+            ) : (
+              <div className="flat-manager">
+                {this.state.rooms.map(this.renderRoom)}
+              </div>
+            )}
           </div>
           <div className="home-nav-wrapper">
             <HomepageNavBottom
