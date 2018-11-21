@@ -5,7 +5,6 @@ import { firebase } from '../../firebase';
 import AuthUserContext from '../authorization/auth-user.context';
 import { DropTarget } from 'react-dnd';
 import dndTypes from '../../constants/dnd-types.constants';
-
 const spec = {
   drop(props, monitor, component) {
     const device = monitor.getItem();
@@ -124,7 +123,6 @@ class Room extends Component {
       });
 
       this.updateDevices(devices);
-
       this.setState({ isLoading: false });
     });
   }
