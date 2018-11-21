@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import * as firestoreAPI from '../../../firebase/utils/firestoreAPI';
 
+import Loader from '../../Loader/Loader';
+
 import DeviceList from './device-list';
 import DeviceSettings from './device-settings';
 
@@ -167,15 +169,21 @@ export default class RoomView extends Component {
             <h2>{this.props.room.name}</h2>
           </div>
           <div className="room-content">
-            {this.state.devices && (
-              <div className="room-view-devices">
-                <DeviceList
-                  devices={this.state.devices}
-                  onDeviceSelect={this.selectDevice}
-                  currentActiveDevice={this.state.selectedDevice}
-                  isSettingsOpen={this.state.isSettingsOpen}
-                />
+            {this.state.isDevicesLoading ? (
+              <div className="room-page-spinner">
+                <Loader />
               </div>
+            ) : (
+              this.state.devices && (
+                <div className="room-view-devices">
+                  <DeviceList
+                    devices={this.state.devices}
+                    onDeviceSelect={this.selectDevice}
+                    currentActiveDevice={this.state.selectedDevice}
+                    isSettingsOpen={this.state.isSettingsOpen}
+                  />
+                </div>
+              )
             )}
             <div
               className={
@@ -184,23 +192,28 @@ export default class RoomView extends Component {
                   : 'room-view__device-settings not-active'
               }
             >
-              {this.state.isSettingsLoading || !this.state.selectedDevice ? (
-                <div className="room-view__device-settings">
-                  Loading/Updating Settings
-                </div>
+              {this.state.selectedDevice !== null ? (
+                this.state.isSettingsLoading ||
+                (!this.state.selectedDevice && !this.state.isSettingsOpen) ? (
+                  <div className="room-page-spinner">
+                    <Loader />
+                  </div>
+                ) : (
+                  <DeviceSettings
+                    isTurnOffTogglerLoading={this.state.isTurnOffTogglerLoading}
+                    isMutableDataIsLoading={this.state.isMutableDataIsLoading}
+                    title={'Device settings'}
+                    isOpen={this.state.isSettingsOpen}
+                    onDeviceOnOff={this.turnOnOffDevice}
+                    currentDevice={this.state.selectedDevice}
+                    handleSettingsClose={this.handleSettingsClose}
+                    handleMutableDataCurrentValueUpdate={
+                      this.handleMutableDataCurrentValueUpdate
+                    }
+                  />
+                )
               ) : (
-                <DeviceSettings
-                  isTurnOffTogglerLoading={this.state.isTurnOffTogglerLoading}
-                  isMutableDataIsLoading={this.state.isMutableDataIsLoading}
-                  title={'Device settings'}
-                  isOpen={this.state.isSettingsOpen}
-                  onDeviceOnOff={this.turnOnOffDevice}
-                  currentDevice={this.state.selectedDevice}
-                  handleSettingsClose={this.handleSettingsClose}
-                  handleMutableDataCurrentValueUpdate={
-                    this.handleMutableDataCurrentValueUpdate
-                  }
-                />
+                <div />
               )}
             </div>
           </div>

@@ -224,6 +224,7 @@ class FlatView extends Component {
       .attr('y', 20);
 
     d3.selectAll('#Kitchen').on('click', () => {
+      debugger;
       this.props.history.push(`room/${roomID}`);
     });
 
