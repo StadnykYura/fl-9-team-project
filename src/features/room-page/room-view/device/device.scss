@@ -1,13 +1,17 @@
 .device-info {
   display: flex;
   flex-direction: column;
-  .icon {
-    font-size: 70pt;
+  .icon-default {
+    font-size: 50pt;
     color: var(--link);
+  }
+  .icon-active {
+    font-size: 50pt;
+    color: var(--activeDevice);
   }
   p {
     margin: 10px 0;
-    font-size: 11pt;
+    font-size: 9pt;
     color: var(--link);
   }
 }
