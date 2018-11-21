@@ -23,7 +23,7 @@ class HomepageNavTop extends Component {
     return (
       <section className="homepage">
         <ul className="menu">
-          <li className="menu__item">
+          <li className="menu__item" title="Home">
             <Link
               to={routes.HOME}
               className="menu__item_icon menu__home menu__link"
@@ -36,7 +36,7 @@ class HomepageNavTop extends Component {
               Apartment manager
             </Link>
           </li>
-          <li className="menu__item">
+          <li className="menu__item" title="Sign Out">
             <Button
               onClick={this.onClickHandler}
               signOut="menu__item_icon menu__sign-out menu__link"
