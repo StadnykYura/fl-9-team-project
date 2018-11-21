@@ -1,29 +1,43 @@
-.room {
-  margin-left: 70px;
-  margin-bottom: 10px;
 
-  height: 250px;
-  width: 200px;
-  border-radius: 5px;
-  overflow: auto;
+  .room {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    // margin-left: 50px;
+    margin-bottom: 10px;
+    background: var(--zero);
+    opacity: 0.8;
+    height: 250px;
+    width: 200px;
+    border-radius: 5px;
+  overflow: hidden;
+    box-shadow: var(--shadow);
 
-  &:not(:last-child) {
-    margin-right: 10px;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+      .name-room {
+      margin: 10px 0 5px 0;
+      top: 10px;
+      text-align: center;
+      font-size: 17px;
+      color: var(--link);
+    }
+    .devices{
+      height: 250px;
+      width: 240px;
+      overflow-y: auto;
+      padding-right: 20px;
+    }
   }
 
-  .devices {
-  }
-  .name-room {
-    text-align: center;
-    font-size: 17px;
-  }
-}
-.startDrop {
-  background: green;
-}
-.stopDrop {
-  background: white;
-}
+
+// .startDrop {
+//   background: green;
+// }
+// .stopDrop {
+//   background: white;
+// }
 
 .devces-spinner {
   width: 100%;

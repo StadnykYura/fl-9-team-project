@@ -28,7 +28,6 @@ class Device extends Component {
             <i className={` ${this.props.deviceData.url}`} />
           </div>
           <div className="device-name">
-            {' '}
             <p>{this.props.name}</p>
           </div>
         </div>
