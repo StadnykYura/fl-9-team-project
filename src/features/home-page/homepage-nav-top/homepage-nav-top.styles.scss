@@ -23,6 +23,9 @@
   &:first-child {
     border-left: 1px solid var(--menu-border);
   }
+  &:nth-of-type(2) {
+    flex-basis: 200%;
+  }
   > * {
     padding: 0 10px;
     display: block;
@@ -31,6 +34,7 @@
     line-height: 48px;
     color: var(--link);
     background: var(--linkBG);
+
     &:hover {
       color: var(--hoverBG);
     }
@@ -38,9 +42,6 @@
     &:focus {
       color: var(--activ-color);
     }
-  }
-  .menu__item-manager {
-    padding: 0 150px;
   }
 }
 .menu__item-nobg {
