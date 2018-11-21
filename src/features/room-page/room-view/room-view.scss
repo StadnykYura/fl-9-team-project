@@ -1,130 +1,95 @@
 .room-view-wrapper {
   width: 100%;
-  height: 80vh;
-  .room-title {
-    h2 {
-      color: var(--link);
-      margin: 10px 0;
-      text-align: center;
-      font-size: 16pt;
-    }
-  }
+  height: 75vh;
   .room-view {
-    height: 90%;
+    height: 100%;
     width: 70%;
     margin: 0 auto;
     font-size: 14pt;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
     background: var(--zero);
     opacity: 0.9;
     border-radius: 5px;
     box-shadow: 0px 0px 20px 1px #a3a1a3;
-
-    .room-view-devices {
-      height: 100%;
-      width: 100%;
-      padding: 15px;
+    .room-title {
+      height: 15%;
       display: flex;
-      justify-content: center;
       align-items: center;
-      flex-flow: row wrap;
-      overflow: overlay;
-      //scroll
-      &::-webkit-scrollbar {
-        width: 10px;
-      }
-      &::-webkit-scrollbar-track {
-        background: var(--menu-border);
-      }
-      &::-webkit-scrollbar-thumb {
-        background: var(--link);
-      }
-      .device {
-        margin: 20px 10px;
-        width: 160px;
-      }
-    }
-    .room-view__device-settings {
-      height: 100%;
-      color: var(--link);
-      width: 50%;
-      // opacity: 0;
-      text-align: center;
-      display: none;
-      .settings-close {
-        text-align: right;
-        padding: 15px 30px;
-        .close-button {
-          color: var(--link);
-          font-family: 'icomoon';
-          font-size: 24px;
-          &:before {
-            content: '\e900';
-          }
-        }
-      }
-      .turn_on,
-      .turn_off {
+      h2 {
         color: var(--link);
+        margin: 0 50px;
+        font-size: 16pt;
       }
-      .settings-info {
-        text-align: center;
-        margin: 10px 20px;
-        .settings-title {
+    }
+    .room-content {
+      display: flex;
+      height: 85%;
+      .room-view-devices {
+        height: 100%;
+        padding: 15px 30px;
+        overflow: overlay;
+        flex: 1;
+        //scroll
+        &::-webkit-scrollbar {
+          width: 10px;
         }
-        .settings-device-image {
-          .icon {
-            font-size: 50pt;
+        &::-webkit-scrollbar-track {
+          background: var(--menu-border);
+        }
+        &::-webkit-scrollbar-thumb {
+          background: var(--link);
+        }
+        .device {
+          margin: 10px 0;
+          width: 140px;
+        }
+      }
+      .room-view__device-settings {
+        height: 100%;
+        color: var(--link);
+        text-align: center;
+        flex: 0 0 30%;
+        transition: margin 1s ease;
+        .settings-close {
+          text-align: right;
+          padding: 15px 20px;
+          .close-button {
+            color: var(--link);
+            font-family: 'icomoon';
+            font-size: 24px;
+            &:before {
+              content: '\e900';
+            }
           }
         }
-        .settings-device-name {
-          font-weight: bold;
+        .turn_on,
+        .turn_off {
+          color: var(--link);
         }
-        .settings-device-on-off {
-          padding: 5px 0;
+        .settings-info {
+          text-align: center;
+          margin: 10px 20px;
+          .settings-title {
+          }
+          .settings-device-image {
+            .icon {
+              font-size: 50pt;
+            }
+          }
+          .settings-device-name {
+            font-weight: bold;
+          }
+          .settings-device-on-off {
+            padding: 5px 0;
+          }
         }
       }
+      .active {
+        margin-right: 0%;
+      }
+      .not-active {
+        margin-right: -30%;
+      }
     }
-    .active {
-      -webkit-animation: slide-in 0.3s ease-in;
-      -moz-animation: slide-in 0.3s ease-in;
-      display: block;
-    }
-    .not-active {
-      -webkit-animation: slide-out 0.4s ease-out;
-      -moz-animation: slide-out 0.4s ease-out;
-      display: none;
-    }
-  }
-}
-@-webkit-keyframes slide-in {
-  0% {
-    opacity: 0;
-    -webkit-transform: translateX(100%);
-  }
-  5% {
-    opacity: 0.8;
-    -webkit-transform: translateX(15%);
-  }
-  100% {
-    opacity: 1;
-    -webkit-transform: translateX(0%);
-  }
-}
-@-moz-keyframes slide-in {
-  0% {
-    opacity: 0;
-    -moz-transform: translateX(100%);
-  }
-  5% {
-    opacity: 0.8;
-    -moz-transform: translateX(15%);
-  }
-  100% {
-    opacity: 1;
-    -moz-transform: translateX(0%);
   }
 }
