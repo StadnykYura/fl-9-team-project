@@ -1,0 +1,78 @@
+svg {
+  viewBox {
+    width: 100%;
+    height: 100%;
+  }
+}
+#livingRoom {
+  rect {
+    fill: var(--livingroom);
+    stroke: var(--livingroom);
+  }
+}
+
+#flat-view > div {
+  width: 90vw;
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    height: 80vh;
+  }
+}
+
+.room-title {
+  font-size: 16px;
+  fill: var(--link);
+  opacity: 0.8;
+}
+
+#BathRoom {
+  rect {
+    fill: var(--bath);
+    stroke: var(--bath);
+  }
+}
+
+#Kitchen {
+  rect {
+    fill: var(--kitchen);
+    stroke: var(--kitchen);
+    stroke-width: 1px;
+  }
+}
+
+#BedRoom {
+  rect {
+    fill: var(--bedroom);
+    stroke: var(--bedroom);
+  }
+}
+
+image {
+  width: 60px;
+  height: 60px;
+}
+
+#Hall {
+  rect {
+    fill: var(--hall);
+    stroke: var(--hall);
+  }
+}
+#livingRoom,
+#BathRoom,
+#Kitchen,
+#BedRoom,
+#BedRoom,
+#Hall {
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+image {
+  cursor: pointer;
+}

@@ -1,0 +1,20 @@
+.device-info {
+  display: flex;
+  flex-direction: column;
+  .icon-default {
+    font-size: 50pt;
+    color: var(--link);
+  }
+  .icon-active {
+    font-size: 50pt;
+    color: var(--activeDevice);
+  }
+  p {
+    margin: 10px 0;
+    font-size: 9pt;
+    color: var(--link);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

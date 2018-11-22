@@ -1,0 +1,103 @@
+.menu__item_icon span {
+  display: inline-block;
+  text-align: center;
+  width: 1.5em;
+}
+.menu__home {
+  &:before {
+    content: '\e90a';
+    padding-right: 0;
+  }
+}
+.menu__sign-out {
+  &:before {
+    content: '\e90b';
+    padding-right: 0;
+  }
+}
+
+.menu__light {
+  &:before {
+    content: '\e907';
+  }
+}
+.menu__conditioner {
+  &:before {
+    content: '\e90c';
+  }
+}
+.menu__daytime_day {
+  &:before {
+    content: '\e909';
+  }
+  span {
+    width: 2.8em;
+  }
+}
+.menu__daytime_night {
+  background: var(--primaryBG);
+  &:before {
+    content: '\e908';
+  }
+  span {
+    width: 2.8em;
+  }
+}
+.menu__settings {
+  &:before {
+    content: '\e906';
+    padding-right: 0;
+  }
+}
+
+.turn_on,
+.turn_off {
+  i.switcher {
+    display: inline-block;
+    background: rgba(var(--zero-rgb), 0.4);
+    border: 2px solid;
+    border-radius: 16px;
+    vertical-align: middle;
+    margin-left: 4px;
+    &::after {
+      content: '';
+      display: block;
+      border: 6px solid;
+      border-radius: 100%;
+      margin: 2px 2px 2px 16px;
+      @extend #Transition;
+    }
+  }
+}
+.turn_on {
+  i.switcher {
+    background: var(--switcherBG);
+  }
+}
+.turn_off {
+  i.switcher {
+    &::after {
+      margin: 2px 16px 2px 2px;
+    }
+  }
+}
+.menu__item {
+  .menu__time {
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    * {
+      white-space: nowrap;
+    }
+    .app-clock {
+      font-size: 16px;
+      height: 14px;
+    }
+    .data {
+      font-size: 12px;
+      height: 12px;
+    }
+  }
+}

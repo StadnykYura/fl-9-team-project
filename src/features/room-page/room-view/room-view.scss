@@ -1,0 +1,117 @@
+.room-view-wrapper {
+  width: 100%;
+  height: 75vh;
+  .room-view {
+    height: 100%;
+    width: 70%;
+    margin: 0 auto;
+    font-size: 14pt;
+    overflow: hidden;
+    background: var(--zero);
+    opacity: 0.9;
+    border-radius: 5px;
+    box-shadow: var(--shadow);
+
+    .room-content {
+      display: flex;
+      height: 100%;
+      .room-view-devices {
+        height: 100%;
+        padding: 15px 30px;
+        overflow: overlay;
+        flex: 1;
+        //scroll
+        &::-webkit-scrollbar {
+          width: 10px;
+        }
+        &::-webkit-scrollbar-track {
+          background: var(--menu-border);
+        }
+        &::-webkit-scrollbar-thumb {
+          background: var(--link);
+        }
+        .device {
+          margin: 10px 0;
+          width: 140px;
+        }
+      }
+      .room-title {
+        height: 15%;
+        display: flex;
+        align-items: center;
+        h2 {
+          color: var(--link);
+          margin: 0 25px;
+          font-size: 16pt;
+        }
+      }
+      .room-view__device-settings {
+        background-image: linear-gradient(
+          to right,
+          var(--zero),
+          var(--thirdBG)
+        );
+        color: var(--link);
+        text-align: center;
+        flex: 0 0 30%;
+        transition: margin 0.6s ease;
+        .settings-close {
+          text-align: right;
+          padding: 15px 20px;
+          .close-button {
+            color: var(--link);
+            font-family: 'icomoon';
+            font-size: 24px;
+            &:before {
+              content: '\e900';
+            }
+          }
+        }
+        .turn_on,
+        .turn_off {
+          color: var(--link);
+        }
+        .settings-info {
+          text-align: center;
+          margin: 10px 20px;
+          .settings-title {
+          }
+          .settings-device-image {
+            .icon {
+              font-size: 50pt;
+            }
+          }
+          .settings-device-name {
+            font-weight: bold;
+            width: 220px;
+            margin: 0 auto;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .settings-device-on-off {
+            padding: 5px 0;
+          }
+        }
+      }
+      .active {
+        margin-right: 0%;
+      }
+      .not-active {
+        margin-right: -30%;
+      }
+    }
+  }
+}
+.room-page-spinner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: 20% 0 0;
+  font-size: 0.8em;
+  justify-content: center;
+}
+.room-page-spinner-settings {
+  margin: 60% 0 0;
+  font-size: 0.6em;
+}
