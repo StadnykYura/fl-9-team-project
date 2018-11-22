@@ -10,7 +10,7 @@ export default class Device extends Component {
           onDeviceSelect(this.props.deviceData.id);
         }}
       >
-        <div className="device-info">
+        <div className="device-info" title="Click on device to open settings">
           <i
             className={`${deviceData.url} ${
               isActive ? 'icon-active' : 'icon-default'
