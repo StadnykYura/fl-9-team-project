@@ -70,6 +70,7 @@ class ToggleConditioner extends Component {
         }
       >
         <i className="switcher" />
+        <span className="tooltip-bottom">Switch AC</span>
       </button>
     );
   }
