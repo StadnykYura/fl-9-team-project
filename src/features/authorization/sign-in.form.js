@@ -22,22 +22,27 @@ class SignInForm extends Component {
     this.Auth = new AuthService();
   }
 
-  onSubmit = event => {
-    this.setState(stateSetter('isLoading', true));
-
-    const { email, password } = this.state;
-
-    auth
-      .doSignInWithEmailAndPassword(email, password)
-      .then(authUser => {
-        this.setState({ ...initial_state });
-        this.props.auth.authorize(authUser.user.uid);
-      })
-      .catch(error => {
-        this.setState({ ...initial_state });
-        this.setState(stateSetter('error', error));
+  onSubmit = (event, isInvalid) => {
+    if (isInvalid) {
+      this.setState({
+        error: `You've used wrong credentials. Please check it again`,
       });
+    } else {
+      this.setState(stateSetter('isLoading', true));
 
+      const { email, password } = this.state;
+
+      auth
+        .doSignInWithEmailAndPassword(email, password)
+        .then(authUser => {
+          this.setState({ ...initial_state });
+          this.props.auth.authorize(authUser.user.uid);
+        })
+        .catch(error => {
+          this.setState({ ...initial_state });
+          this.setState(stateSetter('error', error.message));
+        });
+    }
     event.preventDefault();
   };
 
@@ -55,7 +60,10 @@ class SignInForm extends Component {
         {isLoading ? (
           <Loader />
         ) : (
-          <form className="form-main-for-sin-in" onSubmit={this.onSubmit}>
+          <form
+            className="form-main-for-sin-in"
+            onSubmit={e => this.onSubmit(e, isInvalid)}
+          >
             <div className="form-greeting">Sign In to your account</div>
             <div>
               <input
@@ -75,17 +83,11 @@ class SignInForm extends Component {
               />
             </div>
             <div>
-              <button
-                className=" main-for-sin-in-bottom "
-                disabled={isInvalid}
-                type="submit"
-              >
+              <button className=" main-for-sin-in-bottom " type="submit">
                 Sign In
               </button>
             </div>
-            <div className="error-message">
-              {error && <p>{error.message}</p>}
-            </div>
+            <div className="error-message">{error && <p>{error}</p>}</div>
           </form>
         )}
       </div>
