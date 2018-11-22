@@ -16,7 +16,10 @@ class Device extends Component {
   render() {
     return this.props.connectDragSource(
       <div className={this.props.isDragging ? 'startDrag' : '  stopDrag'}>
-        <div className="device-information">
+        <div
+          className="device-information"
+          title="drag device to move to other room"
+        >
           <div className="img-icon">
             <i className={` ${this.props.deviceData.url}`} />
           </div>

@@ -28,7 +28,7 @@ class HomepageNavTop extends Component {
               to={routes.HOME}
               className="menu__item_icon menu__home menu__link"
             >
-              Home
+              <span className="tooltip">Home</span>
             </Link>
           </li>
           <li className="menu__item menu__item-manager">
@@ -41,7 +41,7 @@ class HomepageNavTop extends Component {
               onClick={this.onClickHandler}
               signOut="menu__item_icon menu__sign-out menu__link"
             >
-              Sign Out
+              <span className="tooltip">Sign Out</span>
             </Button>
           </li>
         </ul>

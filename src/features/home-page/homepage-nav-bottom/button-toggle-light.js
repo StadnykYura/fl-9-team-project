@@ -63,6 +63,7 @@ class ToggleLight extends Component {
         }
       >
         <i className="switcher" />
+        <span className="tooltip-bottom">Switch light</span>
       </button>
     );
   }
