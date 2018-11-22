@@ -83,6 +83,11 @@
           }
           .settings-device-name {
             font-weight: bold;
+            width: 220px;
+            margin: 0 auto;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
           .settings-device-on-off {
             padding: 5px 0;
